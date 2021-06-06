@@ -1,13 +1,14 @@
 /*
  * Project:Andante
- * CodeName:Preparation_stage_003
+ * CodeName:Preparation_stage_005
  * Build:2021/06/06
  * Author:torinosubako
  * Status:Impractical
 */
 
-#include <M5EPD.h>
 #include "BLEDevice.h"
+#include <M5EPD.h>
+
 
 //LovyanGFX改修準備
 //#define LGFX_M5PAPER
@@ -20,19 +21,22 @@ M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
 
 unsigned long getDataTimer = 0;
-float temps, new_temp;
-float humid, new_humid;
-float press, new_press;
-int co2, new_co2;
+float new_temp, new_humid;
+int  new_press;
+float temp = 10.24;
+float humid = 10.24;
+int press = 8111;
+int co2 = 300;
+int new_co2;
 float vbat;
 //
-int CO2 = 1024;
-float temp = 10.24;
+//int CO2 = 1024;
+//float temp = 10.24;
 
 void setup() {
     M5.begin();
-    Serial.begin(115200);
-    Serial.print("CCS");
+    //Serial.begin(9600);
+    //Serial.print("CCS");
 
     //ディスプレイセットアップ
     M5.EPD.SetRotation(90);
@@ -55,10 +59,10 @@ void loop() {
   //BLEデータ受信
   BLE_RCV();
   M5.update();
-  //60秒毎に定期実行(ここから下が動かない？？？)
+  //120秒毎に定期実行
   auto now = millis();
   //M5.update();
-  if (now - getDataTimer >= 60000) {
+  if (now - getDataTimer >= 120000) {
     getDataTimer = now;
     canvas.fillCanvas(0);
     //モニター部
@@ -67,10 +71,6 @@ void loop() {
     co2_draw();
     prs_draw();
     canvas.pushCanvas(0,0,UPDATE_MODE_GC16);
-
-    //ダミーデータ制御用
-    CO2 += 1;
-    temp += 0.01;
   }
 }
 
@@ -89,10 +89,24 @@ void BLE_RCV(){
         seq = data[4];
         new_temp = (float)(data[6] << 8 | data[5]) / 100.0;
         new_humid = (float)(data[8] << 8 | data[7]) / 100.0;
-        new_press = (float)(data[10] << 8 | data[9]) * 10.0 / 100.0;
+        new_press = (int)(data[10] << 8 | data[9]) * 10.0 / 100.0;
         new_co2 = (int)(data[12] << 8 | data[11]);
         vbat = (float)(data[14] << 8 | data[13]) / 100.0;
-        Serial.printf(">>> seq: %d, t: %.1f, h: %.1f, p: %.1f, c: %.1d, v: %.1f\r\n", seq, new_temp, new_humid, new_press, new_co2, vbat);
+        Serial.printf(">>> seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, v: %.1f\r\n", seq, new_temp, new_humid, new_press, new_co2, vbat);
+        // SHT30とBMP280とMH-Z19Cに最適化。それ以外のセンサーでは調整する事。
+        if(temp != new_temp && new_temp >= -40 && new_temp <= 120){
+          temp = new_temp;
+        }
+        //応急用
+//        if(humid != new_humid && new_humid >= 10 && new_humid <= 90){
+//          humid = new_humid;
+//        }
+//        if(press != new_press && new_press >= 300 && new_press <= 1100){
+//          press = new_press;
+//        }
+        if(co2 != new_co2 && new_co2 > 399 && new_co2 <= 5000){
+          co2 = new_co2;
+        }
       }
     }
   }
@@ -112,15 +126,19 @@ void temp_draw(){
 void hum_draw(){
   canvas.drawString("Hum", 270, 831, 4);
   canvas.drawString("[%]", 270, 858, 4);
-  canvas.drawRightString(String(temp), 530, 833, 7);
+  //応急用
+  //canvas.drawRightString(String(humid), 530, 833, 7);
+  canvas.drawRightString(String(vbat), 530, 833, 7);
 }
 void co2_draw(){
   canvas.drawString("CO2", 10, 892, 4);
   canvas.drawString("[ppm]", 10, 918, 4);
-  canvas.drawRightString(String(CO2), 260, 894, 7);
+  canvas.drawRightString(String(co2), 260, 894, 7);
 }
 void prs_draw(){
   canvas.drawString("Prs", 270, 892, 4);
   canvas.drawString("[hPa]", 270, 918, 4);
-  canvas.drawRightString(String(CO2), 530, 894, 7);
+  //応急用
+  //canvas.drawRightString(String(press), 530, 894, 7);
+  canvas.drawRightString(String(seq), 530, 894, 7);
 }
