@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous_Atom
- * CodeName:Preparation_stage_005
- * Build:2021/06/06
+ * CodeName:Preparation_stage_007
+ * Build:2021/06/08
  * Author:torinosubako
  * Status:Impractical
 */
@@ -25,31 +25,27 @@
 #define RX_PIN 26                     // GROVE端子 RX
 #define BAUDRATE 9600                 // デバイス<=>センサー間リンクスピード
 
-// nanopixel_LED
+// デバイス関連の各種定義
+uint16_t Node_ID = 0000;　// センサー固有ID
+#define S_PERIOD 170　    // 間欠動作間隔指定
+uint32_t cpu_clock = 80;　// CPUクロック指定
+
+// nanopixel_LED制御
 #define LEDPIN 27
 #define NUMPIXELS 1
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LEDPIN, NEO_GRB + NEO_KHZ800);
 
-
-#define S_PERIOD 170
-
-//センサーライブラリのコンストラクタ定義
+//センサー関連の各種定義
 Adafruit_SHT31 sht31;                 // センサーライブラリのコンストラクタ定義
-//Adafruit_BMP280 bmp;                // センサーライブラリのコンストラクタ定義
+Adafruit_BMP280 bmp;                  // センサーライブラリのコンストラクタ定義
 MHZ19 CO2Sens;                        // センサーライブラリのコンストラクタ定義
-
 HardwareSerial mySerial(1);           // デバイス<=>センサー間リンク定義
 RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
-uint32_t cpu_clock = 80;              // CPUクロック
 
-// 設定
-uint16_t temp;
-uint16_t humid;
-uint16_t press;
-uint16_t co2;
-uint16_t vbat;
+// 搬送用データ設定
+uint16_t temp, humid, press, co2, vbat;
 
-//BLEデータセット既定
+//BLEデータセット
 void setAdvData(BLEAdvertising *pAdvertising) { // アドバタイジングパケットを整形する
     BLEAdvertisementData oAdvertisementData = BLEAdvertisementData();
     oAdvertisementData.setFlags(0x06); // BR_EDR_NOT_SUPPORTED | LE General Discoverable Mode
@@ -59,8 +55,8 @@ void setAdvData(BLEAdvertising *pAdvertising) { // アドバタイジングパ�
     strServiceData += (char)0xff;                   // AD Type 0xFF: Manufacturer specific data
     strServiceData += (char)0xff;                   // Test manufacture ID low byte<0>
     strServiceData += (char)0xff;                   // Test manufacture ID high byte<1>
-    strServiceData += (char)0x00;                   // センサーノード固有ID(下位)<2>
-    strServiceData += (char)0x00;                   // センサーノード固有ID(上位)<3>
+    strServiceData += (char)(Node_ID & 0xff);       // センサーノード固有ID(下位)<2>
+    strServiceData += (char)((Node_ID >> 8) & 0xff);// センサーノード固有ID(上位)<3>
     strServiceData += (char)seq;                    // シーケンス番号<4>
     strServiceData += (char)(temp & 0xff);          // 温度(下位)<5>
     strServiceData += (char)((temp >> 8) & 0xff);   // 温度(上位)<6>
@@ -83,8 +79,17 @@ void setup() {
   M5.begin();
   bool setCpuFrequencyMhz(cpu_clock);
   pixels.begin();
-  //M5.Axp.SetLDO2(false);
   Serial.begin(9600);
+  pinMode(19, INPUT_PULLUP); //SDAピンのプルアップの指定
+  pinMode(22, INPUT_PULLUP); //SCLピンのプルアップの指定
+  Wire.begin(19,22);
+   // センサーの初期化
+    while (!bmp.begin(0x76)) {
+        Serial.println("BMP280 init fail");
+    }
+    while (!sht31.begin(0x44)) {
+        Serial.println("SHT31 init fail");
+    }
   pixels.setPixelColor(0, pixels.Color(0,90,0));
   pixels.show();
   
@@ -95,24 +100,25 @@ void setup() {
 
   //データ収集
   //温度
-  //temp = (uint16_t)(sht31.readTemperature() * 100);
-  temp = (uint16_t)(CO2Sens.getTemperature(false, true)* 100);
+  temp = (uint16_t)(sht31.readTemperature() * 100);
+  //temp = (uint16_t)(CO2Sens.getTemperature(false, true)* 100);
   //湿度
-  //humid = (uint16_t)(sht31.readHumidity(); * 100);
-  humid = (uint16_t)(0);//ダミー
+  humid = (uint16_t)(sht31.readHumidity() * 100);
+  //humid = (uint16_t)(0);//ダミー
   //気圧
-  //press = (uint16_t)(bme.readPressure() / 100 * 10);
-  press = (uint16_t)(0);//ダミー
+  press = (uint16_t)(bmp.readPressure() / 100 * 10);
+  //press = (uint16_t)(0);//ダミー
   //Co2データ
   co2 = (uint16_t)(CO2Sens.getCO2());
   //電圧監視
   //vbat = (uint16_t)(M5.Axp.GetVinVoltage() * 1.1 / 1000 * 100);
   vbat = (uint16_t)(0);//ダミー
+  //Serial.printf(">>> seq: %d, t: %.1d, h: %.1d, p: %.1d, c: %.1d, v: %.1d\r\n", seq, temp, humid, press, co2, vbat);
   
   // BLEデータ送信プラットフォーム
   pixels.setPixelColor(0, pixels.Color(0,0,90));
   pixels.show();
-  BLEDevice::init("Sonorous-0000");                           // 初期化
+  BLEDevice::init("Sonorous-1000");                           // 初期化
   BLEServer *pServer = BLEDevice::createServer();             // サーバー生成
   BLEAdvertising *pAdvertising = pServer->getAdvertising();   // オブジェクト取得
   setAdvData(pAdvertising);                                   // データ設定

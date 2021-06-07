@@ -1,7 +1,7 @@
 /*
- * Project:Andante
- * CodeName:Preparation_stage_005
- * Build:2021/06/06
+ * Project:Andante_Yoko
+ * CodeName:Preparation_stage_006
+ * Build:2021/06/07
  * Author:torinosubako
  * Status:Impractical
 */
@@ -33,16 +33,19 @@ float vbat;
 //int CO2 = 1024;
 //float temp = 10.24;
 
+
+int JSN_y[] = {482, 508, 484};
+
 void setup() {
     M5.begin();
     //Serial.begin(9600);
     //Serial.print("CCS");
 
     //ディスプレイセットアップ
-    M5.EPD.SetRotation(90);
+    M5.EPD.SetRotation(0);
     M5.EPD.Clear(true);
     M5.RTC.begin();
-    canvas.createCanvas(540, 960);
+    canvas.createCanvas(960, 540);
     canvas.setTextFont(4);
     canvas.println(("M5Stack for M5Paper"));
     canvas.println(("e-Paper Touch display Test"));
@@ -116,28 +119,24 @@ void BLE_RCV(){
 
 
 
-//統合センサネットワーク・情報表示関数
+//統合センサネットワーク(JSN)・情報表示関数
 void temp_draw(){
-  canvas.drawString("Temp", 10, 831, 4);
-  canvas.drawString("[deg C]", 10, 858, 4);
-  canvas.drawRightString(String(temp), 260, 833, 7);
+  canvas.drawString("Temp", 10, JSN_y[0], 4);
+  canvas.drawString("[deg C]", 10, JSN_y[1], 4);
+  canvas.drawRightString(String(temp), 250, JSN_y[2], 7);
 }
 void hum_draw(){
-  canvas.drawString("Hum", 270, 831, 4);
-  canvas.drawString("[%]", 270, 858, 4);
-  //応急用
-  canvas.drawRightString(String(humid), 530, 833, 7);
-  //canvas.drawRightString(String(vbat), 530, 833, 7);
+  canvas.drawString("Hum", 260, JSN_y[0], 4);
+  canvas.drawString("[%]", 260, JSN_y[1], 4);
+  canvas.drawRightString(String(humid), 510, JSN_y[2], 7);
 }
 void co2_draw(){
-  canvas.drawString("CO2", 10, 892, 4);
-  canvas.drawString("[ppm]", 10, 918, 4);
-  canvas.drawRightString(String(co2), 260, 894, 7);
+  canvas.drawString("CO2", 520, JSN_y[0], 4);
+  canvas.drawString("[ppm]", 520, JSN_y[1], 4);
+  canvas.drawRightString(String(co2), 730, JSN_y[2], 7);
 }
 void prs_draw(){
-  canvas.drawString("Prs", 270, 892, 4);
-  canvas.drawString("[hPa]", 270, 918, 4);
-  //応急用
-  canvas.drawRightString(String(press), 530, 894, 7);
-  //canvas.drawRightString(String(seq), 530, 894, 7);
+  canvas.drawString("Prs", 740, JSN_y[0], 4);
+  canvas.drawString("[hPa]", 740, JSN_y[1], 4);
+  canvas.drawRightString(String(press), 950, JSN_y[2], 7);
 }
