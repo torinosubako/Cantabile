@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous
- * CodeName:Preparation_stage_007
- * Build:2021/06/08
+ * CodeName:Preparation_stage_008
+ * Build:2021/06/10
  * Author:torinosubako
  * Status:Impractical
 */
@@ -40,7 +40,7 @@ RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
 // 搬送用データ設定
 uint16_t temp, humid, press, co2, vbat;
 
-//BLEデータセット既定
+//BLEデータセット
 void setAdvData(BLEAdvertising *pAdvertising) { // アドバタイジングパケットを整形する
     BLEAdvertisementData oAdvertisementData = BLEAdvertisementData();
     oAdvertisementData.setFlags(0x06); // BR_EDR_NOT_SUPPORTED | LE General Discoverable Mode
@@ -75,6 +75,8 @@ void setup() {
   bool setCpuFrequencyMhz(cpu_clock);
   M5.Axp.SetLDO2(false);
   Serial.begin(9600);
+  pinMode(0, INPUT_PULLUP);   //SDAピンのプルアップの指定
+  pinMode(26, INPUT_PULLUP);  //SCLピンのプルアップの指定
   Wire.begin(0,26);
   pinMode(M5_LED, OUTPUT);
   
@@ -84,19 +86,19 @@ void setup() {
   CO2Sens.autoCalibration(true);
 
   //データ収集
-  //温度
+  // 温度
   temp = (uint16_t)(sht31.readTemperature() * 100);
   //temp = (uint16_t)(CO2Sens.getTemperature(false, true)* 100);
-  //湿度
+  // 湿度
   humid = (uint16_t)(sht31.readHumidity(); * 100);
   //humid = (uint16_t)(0);//ダミー
-  //気圧
+  // 気圧
   press = (uint16_t)(bme.readPressure() / 100 * 10);
   //press = (uint16_t)(0);//ダミー
-  //Co2データ
+  // Co2データ
   co2 = (uint16_t)(CO2Sens.getCO2());
-  //バッテリー電圧
-  vbat = (uint16_t)(M5.Axp.GetVbatData() * 1.1 / 1000 * 100);
+  // 電圧監視(外部電源-電圧監視(AXP192))
+  vbat = (uint16_t)(M5.Axp.GetVBusVoltage());
   
   // BLEデータ送信プラットフォーム
   BLEDevice::init("Sonorous-0000");                           // 初期化

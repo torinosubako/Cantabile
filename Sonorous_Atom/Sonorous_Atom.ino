@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous_Atom
- * CodeName:Preparation_stage_007
- * Build:2021/06/08
+ * CodeName:Preparation_stage_008
+ * Build:2021/06/10
  * Author:torinosubako
  * Status:Impractical
 */
@@ -90,7 +90,7 @@ void setup() {
     while (!sht31.begin(0x44)) {
         Serial.println("SHT31 init fail");
     }
-  pixels.setPixelColor(0, pixels.Color(0,90,0));
+  pixels.setPixelColor(0, pixels.Color(0,50,0));
   pixels.show();
   
   // デバイス<=>センサー間リンク開始
@@ -98,26 +98,27 @@ void setup() {
   CO2Sens.begin(mySerial);
   CO2Sens.autoCalibration(true);
 
-  //データ収集
-  //温度
+  // データ収集
+  // 温度
   temp = (uint16_t)(sht31.readTemperature() * 100);
   //temp = (uint16_t)(CO2Sens.getTemperature(false, true)* 100);
-  //湿度
+  // 湿度
   humid = (uint16_t)(sht31.readHumidity() * 100);
   //humid = (uint16_t)(0);//ダミー
-  //気圧
+  // 気圧
   press = (uint16_t)(bmp.readPressure() / 100 * 10);
   //press = (uint16_t)(0);//ダミー
-  //Co2データ
+  // Co2データ
   co2 = (uint16_t)(CO2Sens.getCO2());
-  //電圧監視
+  // 電圧監視
   //vbat = (uint16_t)(M5.Axp.GetVinVoltage() * 1.1 / 1000 * 100);
-  vbat = (uint16_t)(0);//ダミー
-  //Serial.printf(">>> seq: %d, t: %.1d, h: %.1d, p: %.1d, c: %.1d, v: %.1d\r\n", seq, temp, humid, press, co2, vbat);
-  
-  // BLEデータ送信プラットフォーム
-  pixels.setPixelColor(0, pixels.Color(0,0,90));
+  vbat = (uint16_t)(1024);  //常時電源接続用データコード
+
+  // インジケータLED制御
+  pixels.setPixelColor(0, pixels.Color(0,0,50));
   pixels.show();
+  
+  // BLEデータ送信プラットフォーム()
   BLEDevice::init("Sonorous-1000");                           // 初期化
   BLEServer *pServer = BLEDevice::createServer();             // サーバー生成
   BLEAdvertising *pAdvertising = pServer->getAdvertising();   // オブジェクト取得
@@ -127,13 +128,13 @@ void setup() {
   pAdvertising->stop();                                       // アドバタイズ停止
   seq++;                                                      // シーケンス番号を更新
   
+  // インジケータLED制御
   pixels.setPixelColor(0, pixels.Color(0,0,0));
   pixels.show();
-//  delay(10);
-
-  // deepSleep！
   pixels.clear();
   pixels.show();
+  
+  // deepSleep！
   esp_bt_controller_disable();
   delay(10);
   esp_deep_sleep(1000000LL * S_PERIOD);
