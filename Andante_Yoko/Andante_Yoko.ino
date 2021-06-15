@@ -1,7 +1,7 @@
 /*
  * Project:Andante_Yoko
- * CodeName:Preparation_stage_009
- * Build:2021/06/15
+ * CodeName:Preparation_stage_010
+ * Build:2021/06/16
  * Author:torinosubako
  * Status:Impractical
 */
@@ -9,6 +9,7 @@
 #include "BLEDevice.h"
 #include <M5EPD.h>
 #include <WiFi.h>
+#include <HTTPClient.h>
 #include "ArduinoJson.h"
 WiFiClient client;
 
@@ -16,9 +17,13 @@ WiFiClient client;
 //const char *ssid = //Your Network SSID//;
 //const char *password = //Your Network Password//;
 
-//LovyanGFX改修準備
+//LovyanGFX設定情報基盤
 #define LGFX_M5PAPER
 #include <LovyanGFX.hpp>
+
+//東京公共交通オープンデータチャレンジ向け共通基盤情報
+const String api_key = "&acl:consumerKey=test_key";//Your API Key//
+const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainInformation?odpt:railway=odpt.Railway:";
 
 uint8_t seq;                      // RTC Memory シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
@@ -39,7 +44,13 @@ int press = 8111;
 int co2 = 8000;
 int new_co2;
 float vbat;
+
+
 String JY_Sta = "テストデータ";
+String JY_Status = "";
+String JK_Status = "";
+String JS_Status = "";
+String JR_Line[] = {"JR-East.Yamanote","JR-East.SaikyoKawagoe","JR-East.ShonanShinjuku"};
 
 int ODPT_X[] = {10, 235};
 int ODPT_y[] = {10, 50, 90, 130, 170, 210, 250, 290, 330, 370, 410};
@@ -133,8 +144,201 @@ void BLE_RCV(){
   }
 }
 
-// ODPTデータ取得関数
 
+
+
+// ODPTデータ取得実行関数(JR)
+String train_rcv_jr(String line_name){
+  String result; //返答用変数作成
+  
+  //受信開始
+  HTTPClient http;
+  http.begin(base_url + line_name + api_key); //URLを指定
+  int httpCode = http.GET();  //GETリクエストを送信
+
+  if (httpCode > 0) { //返答がある場合
+    String payload = http.getString();  //返答（JSON形式）を取得
+    //Serial.println(payload);
+
+    //jsonオブジェクトの作成
+    String json = payload;
+    DynamicJsonDocument besedata(4096);
+    deserializeJson(besedata, json);
+
+    //データ識別・判定
+    const char* deta1 = besedata[0]["odpt:trainInformationText"]["en"];
+    const char* deta2 = besedata[0]["odpt:trainInformationStatus"]["en"];
+    const char* deta3 = besedata[0];
+    const char* deta4 = besedata[0]["odpt:trainInformationStatus"]["ja"];
+    const String point1 = String(deta1).c_str();
+    const String point2 = String(deta2).c_str();
+    const String point4 = String(deta4).c_str();
+
+    if (point1 == "Service on schedule") {
+      //　平常運転
+      result = "平常運転";
+    } else if (point2 == "Notice") {
+      //　情報有り
+      result = "情報あり";
+    } else if (point2 == "Delay") {
+      //　遅れあり
+      result = "列車遅延";
+    } else if (point2 == "Operation suspended") {
+      //　運転見合わせ
+      result = "運転見合わせ";
+    } else if (point4 == "運転見合わせ") {
+      result = "運転見合わせ";
+    } else if (point2 == "Direct operation cancellation") {
+      //　直通運転中止
+      result = "直通運転中止";
+    } else if (point2 == NULL) {
+      //取得時間外？
+      result = "取扱時間外";
+    } else {
+      result = "取得エラー";
+    }
+  }
+  else {
+    Serial.println("Error on HTTP request");
+    result = "通信エラー";
+  }
+  return result;
+  http.end(); //リソースを解放
+}
+
+// ODPTデータ取得実行関数(東京メトロ)
+// 旧名称:営団地下鉄の英略(Teito Rapid Transit Authority)のTRTAで呼び出し
+String odpt_train_info_trta(String line_name) {
+  String result; //返答用変数作成
+  
+  //受信開始
+  HTTPClient http;
+  http.begin(base_url + line_name + api_key); //URLを指定
+//  http.begin(url); //URLを指定
+  int httpCode = http.GET();  //GETリクエストを送信
+
+  if (httpCode > 0) { //返答がある場合
+    String payload = http.getString();  //返答（JSON形式）を取得
+    //Serial.println(base_url + line_name + api_key);
+    //Serial.println(httpCode);
+    //Serial.println(payload);
+
+    //jsonオブジェクトの作成
+    String json = payload;
+    DynamicJsonDocument besedata(4096);
+    deserializeJson(besedata, json);
+
+    //データ識別・判定(開発中)
+    const char* deta1 = besedata[0]["odpt:trainInformationText"]["ja"];
+    const char* deta2 = besedata[0]["odpt:trainInformationStatus"]["ja"];
+    const char* deta3 = besedata[0];
+    const String point1 = String(deta1).c_str();
+    const String point2 = String(deta2).c_str();
+    //Serial.println("データ受信結果");
+    //Serial.println(deta1);
+    //Serial.println(deta2);
+    //Serial.println(deta3);
+
+    //判定論理野（開発中）
+    if (point1 == "平常どおり運転しています。") {
+      //　平常運転
+      result = "平常運転";
+    } else if (point2 == "運行情報あり") {
+      if (-1 != point1.indexOf("運転を見合わせています")) {
+        //　運転見合わせ
+        result = "運転見合わせ";
+      } if (-1 != point1.indexOf("遅れがでています")) {
+        // 遅れあり
+        result = "列車遅延";
+      } else if (-1 != point1.indexOf("直通運転を中止しています")) {
+        //　直通運転中止
+        result = "直通運転中止";
+      } else {
+        //　情報有り
+        result = "情報あり";
+      }
+    } else if (point2 == NULL) {
+      //取得時間外？
+      result = "取扱時間外";
+    } else {
+      result = "取得エラー";
+    }
+  }
+  else {
+    Serial.println("Error on HTTP request");
+    result = "通信エラー";
+  }
+  return result;
+  http.end(); //リソースを解放
+}
+
+// ODPTデータ取得実行関数(東武)
+String train_rcv_tobu(String line_name){
+  String result; //返答用変数作成
+  
+  //受信開始
+  HTTPClient http;
+  http.begin(base_url + line_name + api_key); //URLを指定
+//  http.begin(url); //URLを指定
+  int httpCode = http.GET();  //GETリクエストを送信
+
+  if (httpCode > 0) { //返答がある場合
+    String payload = http.getString();  //返答（JSON形式）を取得
+    //Serial.println(base_url + line_name + api_key);
+    //Serial.println(httpCode);
+    //Serial.println(payload);
+
+    //jsonオブジェクトの作成
+    String json = payload;
+    DynamicJsonDocument besedata(4096);
+    deserializeJson(besedata, json);
+
+    //データ識別・判定
+    const char* deta1 = besedata[0]["odpt:trainInformationText"]["ja"];
+    const char* deta2 = besedata[0]["odpt:trainInformationStatus"]["ja"];
+    const char* deta3 = besedata[0];
+    const String point1 = String(deta1).c_str();
+    const String point2 = String(deta2).c_str();
+    //Serial.println("データ受信結果");
+    //Serial.println(deta1);
+    //Serial.println(deta2);
+    //Serial.println(deta3);
+
+    //判定論理野（開発中）
+    if (point1 == "平常どおり運転しています。") {
+      //　平常運転
+      result = "平常運転";
+    } else if (point2 == "運行情報あり") {
+      if (-1 != point1.indexOf("運転を見合わせています")) {
+        //　運転見合わせ
+        result = "運転見合わせ";
+      } if (-1 != point1.indexOf("遅れがでています")) {
+        // 遅れあり
+        result = "列車遅延";
+      } else if (-1 != point1.indexOf("直通運転を中止しています")) {
+        //　直通運転中止
+        result = "直通運転中止";
+      } else {
+        //　情報有り
+        result = "情報あり";
+      }
+    } else if (point2 == NULL) {
+      //取得時間外？
+      result = "取扱時間外";
+    } else {
+      result = "取得エラー";
+    }
+  }
+  else {
+    Serial.println("Error on HTTP request");
+    result = "通信エラー";
+  }
+  return result;
+  http.end(); //リソースを解放  
+}
+
+// ODPTデータ取得実行関数(西武)
+//String train_rcv_Seibu(String line_name){}
 
 // ODPTデータ表示関数
 void train_draw(){
