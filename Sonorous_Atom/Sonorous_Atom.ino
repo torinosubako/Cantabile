@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous_Atom
- * CodeName:Preparation_stage_008
- * Build:2021/06/10
+ * CodeName:Preparation_stage_009
+ * Build:2021/06/18
  * Author:torinosubako
  * Status:Impractical
 */
@@ -113,6 +113,7 @@ void setup() {
   // 電圧監視
   //vbat = (uint16_t)(M5.Axp.GetVinVoltage() * 1.1 / 1000 * 100);
   vbat = (uint16_t)(1024);  //常時電源接続用データコード
+  //(10.24Vが投入されていることになるのでそれ用の判定論理を形成)
 
   // インジケータLED制御
   pixels.setPixelColor(0, pixels.Color(0,0,50));

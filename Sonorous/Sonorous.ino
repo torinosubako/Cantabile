@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous
- * CodeName:Preparation_stage_008
- * Build:2021/06/10
+ * CodeName:Preparation_stage_009
+ * Build:2021/06/18
  * Author:torinosubako
  * Status:Impractical
 */
@@ -26,7 +26,7 @@
 #define BAUDRATE 9600                 // デバイス<=>センサー間リンクスピード
 
 // デバイス関連の各種定義
-uint16_t Node_ID = 1000;　// センサー固有ID
+uint16_t Node_ID = 0001;　// センサー固有ID
 #define S_PERIOD 170　    // 間欠動作間隔指定
 uint32_t cpu_clock = 80;　// CPUクロック指定
 
@@ -75,10 +75,18 @@ void setup() {
   bool setCpuFrequencyMhz(cpu_clock);
   M5.Axp.SetLDO2(false);
   Serial.begin(9600);
+  // 電流スイッチング制御(状態？)
+  gpio_pulldown_dis(GPIO_NUM_36); // pin25を用いる為にpin36をfloating化
+  gpio_pullup_dis(GPIO_NUM_36);   // pin25を用いる為にpin36をfloating化
+  pinMode(GPIO_NUM_25, OUTPUT);
+  digitalWrite(GPIO_NUM_25, HIGH);
+  // 何秒か待つ？
+  
   pinMode(0, INPUT_PULLUP);   //SDAピンのプルアップの指定
   pinMode(26, INPUT_PULLUP);  //SCLピンのプルアップの指定
   Wire.begin(0,26);
   pinMode(M5_LED, OUTPUT);
+  
   
   // デバイス<=>センサー間リンク開始
   mySerial.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);   
@@ -111,6 +119,7 @@ void setup() {
   seq++;                                                      // シーケンス番号を更新
 
   // deepSleep！
+  digitalWrite(GPIO_NUM_25, LOW);
   esp_bt_controller_disable();
   delay(10);
   esp_sleep_enable_timer_wakeup(1000000LL * S_PERIOD);              // S_PERIOD秒Deep Sleepする
