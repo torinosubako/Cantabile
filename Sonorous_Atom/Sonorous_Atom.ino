@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous_Atom
- * CodeName:Preparation_stage_009
- * Build:2021/06/18
+ * CodeName:Preparation_stage_010
+ * Build:2021/06/18 v1
  * Author:torinosubako
  * Status:Impractical
 */
@@ -26,9 +26,9 @@
 #define BAUDRATE 9600                 // デバイス<=>センサー間リンクスピード
 
 // デバイス関連の各種定義
-uint16_t Node_ID = 0000;　// センサー固有ID
-#define S_PERIOD 170　    // 間欠動作間隔指定
-uint32_t cpu_clock = 80;　// CPUクロック指定
+uint16_t Node_ID = 0000;// センサー固有ID
+#define S_PERIOD 170    // 間欠動作間隔指定
+uint32_t cpu_clock = 80;// CPUクロック指定
 
 // nanopixel_LED制御
 #define LEDPIN 27
@@ -90,13 +90,13 @@ void setup() {
     while (!sht31.begin(0x44)) {
         Serial.println("SHT31 init fail");
     }
-  pixels.setPixelColor(0, pixels.Color(0,50,0));
+  pixels.setPixelColor(0, pixels.Color(0,10,0));
   pixels.show();
   
   // デバイス<=>センサー間リンク開始
   mySerial.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);   
   CO2Sens.begin(mySerial);
-  CO2Sens.autoCalibration(true);
+  CO2Sens.autoCalibration(false); //自動キャリブレーション無効化
 
   // データ収集
   // 温度
@@ -116,7 +116,7 @@ void setup() {
   //(10.24Vが投入されていることになるのでそれ用の判定論理を形成)
 
   // インジケータLED制御
-  pixels.setPixelColor(0, pixels.Color(0,0,50));
+  pixels.setPixelColor(0, pixels.Color(0,0,10));
   pixels.show();
   
   // BLEデータ送信プラットフォーム()
@@ -139,7 +139,7 @@ void setup() {
   esp_bt_controller_disable();
   delay(10);
   esp_deep_sleep(1000000LL * S_PERIOD);
-  esp_sleep_enable_timer_wakeup(1000000LL * S_PERIOD);              // S_PERIOD秒Deep Sleepする
+  esp_sleep_enable_timer_wakeup(1000000LL * S_PERIOD);        // S_PERIOD秒Deep Sleepする
   esp_deep_sleep_start();
 }
 void loop() {

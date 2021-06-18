@@ -2,8 +2,8 @@
 
 /*
  * Project:Sonorous
- * CodeName:Preparation_stage_009
- * Build:2021/06/18
+ * CodeName:Preparation_stage_010
+ * Build:2021/06/19
  * Author:torinosubako
  * Status:Impractical
 */
@@ -91,7 +91,7 @@ void setup() {
   // デバイス<=>センサー間リンク開始
   mySerial.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);   
   CO2Sens.begin(mySerial);
-  CO2Sens.autoCalibration(true);
+  CO2Sens.autoCalibration(false); //自動キャリブレーション無効化
 
   //データ収集
   // 温度

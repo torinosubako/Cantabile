@@ -1,7 +1,7 @@
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_011
-   Build:2021/06/16
+   CodeName:Preparation_stage_016
+   Build:2021/06/19
    Author:torinosubako
    Status:Impractical
 */
@@ -13,18 +13,20 @@
 #include "ArduinoJson.h"
 WiFiClient client;
 
-//Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
-//const char *ssid = //Your Network SSID//;
-//const char *password = //Your Network Password//;
+// Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
+const char *ssid = //Your Network SSID//;
+const char *password = //Your Network Password//;
 
-//LovyanGFX設定情報基盤
-#define LGFX_M5PAPER
-#include <LovyanGFX.hpp>
 
 //東京公共交通オープンデータチャレンジ向け共通基盤情報
 const String api_key = "&acl:consumerKey=test_key";//Your API Key//
 const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainInformation?odpt:railway=odpt.Railway:";
 
+// LovyanGFX設定情報基盤
+#define LGFX_M5PAPER
+#include <LovyanGFX.hpp>
+
+// デバイス制御
 uint8_t seq;                      // RTC Memory シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
 
@@ -51,11 +53,21 @@ float Node01_StatusA[3];  // 気温・湿度・電圧
 int Node01_StatusB[2];    // 二酸化炭素濃度・気圧
 
 String JY_Sta = "テストデータ";
-String JY_Status = "";
-String JK_Status = "";
-String JS_Status = "";
-String JR_Line[] = {"JR-East.Yamanote", "JR-East.SaikyoKawagoe", "JR-East.ShonanShinjuku"};
+// ODPT連接-JR
+int JR_Line_num = 3;
+String JR_Line_name[] = {"山手線", "埼京・川越線", "湘南新宿ライン"};
+String JR_Line_key[] = {"JR-East.Yamanote", "JR-East.SaikyoKawagoe", "JR-East.ShonanShinjuku"};
 String JR_Status[3];
+// ODPT連接-地下鉄
+int TRTA_Line_num = 3;
+String TRTA_Line_name[] = {"地下鉄有楽町線", "地下鉄丸ノ内線", "地下鉄副都心線"};
+String TRTA_Line_key[] = {"TokyoMetro.Yurakucho", "TokyoMetro.Marunouchi", "TokyoMetro.Fukutoshin"};
+String TRTA_Status[3];
+// ODPT連接-東武
+int TOBU_Line_num = 1;
+String TOBU_Line_name[] = {"東武東上本線"};
+String TOBU_Line_key[] = {"Tobu.Tojo"};
+String TOBU_Status[1];
 
 int ODPT_X[] = {10, 235};
 int ODPT_y[] = {10, 50, 90, 130, 170, 210, 250, 290, 330, 370, 410};
@@ -63,12 +75,20 @@ int JSN_y[] = {482, 508, 484};
 
 void setup() {
   M5.begin();
+  Wireless_Access();
   // LovyanGFX_EPD
   gfx.init();
   gfx.setRotation(1);
   gfx.setEpdMode(epd_mode_t::epd_text);
 
+  // Wi-Fi・BLEセットアップ
+  BLEDevice::init("");
+  pBLEScan = BLEDevice::getScan();
+  pBLEScan->setActiveScan(false);
+  
+
   // LovyanGFX_描画テスト
+  train_rcv_joint();
   gfx.setFont(&lgfxJapanGothicP_32);
   gfx.fillScreen(TFT_WHITE);
   gfx.setTextColor(TFT_BLACK, TFT_WHITE);
@@ -78,12 +98,7 @@ void setup() {
   alert_draw();
   jsn_draw();
   gfx.endWrite();//描画待機解除・描画実施
-
-  // BLEセットアップ
-  BLEDevice::init("");
-  pBLEScan = BLEDevice::getScan();
-  pBLEScan->setActiveScan(false);
-
+  WiFi.disconnect();
 }
 
 // 定例実施
@@ -96,6 +111,8 @@ void loop() {
   //M5.update();
   if (now - getDataTimer >= 120000) {
     getDataTimer = now;
+    Wireless_Access();
+    train_rcv_joint();
     //refresh
     gfx.fillScreen(TFT_BLACK);
     gfx.fillScreen(TFT_WHITE);
@@ -105,6 +122,8 @@ void loop() {
     jsn_draw();
     gfx.endWrite();//描画待機解除・描画実施
     Serial.printf("Now_imprinting\r\n");
+    //WiFi切断  
+    WiFi.disconnect();
   }
 }
 
@@ -144,7 +163,7 @@ void BLE_RCV() {
           co2 = new_co2;
         }
         Node00_StatusA[2] = vbat;
-        WBGT = 0.725 * temp + 0.0368 * humid + 0.00364 * temp * humid - 3.246;
+        WBGT = 0.725 * Node00_StatusA[0] + 0.0368 * Node00_StatusA[1] + 0.00364 * Node00_StatusA[0] * Node00_StatusA[1] - 3.246;
         Serial.printf("Now_Recieved >>> Node: %.1d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_ID, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
       }
       //      switch (Node_ID) {
@@ -173,7 +192,26 @@ void BLE_RCV() {
   }
 }
 
-
+// 無線制御関数
+void Wireless_Access(){
+ WiFi.begin(ssid, password);
+  delay(2500);
+  while (WiFi.status() != WL_CONNECTED) {
+        delay(2500);
+        Serial.println("Connecting to WiFi..");
+    }
+  Serial.println(WiFi.localIP());
+}
+// ODPTデータセット実行関数
+void train_rcv_joint(){
+  JR_Status[0]=train_rcv_jr(JR_Line_key[0]);
+  JR_Status[1]=train_rcv_jr(JR_Line_key[1]);
+  JR_Status[2]=train_rcv_jr(JR_Line_key[2]);
+  TRTA_Status[0]=train_rcv_trta(TRTA_Line_key[0]);
+  TRTA_Status[1]=train_rcv_trta(TRTA_Line_key[1]);
+  TRTA_Status[2]=train_rcv_trta(TRTA_Line_key[2]);
+  TOBU_Status[0]=train_rcv_tobu(TOBU_Line_key[0]);
+}
 
 
 // ODPTデータ取得実行関数(JR)
@@ -237,7 +275,7 @@ String train_rcv_jr(String line_name) {
 
 // ODPTデータ取得実行関数(東京メトロ)
 // 旧名称:営団地下鉄の英略(Teito Rapid Transit Authority)のTRTAで呼び出し
-String odpt_train_info_trta(String line_name) {
+String train_rcv_trta(String line_name) {
   String result; //返答用変数作成
 
   //受信開始
@@ -269,7 +307,7 @@ String odpt_train_info_trta(String line_name) {
     //Serial.println(deta3);
 
     //判定論理野（開発中）
-    if (point1 == "平常どおり運転しています。") {
+    if (point1 == "現在、平常どおり運転しています。") {
       //　平常運転
       result = "平常運転";
     } else if (point2 == "運行情報あり") {
@@ -374,21 +412,21 @@ void train_draw() {
   gfx.setFont(&lgfxJapanGothicP_32);
   gfx.drawString("鉄道各線の運行情報", ODPT_X[0], 10);
   gfx.drawString("<JR線>", ODPT_X[0], 50);
-  gfx.drawString("山手線", ODPT_X[0], 90);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 90);
-  gfx.drawString("埼京・川越線", ODPT_X[0], 130);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 130);
-  gfx.drawString("湘南新宿ライン", ODPT_X[0], 170);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 170);
+  gfx.drawString(JR_Line_name[0], ODPT_X[0], 90);
+  gfx.drawString("：" + JR_Status[0], ODPT_X[1], 90);
+  gfx.drawString(JR_Line_name[1], ODPT_X[0], 130);
+  gfx.drawString("：" + JR_Status[1], ODPT_X[1], 130);
+  gfx.drawString(JR_Line_name[2], ODPT_X[0], 170);
+  gfx.drawString("：" + JR_Status[2], ODPT_X[1], 170);
   gfx.drawString("<東京メトロ・私鉄各線>", ODPT_X[0], 210);
-  gfx.drawString("地下鉄有楽町線", ODPT_X[0], 250);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 250);
-  gfx.drawString("地下鉄丸ノ内線", ODPT_X[0], 290);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 290);
-  gfx.drawString("地下鉄副都心線", ODPT_X[0], 330);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 330);
-  gfx.drawString("東武東上本線", ODPT_X[0], 370);
-  gfx.drawString("：" + JY_Sta, ODPT_X[1], 370);
+  gfx.drawString(TRTA_Line_name[0], ODPT_X[0], 250);
+  gfx.drawString("：" + TRTA_Status[0], ODPT_X[1], 250);
+  gfx.drawString(TRTA_Line_name[1], ODPT_X[0], 290);
+  gfx.drawString("：" + TRTA_Status[1], ODPT_X[1], 290);
+  gfx.drawString(TRTA_Line_name[2], ODPT_X[0], 330);
+  gfx.drawString("：" + TRTA_Status[2], ODPT_X[1], 330);
+  gfx.drawString(TOBU_Line_name[0], ODPT_X[0], 370);
+  gfx.drawString("：" + TOBU_Status[0], ODPT_X[1], 370);
   gfx.drawString("西武池袋線", ODPT_X[0], 410);
   gfx.drawString("：" + JY_Sta, ODPT_X[1], 410);
 
@@ -407,6 +445,7 @@ void alert_draw() {
     gfx.drawRoundRect(490, 390, 225, 80, 10, gfx.color888(105, 105, 105));
     gfx.drawString("CO2濃度:注意", 500, 410);
   }
+  
   if (WBGT >= 28.0) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(201, 17, 23));
