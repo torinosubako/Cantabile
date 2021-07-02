@@ -1,22 +1,27 @@
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_016
-   Build:2021/06/19
+   CodeName:Preparation_stage_020
+   Build:2021/07/3
    Author:torinosubako
-   Status:Impractical
+   Status:Unverified
 */
 
 #include "BLEDevice.h"
 #include <M5EPD.h>
+#include <Ambient.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include "ArduinoJson.h"
 WiFiClient client;
+Ambient ambient;
 
 // Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
 const char *ssid = //Your Network SSID//;
 const char *password = //Your Network Password//;
 
+//Ambient連携用基盤情報
+unsigned int channelId = //Your Ambient Channel ID//; // AmbientのチャネルID
+const char* writeKey = //Your Ambient Write key//; // ライトキー
 
 //東京公共交通オープンデータチャレンジ向け共通基盤情報
 const String api_key = "&acl:consumerKey=test_key";//Your API Key//
@@ -36,20 +41,22 @@ LGFX gfx;
 LGFX_Sprite sp(&gfx);
 
 
-// センサネットワーク受信用データ
+// タイマー用データ
 unsigned long getDataTimer = 0;
-float new_temp, new_humid, WBGT;
-int  new_press;
-float temp = 51.20;
-float humid = 10.24;
-int press = 8111;
-int co2 = 8000;
-int new_co2;
-float vbat;
 
-float Node00_StatusA[3];  // 気温・湿度・電圧
+//廃止予定
+//float new_temp, new_humid, WBGT;
+//int  new_press, new_co2;
+//float temp_s = 51.20;
+//float humid_s = 10.24;
+//int press_s = 8111;
+//int co2_s = 8000;
+//float vbat;
+
+
+float Node00_StatusA[4];  // 気温・湿度・電圧・WBGT
 int Node00_StatusB[2];    // 二酸化炭素濃度・気圧
-float Node01_StatusA[3];  // 気温・湿度・電圧
+float Node01_StatusA[4];  // 気温・湿度・電圧・WBGT
 int Node01_StatusB[2];    // 二酸化炭素濃度・気圧
 
 String JY_Sta = "テストデータ";
@@ -85,7 +92,7 @@ void setup() {
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan();
   pBLEScan->setActiveScan(false);
-  
+
 
   // LovyanGFX_描画テスト
   train_rcv_joint();
@@ -99,6 +106,7 @@ void setup() {
   jsn_draw();
   gfx.endWrite();//描画待機解除・描画実施
   WiFi.disconnect();
+  ambient.begin(channelId, writeKey, &client);
 }
 
 // 定例実施
@@ -120,17 +128,23 @@ void loop() {
     train_draw();
     alert_draw();
     jsn_draw();
+    jsn_upload();
     gfx.endWrite();//描画待機解除・描画実施
     Serial.printf("Now_imprinting\r\n");
-    //WiFi切断  
+    //WiFi切断
     WiFi.disconnect();
   }
 }
 
 
 
+// メイン関数ここまで
+
+
 // 統合センサネットワーク・情報取得関数
 void BLE_RCV() {
+  float new_temp, new_humid, WBGT;
+  int  new_press, new_co2;
   bool found = false;
   uint16_t Node_ID;
   BLEScanResults foundDevices = pBLEScan->start(3);
@@ -149,6 +163,8 @@ void BLE_RCV() {
         new_press = (int)(data[10] << 8 | data[9]) * 10.0 / 100.0;
         new_co2 = (int)(data[12] << 8 | data[11]);
         vbat = (float)(data[14] << 8 | data[13]) / 100.0;
+
+        // データチェック領域
         // SHT30とBMP280とMH-Z19Cに最適化。それ以外のセンサーでは調整する事。
         if (Node00_StatusA[0] != new_temp && new_temp >= -40 && new_temp <= 120) {
           Node00_StatusA[0] = new_temp;
@@ -156,61 +172,66 @@ void BLE_RCV() {
         if (Node00_StatusA[1] != new_humid && new_humid >= 10 && new_humid <= 90) {
           Node00_StatusA[1] = new_humid;
         }
-        if (press != new_press && new_press >= 300 && new_press <= 1100) {
-          press = new_press;
+        if (Node00_StatusB[0] != new_co2 && new_co2 > 300 && new_co2 <= 5000) {
+          Node00_StatusB[0] = new_co2;
         }
-        if (co2 != new_co2 && new_co2 > 300 && new_co2 <= 5000) {
-          co2 = new_co2;
+        if (Node00_StatusB[1] != new_press && new_press >= 300 && new_press <= 1100) {
+          Node00_StatusB[1] = new_press;
         }
         Node00_StatusA[2] = vbat;
         WBGT = 0.725 * Node00_StatusA[0] + 0.0368 * Node00_StatusA[1] + 0.00364 * Node00_StatusA[0] * Node00_StatusA[1] - 3.246;
+        Node00_StatusA[3] = WBGT;
         Serial.printf("Now_Recieved >>> Node: %.1d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_ID, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
       }
-      //      switch (Node_ID) {
-      //        case 0:
-      //          if (Node00_Status[0] != new_temp && new_temp >= -40 && new_temp <= 120) {
-      //            Node00_Status[0] = new_temp;
-      //          }
-      //          if (humid != new_humid && new_humid >= 10 && new_humid <= 90) {
-      //            humid = new_humid;
-      //          }
-      //          if (press != new_press && new_press >= 300 && new_press <= 1100) {
-      //            press = new_press;
-      //          }
-      //          if (co2 != new_co2 && new_co2 > 300 && new_co2 <= 5000) {
-      //            co2 = new_co2;
-      //          }
-      //          WBGT = 0.725 * temp + 0.0368 * humid + 0.00364 * temp * humid - 3.246;
-      //          break;
-      //        case 1:
-      //          digitalWrite(13, LOW);
-      //          break;
-      //        default:
-      //          digitalWrite(13, HIGH);
-      //      }
+//    <Topaz(案)>
+//    1)センサーの異常値判定
+//    2)ノードキーによりスイッチング
+//    3)各ノードのリスト更新
+//      switch (Node_ID) {
+//        case 0:
+//          if (Node00_Status[0] != new_temp && new_temp >= -40 && new_temp <= 120) {
+//            Node00_Status[0] = new_temp;
+//          }
+//          if (humid != new_humid && new_humid >= 10 && new_humid <= 90) {
+//            humid = new_humid;
+//          }
+//          if (press != new_press && new_press >= 300 && new_press <= 1100) {
+//            press = new_press;
+//          }
+//          if (co2 != new_co2 && new_co2 > 300 && new_co2 <= 5000) {
+//            co2 = new_co2;
+//          }
+//          WBGT = 0.725 * temp + 0.0368 * humid + 0.00364 * temp * humid - 3.246;
+//          break;
+//        case 1:
+//          digitalWrite(13, LOW);
+//          break;
+//        default:
+//          digitalWrite(13, HIGH);
+//      }
     }
   }
 }
 
 // 無線制御関数
-void Wireless_Access(){
- WiFi.begin(ssid, password);
+void Wireless_Access() {
+  WiFi.begin(ssid, password);
   delay(2500);
   while (WiFi.status() != WL_CONNECTED) {
-        delay(2500);
-        Serial.println("Connecting to WiFi..");
-    }
+    delay(2500);
+    Serial.println("Connecting to WiFi..");
+  }
   Serial.println(WiFi.localIP());
 }
 // ODPTデータセット実行関数
-void train_rcv_joint(){
-  JR_Status[0]=train_rcv_jr(JR_Line_key[0]);
-  JR_Status[1]=train_rcv_jr(JR_Line_key[1]);
-  JR_Status[2]=train_rcv_jr(JR_Line_key[2]);
-  TRTA_Status[0]=train_rcv_trta(TRTA_Line_key[0]);
-  TRTA_Status[1]=train_rcv_trta(TRTA_Line_key[1]);
-  TRTA_Status[2]=train_rcv_trta(TRTA_Line_key[2]);
-  TOBU_Status[0]=train_rcv_tobu(TOBU_Line_key[0]);
+void train_rcv_joint() {
+  JR_Status[0] = train_rcv_jr(JR_Line_key[0]);
+  JR_Status[1] = train_rcv_jr(JR_Line_key[1]);
+  JR_Status[2] = train_rcv_jr(JR_Line_key[2]);
+  TRTA_Status[0] = train_rcv_trta(TRTA_Line_key[0]);
+  TRTA_Status[1] = train_rcv_trta(TRTA_Line_key[1]);
+  TRTA_Status[2] = train_rcv_trta(TRTA_Line_key[2]);
+  TOBU_Status[0] = train_rcv_tobu(TOBU_Line_key[0]);
 }
 
 
@@ -286,27 +307,20 @@ String train_rcv_trta(String line_name) {
 
   if (httpCode > 0) { //返答がある場合
     String payload = http.getString();  //返答（JSON形式）を取得
-    //Serial.println(base_url + line_name + api_key);
-    //Serial.println(httpCode);
-    //Serial.println(payload);
 
     //jsonオブジェクトの作成
     String json = payload;
     DynamicJsonDocument besedata(4096);
     deserializeJson(besedata, json);
 
-    //データ識別・判定(開発中)
+    //データ識別・判定
     const char* deta1 = besedata[0]["odpt:trainInformationText"]["ja"];
     const char* deta2 = besedata[0]["odpt:trainInformationStatus"]["ja"];
     const char* deta3 = besedata[0];
     const String point1 = String(deta1).c_str();
     const String point2 = String(deta2).c_str();
-    //Serial.println("データ受信結果");
-    //Serial.println(deta1);
-    //Serial.println(deta2);
-    //Serial.println(deta3);
 
-    //判定論理野（開発中）
+    //判定論理野
     if (point1 == "現在、平常どおり運転しています。") {
       //　平常運転
       result = "平常運転";
@@ -351,9 +365,6 @@ String train_rcv_tobu(String line_name) {
 
   if (httpCode > 0) { //返答がある場合
     String payload = http.getString();  //返答（JSON形式）を取得
-    //Serial.println(base_url + line_name + api_key);
-    //Serial.println(httpCode);
-    //Serial.println(payload);
 
     //jsonオブジェクトの作成
     String json = payload;
@@ -366,12 +377,8 @@ String train_rcv_tobu(String line_name) {
     const char* deta3 = besedata[0];
     const String point1 = String(deta1).c_str();
     const String point2 = String(deta2).c_str();
-    //Serial.println("データ受信結果");
-    //Serial.println(deta1);
-    //Serial.println(deta2);
-    //Serial.println(deta3);
 
-    //判定論理野（開発中）
+    //判定論理野
     if (point1 == "平常どおり運転しています。") {
       //　平常運転
       result = "平常運転";
@@ -404,7 +411,7 @@ String train_rcv_tobu(String line_name) {
   http.end(); //リソースを解放
 }
 
-// ODPTデータ取得実行関数(西武)
+// ODPTデータ取得実行関数(西武)(開発不能)
 //String train_rcv_Seibu(String line_name){}
 
 // ODPTデータ表示関数
@@ -435,26 +442,26 @@ void train_draw() {
 // アラート表示関数
 void alert_draw() {
   gfx.setFont(&lgfxJapanGothicP_32);
-  if (co2 >= 1050) {
+  if (Node00_StatusB[0] >= 1050) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(490, 390, 225, 80, 10, gfx.color888(201, 17, 23));
     gfx.drawString("CO2濃度:警報", 500, 410);
-  } else if (co2 >= 850) {
+  } else if (Node00_StatusB[0] >= 850) {
     gfx.setTextColor(TFT_BLACK);
     gfx.fillRoundRect(490, 390, 225, 80, 10, gfx.color888(250, 249, 200));
     gfx.drawRoundRect(490, 390, 225, 80, 10, gfx.color888(105, 105, 105));
     gfx.drawString("CO2濃度:注意", 500, 410);
   }
-  
-  if (WBGT >= 28.0) {
+
+  if (Node00_StatusA[3] >= 28.0) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(201, 17, 23));
     gfx.drawString("熱中症:危険", 755, 410);
-  } else if (WBGT >= 25.0) {
+  } else if (Node00_StatusA[3] >= 25.0) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(255, 150, 0));
     gfx.drawString("熱中症:警戒", 755, 410);
-  } else if (WBGT >= 21.0) {
+  } else if (Node00_StatusA[3] >= 21.0) {
     gfx.setTextColor(TFT_BLACK);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(250, 249, 200));
     gfx.drawRoundRect(725, 390, 225, 80, 10, gfx.color888(105, 105, 105));
@@ -477,12 +484,25 @@ void jsn_draw() {
   // CO2
   gfx.drawString("CO2", 495, JSN_y[0], 4);
   gfx.drawString("[ppm]", 495, JSN_y[1], 4);
-  gfx.drawString(String(co2), 575, JSN_y[2], 7);
+  gfx.drawString(String(Node00_StatusB[0]), 575, JSN_y[2], 7);
   // 気圧
   gfx.drawString("Prs", 730, JSN_y[0], 4);
   gfx.drawString("[hPa]", 730, JSN_y[1], 4);
-  gfx.drawString(String(press), 805, JSN_y[2], 7);
+  gfx.drawString(String(Node00_StatusB[1]), 805, JSN_y[2], 7);
 }
+
+void jsn_upload(){
+  ambient.set(1, Node00_StatusA[0]);
+  ambient.set(2, Node00_StatusA[1]);
+  ambient.set(3, Node00_StatusB[0]);
+  ambient.set(4, Node00_StatusB[1]);
+  ambient.set(5, Node00_StatusA[2]);
+  ambient.set(6, Node00_StatusA[3]);
+  ambient.send();
+  delay(2000);
+ }
+
+
 
 // テストパターン
 void EPD_Test() {
