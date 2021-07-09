@@ -28,7 +28,7 @@
 // デバイス関連の各種定義
 uint16_t Node_ID = 0000;// センサー固有ID
 #define S_PERIOD 170    // 間欠動作間隔指定
-uint32_t cpu_clock = 80;// CPUクロック指定
+                                                                                                                                                                                                                                           
 
 // nanopixel_LED制御
 #define LEDPIN 27
@@ -112,7 +112,7 @@ void setup() {
   co2 = (uint16_t)(CO2Sens.getCO2());
   // 電圧監視
   //vbat = (uint16_t)(M5.Axp.GetVinVoltage() * 1.1 / 1000 * 100);
-  vbat = (uint16_t)(1024);  //常時電源接続用データコード
+  vbat = (uint16_t)(2020);  //常時電源接続用データコード
   //(10.24Vが投入されていることになるのでそれ用の判定論理を形成)
 
   // インジケータLED制御

@@ -1,13 +1,15 @@
+
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_020
-   Build:2021/07/3
+   CodeName:Preparation_stage_028
+   Build:2021/07/09
    Author:torinosubako
    Status:Unverified
+   Duties:Edge Processing Node
 */
 
-#include "BLEDevice.h"
 #include <M5EPD.h>
+#include "BLEDevice.h"
 #include <Ambient.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -34,6 +36,7 @@ const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainIn
 // デバイス制御
 uint8_t seq;                      // RTC Memory シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
+uint32_t cpu_clock = 80;          // CPUクロック指定
 
 M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
@@ -43,16 +46,7 @@ LGFX_Sprite sp(&gfx);
 
 // タイマー用データ
 unsigned long getDataTimer = 0;
-
-//廃止予定
-//float new_temp, new_humid, WBGT;
-//int  new_press, new_co2;
-//float temp_s = 51.20;
-//float humid_s = 10.24;
-//int press_s = 8111;
-//int co2_s = 8000;
-//float vbat;
-
+float Battery_voltage;
 
 float Node00_StatusA[4];  // 気温・湿度・電圧・WBGT
 int Node00_StatusB[2];    // 二酸化炭素濃度・気圧
@@ -82,6 +76,8 @@ int JSN_y[] = {482, 508, 484};
 
 void setup() {
   M5.begin();
+  M5.BatteryADCBegin();
+  bool setCpuFrequencyMhz(cpu_clock);
   Wireless_Access();
   // LovyanGFX_EPD
   gfx.init();
@@ -119,12 +115,13 @@ void loop() {
   //M5.update();
   if (now - getDataTimer >= 120000) {
     getDataTimer = now;
+    Battery_sta();
     Wireless_Access();
     train_rcv_joint();
     //refresh
+    gfx.startWrite();//描画待機モード
     gfx.fillScreen(TFT_BLACK);
     gfx.fillScreen(TFT_WHITE);
-    gfx.startWrite();//描画待機モード
     train_draw();
     alert_draw();
     jsn_draw();
@@ -143,7 +140,7 @@ void loop() {
 
 // 統合センサネットワーク・情報取得関数
 void BLE_RCV() {
-  float new_temp, new_humid, WBGT;
+  float new_temp, new_humid, WBGT, vbat;
   int  new_press, new_co2;
   bool found = false;
   uint16_t Node_ID;
@@ -172,7 +169,7 @@ void BLE_RCV() {
         if (Node00_StatusA[1] != new_humid && new_humid >= 10 && new_humid <= 90) {
           Node00_StatusA[1] = new_humid;
         }
-        if (Node00_StatusB[0] != new_co2 && new_co2 > 300 && new_co2 <= 5000) {
+        if (Node00_StatusB[0] != new_co2 && new_co2 > 300 && new_co2 <= 4500) {
           Node00_StatusB[0] = new_co2;
         }
         if (Node00_StatusB[1] != new_press && new_press >= 300 && new_press <= 1100) {
@@ -215,11 +212,17 @@ void BLE_RCV() {
 
 // 無線制御関数
 void Wireless_Access() {
+  int wifi_cont = 0;
+  int times = 5;
   WiFi.begin(ssid, password);
-  delay(2500);
+  delay(10 * 1000);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(2500);
+    wifi_cont ++;
+    delay(10 * 1000);
     Serial.println("Connecting to WiFi..");
+    if (wifi_cont >= 5){
+      M5.shutdown(times);
+    }
   }
   Serial.println(WiFi.localIP());
 }
@@ -469,8 +472,14 @@ void alert_draw() {
   }
 }
 
+// バッテリー電圧取得
+void Battery_sta() {
+   Battery_voltage = ((float)M5.getBatteryVoltage()) / 1000.0;
+   Serial.printf("Now_Recieved >>> Edge v: %.1f\r\n", Battery_voltage);
+}
 
-//統合センサネットワーク・情報表示関数
+
+// 統合センサネットワーク・情報表示関数
 void jsn_draw() {
   gfx.setTextColor(TFT_BLACK);
   // 気温
@@ -498,6 +507,7 @@ void jsn_upload(){
   ambient.set(4, Node00_StatusB[1]);
   ambient.set(5, Node00_StatusA[2]);
   ambient.set(6, Node00_StatusA[3]);
+  ambient.set(7, Battery_voltage);
   ambient.send();
   delay(2000);
  }
