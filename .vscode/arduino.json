@@ -1,0 +1,4 @@
+{
+    "configuration": "PSRAM=enabled,PartitionScheme=default,CPUFreq=240,UploadSpeed=921600,DebugLevel=none",
+    "board": "m5stack:esp32:m5stack-core2"
+}

@@ -1,0 +1,39 @@
+{
+    "env": {
+        "PACKAGES_PATH": "C:/Program Files (x86)/Arduino",
+        "USER_PATH": "C:/Users/username/Documents/Arduino"
+    },
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${env:PACKAGES_PATH}/tools",
+                    "${env:PACKAGES_PATH}/hardware",
+                    "${env:PACKAGES_PATH}/libraries",
+                    "${env:USER_PATH}/libraries",
+                    "C:\\Users\\ttcic\\Documents\\Arduino\\libraries"
+                ]
+            },
+            // "defines": [
+            //     "_DEBUG",
+            //     "UNICODE",
+            //     "_UNICODE"
+            // ],
+            "forcedInclude": [
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+            ],
+            "windowsSdkVersion": "10.0.17134.0",
+            "compilerPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\bin\\Hostx64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64"
+            //"intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}

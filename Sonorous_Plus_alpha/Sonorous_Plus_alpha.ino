@@ -1,29 +1,23 @@
 
 
 /*
- * Project:Sonorous
- * CodeName:Preparation_stage_020
- * Build:2021/07/23
+ * Project:Sonorous_Plus_alpha
+ * CodeName:Preparation_stage_020EPX
+ * Build:2021/09/25
  * Author:torinosubako
  * Status:Impractical
 */
 
 
 #include <M5StickCPlus.h>
+#include <SensirionI2CScd4x.h>
 #include <Wire.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BMP280.h>
-#include <Adafruit_SHT31.h>
-#include "MHZ19.h"
 #include "BLEDevice.h"
 #include "BLEServer.h"
 #include "BLEUtils.h"
 #include "esp_sleep.h"
 
-//シリアル通信制御系
-#define TX_PIN 33                     // GROVE端子 TX
-#define RX_PIN 32                     // GROVE端子 RX
-#define BAUDRATE 9600                 // デバイス<=>センサー間リンクスピード
+//I2C通信制御系
 
 // デバイス関連の各種定義
 uint16_t Node_ID = 0001; // センサー固有ID
@@ -31,10 +25,7 @@ uint16_t Node_ID = 0001; // センサー固有ID
 uint32_t cpu_clock = 80; // CPUクロック指定                                                                                                                                                                                                                                 
 
 //センサー関連の各種定義
-Adafruit_SHT31 sht31;                 // センサーライブラリのコンストラクタ定義
-Adafruit_BMP280 bmp;                  // センサーライブラリのコンストラクタ定義
-MHZ19 CO2Sens;                        // センサーライブラリのコンストラクタ定義
-HardwareSerial mySerial(1);           // デバイス<=>センサー間リンク定義
+SensirionI2CScd4x scd4x;
 RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
 
 // 搬送用データ設定

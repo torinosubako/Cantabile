@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_028
-   Build:2021/07/09
+   CodeName:Preparation_stage_029
+   Build:2021/07/11
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -18,15 +18,15 @@ WiFiClient client;
 Ambient ambient;
 
 // Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
-const char *ssid = //Your Network SSID//;
-const char *password = //Your Network Password//;
+const char *ssid =         //Your Network SSID//;
+    const char *password = //Your Network Password//;
 
-//Ambient連携用基盤情報
-unsigned int channelId = //Your Ambient Channel ID//; // AmbientのチャネルID
-const char* writeKey = //Your Ambient Write key//; // ライトキー
+    //Ambient連携用基盤情報
+    unsigned int channelId = //Your Ambient Channel ID//; // AmbientのチャネルID
+    const char *writeKey =   //Your Ambient Write key//; // ライトキー
 
-//東京公共交通オープンデータチャレンジ向け共通基盤情報
-const String api_key = "&acl:consumerKey=test_key";//Your API Key//
+    //東京公共交通オープンデータチャレンジ向け共通基盤情報
+    const String api_key = "&acl:consumerKey=test_key"; //Your API Key//
 const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainInformation?odpt:railway=odpt.Railway:";
 
 // LovyanGFX設定情報基盤
@@ -93,6 +93,9 @@ void setup() {
   // LovyanGFX_描画テスト
   train_rcv_joint();
   gfx.setFont(&lgfxJapanGothicP_32);
+  gfx.fillScreen(TFT_BLACK);
+  gfx.fillScreen(TFT_WHITE);
+  gfx.fillScreen(TFT_BLACK);
   gfx.fillScreen(TFT_WHITE);
   gfx.setTextColor(TFT_BLACK, TFT_WHITE);
   gfx.startWrite();//描画待機モード
@@ -119,6 +122,8 @@ void loop() {
     Wireless_Access();
     train_rcv_joint();
     //refresh
+    gfx.fillScreen(TFT_BLACK);
+    gfx.fillScreen(TFT_WHITE);
     gfx.startWrite();//描画待機モード
     gfx.fillScreen(TFT_BLACK);
     gfx.fillScreen(TFT_WHITE);
@@ -226,6 +231,7 @@ void Wireless_Access() {
   }
   Serial.println(WiFi.localIP());
 }
+
 // ODPTデータセット実行関数
 void train_rcv_joint() {
   JR_Status[0] = train_rcv_jr(JR_Line_key[0]);
@@ -328,19 +334,28 @@ String train_rcv_trta(String line_name) {
       //　平常運転
       result = "平常運転";
     } else if (point2 == "運行情報あり") {
-      if (-1 != point1.indexOf("運転を見合わせています")) {
-        //　運転見合わせ
-        result = "運転見合わせ";
-      } if (-1 != point1.indexOf("遅れがでています")) {
+      if (-1 != point1.indexOf("遅れがでています")) {
         // 遅れあり
         result = "列車遅延";
       } else if (-1 != point1.indexOf("直通運転を中止しています")) {
         //　直通運転中止
         result = "直通運転中止";
+      } else if (-1 != point1.indexOf("で運転を見合わせています。")) {
+        //　運転見合わせ
+        result = "運転見合わせ";
       } else {
         //　情報有り
         result = "情報あり";
       }
+    } else if (point2 == "ダイヤ乱れ") {
+      //ダイヤ乱れ
+      result = "ダイヤ乱れ";  
+    } else if (point2 == "直通運転中止") {
+      //直通運転中止
+      result = "直通運転中止";  
+    } else if (point2 == "一部列車遅延") {
+      //一部列車遅延
+      result = "一部列車遅延";
     } else if (point2 == NULL) {
       //取得時間外？
       result = "取扱時間外";
@@ -386,15 +401,15 @@ String train_rcv_tobu(String line_name) {
       //　平常運転
       result = "平常運転";
     } else if (point2 == "運行情報あり") {
-      if (-1 != point1.indexOf("運転を見合わせています")) {
-        //　運転見合わせ
-        result = "運転見合わせ";
-      } if (-1 != point1.indexOf("遅れがでています")) {
+      if (-1 != point1.indexOf("遅れがでています")) {
         // 遅れあり
         result = "列車遅延";
       } else if (-1 != point1.indexOf("直通運転を中止しています")) {
         //　直通運転中止
         result = "直通運転中止";
+      } else if (-1 != point1.indexOf("で運転を見合わせています。")) {
+        //　運転見合わせ
+        result = "運転見合わせ";
       } else {
         //　情報有り
         result = "情報あり";
@@ -475,7 +490,7 @@ void alert_draw() {
 // バッテリー電圧取得
 void Battery_sta() {
    Battery_voltage = ((float)M5.getBatteryVoltage()) / 1000.0;
-   Serial.printf("Now_Recieved >>> Edge v: %.1f\r\n", Battery_voltage);
+   Serial.printf("Now >>> Edge v: %.1f\r\n", Battery_voltage);
 }
 
 

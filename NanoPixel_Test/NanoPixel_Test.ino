@@ -1,13 +1,14 @@
  
 /*
  * Project:NanoPixel_Test
- * Build:2021/05/27
+ * Build:2021/09/24
  * Author:torinosubako
  * Status:Impractical
 */
 
 #include <Adafruit_NeoPixel.h>
 #include <M5Core2.h>
+#include <Wire.h>
 #define PIN 25
 #define NUMPIXELS 10
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
@@ -22,12 +23,12 @@ void setup() {
   M5.Lcd.println(("M5Stack Core2 for AWS"));
   M5.Lcd.println(("Nano Pixel LED Test"));
   //LCD試験用  
-  //M5.Lcd.drawString("Co2[ppm]", 0, 53, 4);
-  //M5.Lcd.drawRightString("0000", 319, 53, 7);
-  //M5.Lcd.drawString("Temp[C]", 0, 106, 4);
-  //M5.Lcd.drawRightString("00.00", 319, 106, 7);
-  //M5.Lcd.drawString("Hum[%]", 0, 159, 4);
-  //M5.Lcd.drawRightString("00.00", 319, 159, 7);
+  M5.Lcd.drawString("Co2[ppm]", 0, 53, 4);
+  M5.Lcd.drawRightString("0000", 319, 53, 7);
+  M5.Lcd.drawString("Temp[C]", 0, 106, 4);
+  M5.Lcd.drawRightString("00.00", 319, 106, 7);
+  M5.Lcd.drawString("Hum[%]", 0, 159, 4);
+  M5.Lcd.drawRightString("00.00", 319, 159, 7);
 }
 
 void loop() {
