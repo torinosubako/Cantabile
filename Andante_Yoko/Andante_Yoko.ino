@@ -19,11 +19,11 @@ Ambient ambient;
 
 // Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
 const char *ssid =         //Your Network SSID//;
-    const char *password = //Your Network Password//;
+const char *password = //Your Network Password//;
 
-    //Ambient連携用基盤情報
-    unsigned int channelId = //Your Ambient Channel ID//; // AmbientのチャネルID
-    const char *writeKey =   //Your Ambient Write key//; // ライトキー
+//Ambient連携用基盤情報
+unsigned int channelId = //Your Ambient Channel ID//; // AmbientのチャネルID
+const char *writeKey =   //Your Ambient Write key//; // ライトキー
 
     //東京公共交通オープンデータチャレンジ向け共通基盤情報
     const String api_key = "&acl:consumerKey=test_key"; //Your API Key//
