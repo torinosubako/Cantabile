@@ -2,7 +2,7 @@
 
 /*
    Project:Sonorous_Plus_alpha
-   CodeName:Preparation_stage_021EPX
+   CodeName:Preparation_stage_023EPX
    Build:2021/09/27
    Author:torinosubako
    Status:Impractical
@@ -11,6 +11,7 @@
 
 #include <M5StickCPlus.h>
 #include <SensirionI2CScd4x.h>
+#include <Adafruit_DPS310.h>
 #include <Wire.h>
 #include "BLEDevice.h"
 #include "BLEServer.h"
@@ -21,18 +22,19 @@
 
 // デバイス関連の各種定義
 uint16_t Node_ID = 0001; // センサー固有ID
-#define S_PERIOD 160     // 間欠動作間隔指定
+#define S_PERIOD 270     // 間欠動作間隔指定
 uint32_t cpu_clock = 80; // CPUクロック指定
+RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
 
 //センサー関連の各種定義
 SensirionI2CScd4x scd4x;
-RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
+Adafruit_DPS310 dps;
 
 // 搬送用データ設定
 uint16_t temp, humid, press, co2, vbat;
 
 // 引出用データ設定
-float SCD_temp, SCD_humid;
+float SCD_temp, SCD_humid, DPS310_press, DPS310_temp;
 
 //BLEデータセット
 void setAdvData(BLEAdvertising *pAdvertising) { // アドバタイジングパケットを整形する
@@ -79,12 +81,10 @@ void setup() {
   uint16_t error;
   char errorMessage[256];
 
-
-
-
   // 電流スイッチングコア(統合試験未了・21EPXで廃止)
 
-  // センサーの初期化 (SCD41系統)
+  // センサーの初期化
+  // SCD41系統
   Serial.println("SCD41_Test_start");
   scd4x.begin(Wire);
   error = scd4x.stopPeriodicMeasurement(); //定期測定の停止
@@ -93,6 +93,15 @@ void setup() {
     errorToString(error, errorMessage, 256);
     Serial.println(errorMessage);
   }
+
+  error = scd4x.startLowPowerPeriodicMeasurement(); //低消費電力モード
+  if (error) {
+    Serial.print("Error trying to execute startLowPowerPeriodicMeasurement(): ");
+    errorToString(error, errorMessage, 256);
+    Serial.println(errorMessage);
+  }
+  
+
   delay(5000);
   //測定開始
   error = scd4x.measureSingleShot();
@@ -101,6 +110,21 @@ void setup() {
     errorToString(error, errorMessage, 256);
     Serial.println(errorMessage);
   }
+  Serial.println("SCD41 OK!");
+
+  // DPS310系統
+  Serial.println("DPS310_Test_start");
+  if (! dps.begin_I2C()) {
+    Serial.println("Failed to find DPS");
+    while (1) yield();
+  }
+
+
+  dps.configurePressure(DPS310_64HZ, DPS310_64SAMPLES);
+  dps.configureTemperature(DPS310_64HZ, DPS310_64SAMPLES);
+  Serial.println("DPS310 OK!");
+
+  Serial.println("All_Sensor_Status:All Green");
   // プレヒートタイム(統合試験完了・21EPXで廃止)
 
   //挙動確認用
@@ -108,10 +132,22 @@ void setup() {
   digitalWrite(M5_LED, LOW);
 
   // デバイス<=>センサー間リンク
+  // DPS310系統
+  sensors_event_t temp_event, pressure_event;
+    while (!dps.temperatureAvailable() || !dps.pressureAvailable()) {
+      return;
+    }
+    dps.getEvents(&temp_event, &pressure_event);
+    Serial.print("DPS_Temp:");
+    Serial.print(temp_event.temperature);
+    Serial.print("*C");
+    Serial.print("\t");
+    Serial.print("DPS_Press:");
+    Serial.print(pressure_event.pressure);
+    Serial.print("hPa");
+    Serial.print("\n");
+  
   // SCD41系統
-  //  uint16_t error;
-  //  char errorMessage[256];
-  // Read Measurement
   error = scd4x.readMeasurement(co2, SCD_temp, SCD_humid);
   if (error) {
     Serial.print("Error trying to execute readMeasurement(): ");
@@ -121,30 +157,35 @@ void setup() {
     Serial.println("Invalid sample detected, skipping.");
   } else {
     //SCD41_co2 = co2;
-    Serial.print("Co2:");
+    Serial.print("SCD_Co2:");
     Serial.print(co2);
+    Serial.print("rpm");
     Serial.print("\t");
-    Serial.print(" SCD41_Temp:");
+    Serial.print("SCD_Temp:");
     Serial.print(SCD_temp);
+    Serial.print("*C");
     Serial.print("\t");
-    Serial.print("SCD41_Hum:");
-    Serial.println(SCD_humid);
+    Serial.print("SCD_Hum:");
+    Serial.print(SCD_humid);
+    Serial.print("pph");
   }
+  Serial.print("\n");
+  Serial.println("All_Sensor_Status:Recieved");
 
   // データ収集
   // 温度
-  humid = (uint16_t)(SCD_temp * 100);
+  temp = (uint16_t)(SCD_temp * 100);
   // 湿度
   humid = (uint16_t)(SCD_humid * 100);
   // 気圧
-  //press = (uint16_t)(bmp.readPressure() / 100 * 10);
-  press = (uint16_t)(8111);
-  // Co2データ
-  //co2 = (uint16_t)(CO2Sens.getCO2());
+  press = (uint16_t)(pressure_event.pressure * 10);
+  // press = (uint16_t)(8111);
+  // Co2データ(自動生成)
   // 電圧監視(外部電源系-電圧監視(AXP192))
   vbat = (uint16_t)(M5.Axp.GetVBusVoltage() * 100);
 
   // BLEデータ送信プラットフォーム()
+  digitalWrite(M5_LED, HIGH);
   BLEDevice::init("Sonorous-0001");                           // 初期化
   BLEServer *pServer = BLEDevice::createServer();             // サーバー生成
   BLEAdvertising *pAdvertising = pServer->getAdvertising();   // オブジェクト取得
@@ -156,7 +197,6 @@ void setup() {
 
   // deepSleep！
   esp_bt_controller_disable();
-  // digitalWrite(GPIO_NUM_25, LOW);                             // CO2センサモジュールへの給電を遮断
   delay(10);
   esp_deep_sleep(1000000LL * S_PERIOD);
   esp_sleep_enable_timer_wakeup(1000000LL * S_PERIOD);        // S_PERIOD秒Deep Sleepする
