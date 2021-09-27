@@ -32,6 +32,8 @@ void setup() {
 }
 
 void loop() {
+  Serial.println("ELECTRICAL COMMUNICATION");
+
   //1
   pixels.setPixelColor(0, pixels.Color(100,0,0));
   pixels.setPixelColor(1, pixels.Color(50,50,0));

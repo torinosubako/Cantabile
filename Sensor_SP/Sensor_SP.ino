@@ -64,7 +64,7 @@ void setup() {
 
   scd4x.begin(Wire);
 //  bool setCpuFrequencyMhz(cpu_clock);
-  M5.Axp.ScreenBreath(8);
+  M5.Axp.ScreenBreath(7);
 
   // stop potentially previously started measurement
   error = scd4x.stopPeriodicMeasurement(); //定期測定の停止
@@ -110,7 +110,6 @@ void setup() {
   Wireless_Access();
   WiFi.disconnect();
   ambient.begin(channelId, writeKey, &client);
-
   delay(5000);
 }
 

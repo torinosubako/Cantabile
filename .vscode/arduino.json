@@ -1,4 +1,6 @@
 {
-    "configuration": "PSRAM=enabled,PartitionScheme=default,CPUFreq=240,UploadSpeed=921600,DebugLevel=none",
-    "board": "m5stack:esp32:m5stack-core2"
+    "configuration": "PartitionScheme=default,UploadSpeed=1500000,DebugLevel=debug",
+    "board": "m5stack:esp32:m5stick-c-plus",
+    "port": "COM3",
+    "sketch": "Sonorous_Plus_alpha\\Sonorous_Plus_alpha.ino"
 }

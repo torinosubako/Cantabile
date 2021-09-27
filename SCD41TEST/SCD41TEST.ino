@@ -1,13 +1,14 @@
  
 /*
  * Project:SCD41x_Test
- * Build:2021/09/25
+ * Build:2021/09/26
  * Author:torinosubako
  * Status:Impractical
 */
 
 #include <M5Core2.h>
-#include <Dps310.h>
+#include <SensirionI2CScd4x.h>
+//#include <Adafruit_DPS310.h>
 #include <Wire.h>
 
 SensirionI2CScd4x scd4x;
