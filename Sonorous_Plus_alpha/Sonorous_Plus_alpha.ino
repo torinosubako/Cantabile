@@ -2,8 +2,8 @@
 
 /*
    Project:Sonorous_Plus_alpha
-   CodeName:Preparation_stage_023EPX
-   Build:2021/09/27
+   CodeName:Preparation_stage_024EPX
+   Build:2021/09/28
    Author:torinosubako
    Status:Impractical
 */
@@ -18,22 +18,18 @@
 #include "BLEUtils.h"
 #include "esp_sleep.h"
 
-//I2C通信制御系
-
 // デバイス関連の各種定義
 uint16_t Node_ID = 0001; // センサー固有ID
 #define S_PERIOD 270     // 間欠動作間隔指定
 uint32_t cpu_clock = 80; // CPUクロック指定
 RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
 
-//センサー関連の各種定義
+// センサー関連の各種定義
 SensirionI2CScd4x scd4x;
 Adafruit_DPS310 dps;
 
-// 搬送用データ設定
+// 搬送・引出用データ設定
 uint16_t temp, humid, press, co2, vbat;
-
-// 引出用データ設定
 float SCD_temp, SCD_humid, DPS310_press, DPS310_temp;
 
 //BLEデータセット
@@ -81,8 +77,6 @@ void setup() {
   uint16_t error;
   char errorMessage[256];
 
-  // 電流スイッチングコア(統合試験未了・21EPXで廃止)
-
   // センサーの初期化
   // SCD41系統
   Serial.println("SCD41_Test_start");
@@ -100,8 +94,6 @@ void setup() {
     errorToString(error, errorMessage, 256);
     Serial.println(errorMessage);
   }
-  
-
   delay(5000);
   //測定開始
   error = scd4x.measureSingleShot();
@@ -118,15 +110,13 @@ void setup() {
     Serial.println("Failed to find DPS");
     while (1) yield();
   }
-
-
   dps.configurePressure(DPS310_64HZ, DPS310_64SAMPLES);
   dps.configureTemperature(DPS310_64HZ, DPS310_64SAMPLES);
   Serial.println("DPS310 OK!");
 
-  Serial.println("All_Sensor_Status:All Green");
-  // プレヒートタイム(統合試験完了・21EPXで廃止)
 
+  Serial.println("All_Sensor_Status:All Green");
+  
   //挙動確認用
   pinMode(M5_LED, OUTPUT);
   digitalWrite(M5_LED, LOW);
