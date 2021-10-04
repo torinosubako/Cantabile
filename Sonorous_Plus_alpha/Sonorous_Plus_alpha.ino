@@ -3,7 +3,7 @@
 /*
    Project:Sonorous_Plus_alpha
    CodeName:Preparation_stage_024EPX
-   Build:2021/09/28
+   Build:2021/10/04
    Author:torinosubako
    Status:Impractical
 */
@@ -20,9 +20,10 @@
 
 // デバイス関連の各種定義
 uint16_t Node_ID = 0001; // センサー固有ID
-#define S_PERIOD 270     // 間欠動作間隔指定
+#define S_PERIOD 260     // 間欠動作間隔指定
 uint32_t cpu_clock = 80; // CPUクロック指定
 RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
+RTC_DATA_ATTR static uint8_t units;     // ユニット番号
 
 // センサー関連の各種定義
 SensirionI2CScd4x scd4x;
@@ -69,40 +70,51 @@ void setup() {
     delay(100);
   }
   M5.begin();
+  pinMode(32, INPUT_PULLUP);
+  pinMode(33, INPUT_PULLUP);
   Wire.begin();
   bool setCpuFrequencyMhz(cpu_clock);
   M5.Axp.SetLDO2(false);
-  Serial.println("Sonorous_Startup:Ready");
 
+
+  // Sensor準備
+  Serial.println("Sonorous_Startup:Ready");
   uint16_t error;
   char errorMessage[256];
+  if (seq == 255){
+    units++; // 制御ユニット更新(21h20m毎)
+  }
+
 
   // センサーの初期化
   // SCD41系統
   Serial.println("SCD41_Test_start");
   scd4x.begin(Wire);
-  error = scd4x.stopPeriodicMeasurement(); //定期測定の停止
-  if (error) {
-    Serial.print("Error trying to execute stopPeriodicMeasurement(): ");
-    errorToString(error, errorMessage, 256);
-    Serial.println(errorMessage);
+  if (units == 0){
+    if (seq == 0) {
+    scd4x.startLowPowerPeriodicMeasurement();
+    Serial.println("LPPM:ON");
+    delay(30000);
+    }
   }
+  
+//  error = scd4x.getDataReadyStatus; //低消費電力モードチェック
+//  if (error) {
+//    Serial.print("Error trying to execute startLowPowerPeriodicMeasurements:");
+//    errorToString(error, errorMessage, 256);
+//    Serial.println(errorMessage);
+//  }
 
-  error = scd4x.startLowPowerPeriodicMeasurement(); //低消費電力モード
-  if (error) {
-    Serial.print("Error trying to execute startLowPowerPeriodicMeasurement(): ");
-    errorToString(error, errorMessage, 256);
-    Serial.println(errorMessage);
-  }
+  // シングルショット測定開始
+  scd4x.measureSingleShot();
   delay(5000);
-  //測定開始
-  error = scd4x.measureSingleShot();
-  if (error) {
-    Serial.print("Error trying to execute startPeriodicMeasurement(): ");
-    errorToString(error, errorMessage, 256);
-    Serial.println(errorMessage);
-  }
+  scd4x.measureSingleShot();
+  delay(5000);
+  scd4x.measureSingleShot();
+  delay(5000);
+
   Serial.println("SCD41 OK!");
+
 
   // DPS310系統
   Serial.println("DPS310_Test_start");
@@ -120,6 +132,12 @@ void setup() {
   //挙動確認用
   pinMode(M5_LED, OUTPUT);
   digitalWrite(M5_LED, LOW);
+  Serial.print("Unit:");
+  Serial.print(units);
+  Serial.print("\t");
+  Serial.print("Sequence:");
+  Serial.print(seq);
+  Serial.print("\n");
 
   // デバイス<=>センサー間リンク
   // DPS310系統
@@ -184,6 +202,7 @@ void setup() {
   delay(10 * 1000);                                           // 10秒間データを流す
   pAdvertising->stop();                                       // アドバタイズ停止
   seq++;                                                      // シーケンス番号を更新
+  
 
   // deepSleep！
   esp_bt_controller_disable();
@@ -195,3 +214,28 @@ void setup() {
 void loop() {
 
 }
+
+//void Single_Shot() {
+//  for (int i=0; i <= 2; i++){
+//    error = scd4x.measureSingleShot();
+//    if (error) {
+//      Serial.print("Error trying to execute startSingleShot(): ");
+//      errorToString(error, errorMessage, 256);
+//      Serial.println(errorMessage);
+//    }
+//    delay(5000);
+//  }
+//}
+//
+//void LPS_ON(){
+//  if (seq == 0){
+//    scd4x.startLowPowerPeriodicMeasurement();
+//    delay(30000);
+//  }
+//  error = scd4x.getDataReadyStatus; //低消費電力モードチェック
+//  if (error) {
+//    Serial.print("Error trying to execute startLowPowerPeriodicMeasurement(): ");
+//    errorToString(error, errorMessage, 256);
+//    Serial.println(errorMessage);
+//  }
+//}

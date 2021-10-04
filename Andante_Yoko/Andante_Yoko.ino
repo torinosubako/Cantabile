@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_029
-   Build:2021/07/11
+   CodeName:Preparation_stage_031
+   Build:2021/10/03
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -18,15 +18,15 @@ WiFiClient client;
 Ambient ambient;
 
 // Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
-const char *ssid =         //Your Network SSID//;
+const char *ssid = //Your Network SSID//;
 const char *password = //Your Network Password//;
 
-//Ambient連携用基盤情報
+// Ambient連携用基盤情報
 unsigned int channelId = //Your Ambient Channel ID//; // AmbientのチャネルID
-const char *writeKey =   //Your Ambient Write key//; // ライトキー
+const char* writeKey = //Your Ambient Write key//; // ライトキー
 
-    //東京公共交通オープンデータチャレンジ向け共通基盤情報
-    const String api_key = "&acl:consumerKey=test_key"; //Your API Key//
+// 東京公共交通オープンデータチャレンジ向け共通基盤情報
+const String api_key = "&acl:consumerKey=test_key";//Your API Key//
 const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainInformation?odpt:railway=odpt.Railway:";
 
 // LovyanGFX設定情報基盤
@@ -226,7 +226,9 @@ void Wireless_Access() {
     delay(10 * 1000);
     Serial.println("Connecting to WiFi..");
     if (wifi_cont >= 5){
-      M5.shutdown(times);
+      //M5.shutdown();
+      Serial.println("ReStart..");
+      ESP.restart();
     }
   }
   Serial.println(WiFi.localIP());
