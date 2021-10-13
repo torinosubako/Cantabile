@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_031
-   Build:2021/10/03
+   CodeName:Preparation_stage_033
+   Build:2021/10/13
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -113,10 +113,10 @@ void loop() {
   //BLEデータ受信
   BLE_RCV();
   M5.update();
-  //120秒毎に定期実行
+  //180秒毎に定期実行
   auto now = millis();
   //M5.update();
-  if (now - getDataTimer >= 120000) {
+  if (now - getDataTimer >= 180000) {
     getDataTimer = now;
     Battery_sta();
     Wireless_Access();
@@ -167,11 +167,11 @@ void BLE_RCV() {
         vbat = (float)(data[14] << 8 | data[13]) / 100.0;
 
         // データチェック領域
-        // SHT30とBMP280とMH-Z19Cに最適化。それ以外のセンサーでは調整する事。
+        // SCD41とDPS310に最適化。それ以外のセンサーでは調整する事。
         if (Node00_StatusA[0] != new_temp && new_temp >= -40 && new_temp <= 120) {
           Node00_StatusA[0] = new_temp;
         }
-        if (Node00_StatusA[1] != new_humid && new_humid >= 10 && new_humid <= 90) {
+        if (Node00_StatusA[1] != new_humid && new_humid >= 0 && new_humid <= 100) {
           Node00_StatusA[1] = new_humid;
         }
         if (Node00_StatusB[0] != new_co2 && new_co2 > 300 && new_co2 <= 4500) {
@@ -226,7 +226,6 @@ void Wireless_Access() {
     delay(10 * 1000);
     Serial.println("Connecting to WiFi..");
     if (wifi_cont >= 5){
-      //M5.shutdown();
       Serial.println("ReStart..");
       ESP.restart();
     }
