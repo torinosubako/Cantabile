@@ -2,5 +2,5 @@
     "configuration": "PartitionScheme=default,UploadSpeed=1500000,DebugLevel=debug",
     "board": "m5stack:esp32:m5stick-c-plus",
     "port": "COM3",
-    "sketch": "AWStest\\AWStest.ino"
+    "sketch": "AWStest2\\AWStest2.ino"
 }
