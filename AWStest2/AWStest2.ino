@@ -1,6 +1,6 @@
 /*
    Project:AWS_TEST2
-   CodeName:Preparation_stage_001
+   CodeName:Preparation_stage_002
    Build:2021/11/06
    Author:torinosubako
    Status:Impractical
@@ -10,13 +10,13 @@
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
-#include <Arduino_JSON.h>
+#include <ArduinoJson.h>
 
 // Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
 const char *ssid = //Your Network SSID//;
 const char *password = //Your Network Password//;
 
-// AWS IoT基幹情報
+// AWS IoT設定情報
 const char* AWS_ENDPOINT = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.amazonaws.com";
 const int   AWS_PORT     = 8883;
 const char* PUB_TOPIC    = "test_core/fromDevice";
@@ -34,7 +34,6 @@ const char* CERTIFICATE = R"KEY(-----BEGIN CERTIFICATE-----
 const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 
 -----END RSA PRIVATE KEY-----)KEY";
-
 
 // MQTT設定
 #define QOS 1 
@@ -87,9 +86,10 @@ void setup_AWS_MQTT(){
   Serial.println("Connected.");
 }
 
-// AWS-伝送用メッセージ生成
-String measure(){
-  JSONVar data;
+// AWS-MQTTアップロード(Message生成含む)
+void AWS_Upload(){
+  StaticJsonDocument<192> data;
+  char json_string[192];
   data["Node_id"] = Node_ID;
   data["Seq_no"] = seq;
   data["Temp"] = 25.68;
@@ -97,15 +97,10 @@ String measure(){
   data["WBGT"] = 11.4;
   data["CO2"] = 514;
   data["Press"] = 1024;
-  data["Node_Volt"] = M5.Axp.GetVBusVoltage();
-  data["Core_Volt"] = M5.Axp.GetVBusVoltage();
-  return JSON.stringify(data);
-}
-
-// AWS-MQTTアップロード
-void AWS_Upload(){
-  String payload = measure();
-  mqttClient.publish(PUB_TOPIC, payload.c_str());
+  data["Node_Volt"] = (float)(M5.Axp.GetVBusVoltage());
+  data["Core_Volt"] = (float)(M5.Axp.GetVBusVoltage());
+  serializeJson(data, json_string);
+  mqttClient.publish(PUB_TOPIC, json_string);
 }
 
 void setup() {
@@ -113,21 +108,24 @@ void setup() {
   M5.Lcd.setRotation(1);
   M5.Lcd.setTextFont(7);
   setup_wifi();
+    
   // AWS関係関数
-  M5.Lcd.fillScreen(BLACK);
-  M5.Lcd.printf("%d", seq);
   setup_AWS_MQTT();
   AWS_Upload();
+
+  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.printf("%d", seq);
+
   WiFi.disconnect();
 }
 
 void loop() {
   M5.update();
 
-  //60秒毎に定期実行
+  //120秒毎に定期実行
   auto now = millis();
   M5.update();
-  if (now - getDataTimer >= 60000) {
+  if (now - getDataTimer >= 120000) {
     getDataTimer = now;
     seq++;
     setup_wifi();

@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko
-   CodeName:Preparation_stage_033
-   Build:2021/10/13
+   CodeName:Preparation_stage_034
+   Build:2021/11/06
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -13,7 +13,7 @@
 #include <Ambient.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include "ArduinoJson.h"
+#include <ArduinoJson.h>
 WiFiClient client;
 Ambient ambient;
 
@@ -444,7 +444,7 @@ void train_draw() {
   gfx.drawString("：" + JR_Status[1], ODPT_X[1], 130);
   gfx.drawString(JR_Line_name[2], ODPT_X[0], 170);
   gfx.drawString("：" + JR_Status[2], ODPT_X[1], 170);
-  gfx.drawString("<東京メトロ・私鉄各線>", ODPT_X[0], 210);
+  gfx.drawString("<地下鉄・私鉄各線>", ODPT_X[0], 210);
   gfx.drawString(TRTA_Line_name[0], ODPT_X[0], 250);
   gfx.drawString("：" + TRTA_Status[0], ODPT_X[1], 250);
   gfx.drawString(TRTA_Line_name[1], ODPT_X[0], 290);
@@ -453,7 +453,7 @@ void train_draw() {
   gfx.drawString("：" + TRTA_Status[2], ODPT_X[1], 330);
   gfx.drawString(TOBU_Line_name[0], ODPT_X[0], 370);
   gfx.drawString("：" + TOBU_Status[0], ODPT_X[1], 370);
-  gfx.drawString("西武池袋線", ODPT_X[0], 410);
+  gfx.drawString("都営三田線", ODPT_X[0], 410);
   gfx.drawString("：" + JY_Sta, ODPT_X[1], 410);
 
 }
