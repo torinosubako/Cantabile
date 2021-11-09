@@ -36,7 +36,7 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 -----END RSA PRIVATE KEY-----)KEY";
 
 // MQTT設定
-#define QOS 1 
+#define QOS 1
 WiFiClientSecure httpsClient;
 PubSubClient mqttClient(httpsClient);
 
@@ -74,7 +74,10 @@ void setup_AWS_MQTT(){
   httpsClient.setPrivateKey(PRIVATE_KEY);
   mqttClient.setServer(AWS_ENDPOINT, AWS_PORT);
 
-  Serial.println("Connecting MQTT...");
+  Serial.println("Setup MQTT...");
+}
+
+void connect_AWS(){
   int retryCount = 0;
   while (!mqttClient.connect(CLIENT_ID)){
     Serial.println("Failed, state=" + String(mqttClient.state()));
@@ -111,6 +114,7 @@ void setup() {
     
   // AWS関係関数
   setup_AWS_MQTT();
+  connect_AWS();
   AWS_Upload();
 
   M5.Lcd.fillScreen(BLACK);
@@ -122,16 +126,16 @@ void setup() {
 void loop() {
   M5.update();
 
-  //120秒毎に定期実行
+  //180秒毎に定期実行
   auto now = millis();
   M5.update();
-  if (now - getDataTimer >= 120000) {
+  if (now - getDataTimer >= 180000) {
     getDataTimer = now;
     seq++;
     setup_wifi();
-    
+
     // AWS関係関数
-    setup_AWS_MQTT();
+    connect_AWS();
     AWS_Upload();
 
     M5.Lcd.fillScreen(BLACK);

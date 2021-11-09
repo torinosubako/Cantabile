@@ -1,7 +1,7 @@
 
 /*
-   Project:Andante_Yoko
-   CodeName:Preparation_stage_035
+   Project:Andante_Yoko_AWS
+   CodeName:Preparation_stage_AX02
    Build:2021/11/09
    Author:torinosubako
    Status:Unverified
@@ -12,7 +12,9 @@
 #include "BLEDevice.h"
 #include <Ambient.h>
 #include <WiFi.h>
+#include <WiFiClientSecure.h>
 #include <HTTPClient.h>
+#include <PubSubClient.h>
 #include <ArduinoJson.h>
 WiFiClient client;
 Ambient ambient;
@@ -29,6 +31,30 @@ const char* writeKey =   //Your Ambient Write key//; // ライトキー
 const String api_key = "&acl:consumerKey=test_key";//Your API Key//
 const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainInformation?odpt:railway=odpt.Railway:";
 
+// AWS IoT設定情報
+const char* AWS_ENDPOINT = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.amazonaws.com";
+const int   AWS_PORT     = 8883;
+const char* PUB_TOPIC    = "test_core/fromDevice";
+const char* SUB_TOPIC    = "test_core/fromCloud";
+const char* CLIENT_ID    = "myM5StickCp";
+
+const char* ROOT_CA = R"EOF(-----BEGIN CERTIFICATE-----
+
+-----END CERTIFICATE-----)EOF";
+
+const char* CERTIFICATE = R"KEY(-----BEGIN CERTIFICATE-----
+
+-----END CERTIFICATE-----)KEY";
+
+const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
+
+-----END RSA PRIVATE KEY-----)KEY";
+
+// MQTT設定
+#define QOS 1
+WiFiClientSecure httpsClient;
+PubSubClient mqttClient(httpsClient);
+
 // LovyanGFX設定情報基盤
 #define LGFX_M5PAPER
 #include <LovyanGFX.hpp>
@@ -36,7 +62,7 @@ const String base_url = "https://api-tokyochallenge.odpt.org/api/v4/odpt:TrainIn
 // デバイス制御
 uint8_t seq;                      // RTC Memory シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
-uint32_t cpu_clock = 80;          // CPUクロック指定
+uint32_t cpu_clock = 240;          // CPUクロック指定
 
 M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
@@ -74,9 +100,11 @@ int JSN_y[] = {482, 508, 484};
 
 void setup() {
   M5.begin();
+  Serial.begin(115200);
   M5.BatteryADCBegin();
   bool setCpuFrequencyMhz(cpu_clock);
   Wireless_Access();
+
   // LovyanGFX_EPD
   gfx.init();
   gfx.setRotation(1);
@@ -102,7 +130,8 @@ void setup() {
   alert_draw();
   jsn_draw();
   gfx.endWrite();//描画待機解除・描画実施
-  WiFi.disconnect();
+  
+  WiFi.disconnect(true);
   ambient.begin(channelId, writeKey, &client);
 }
 
@@ -117,7 +146,10 @@ void loop() {
   if (now - getDataTimer >= 180000) {
     getDataTimer = now;
     Battery_sta();
+
+
     Wireless_Access();
+
     train_rcv_joint();
     //refresh
     gfx.fillScreen(TFT_BLACK);
@@ -132,14 +164,20 @@ void loop() {
     gfx.endWrite();//描画待機解除・描画実施
     Serial.printf("Now_imprinting\r\n");
     //WiFi切断
-    WiFi.disconnect();
+    
+    
+    // AWS関係
+    setup_AWS_MQTT();
+    connect_AWS();
+    AWS_Upload();
+    WiFi.disconnect(true);
+    Serial.printf("AWS_imprinting\r\n");
   }
 }
 
 
 
 // メイン関数ここまで
-
 
 // 統合センサネットワーク・情報取得関数
 void BLE_RCV() {
@@ -189,6 +227,8 @@ void BLE_RCV() {
 
 // 無線制御関数
 void Wireless_Access() {
+  WiFi.disconnect(true);
+  delay(1000);
   int wifi_cont = 0;
   int times = 5;
   WiFi.begin(ssid, password);
@@ -205,6 +245,44 @@ void Wireless_Access() {
   Serial.println(WiFi.localIP());
 }
 
+// AWSセットアップ
+void setup_AWS_MQTT(){
+  httpsClient.setCACert(ROOT_CA);
+  httpsClient.setCertificate(CERTIFICATE);
+  httpsClient.setPrivateKey(PRIVATE_KEY);
+  mqttClient.setServer(AWS_ENDPOINT, AWS_PORT);
+  Serial.println("Setup MQTT...");
+}
+
+void connect_AWS(){
+  int retryCount = 0;
+  while (!mqttClient.connect(CLIENT_ID)){
+    Serial.println("Failed, state=" + String(mqttClient.state()));
+    if (retryCount++ > 5)
+      ESP.restart();
+    Serial.println("Try again in 5 seconds");
+    delay(5000);
+  }
+  Serial.println("Connected.");
+}
+
+// AWS-MQTTアップロード(Message生成含む)
+void AWS_Upload() {
+  StaticJsonDocument<192> AWSdata;
+  char json_string[192];
+  AWSdata["Node_id"] = 0000;
+  AWSdata["Seq_no"] = seq;
+  AWSdata["Temp"] = Node00_StatusA[0];
+  AWSdata["Humi"] = Node00_StatusA[1];
+  AWSdata["WBGT"] = Node00_StatusA[3];
+  AWSdata["CO2"] = Node00_StatusB[0];
+  AWSdata["Press"] = Node00_StatusB[1];
+  AWSdata["Node_Volt"] = Node00_StatusA[2];
+  AWSdata["Core_Volt"] = Battery_voltage;
+  serializeJson(AWSdata, json_string);
+  mqttClient.publish(PUB_TOPIC, json_string);
+}
+
 // ODPTデータセット実行関数
 void train_rcv_joint() {
   JR_Status[0] = train_rcv_jr(JR_Line_key[0]);
@@ -215,7 +293,6 @@ void train_rcv_joint() {
   TRTA_Status[2] = train_rcv_trta(TRTA_Line_key[2]);
   TOBU_Status[0] = train_rcv_tobu(TOBU_Line_key[0]);
 }
-
 
 // ODPTデータ取得実行関数(JR)
 String train_rcv_jr(String line_name) {
@@ -466,7 +543,6 @@ void Battery_sta() {
    Serial.printf("Now >>> Edge v: %.1f\r\n", Battery_voltage);
 }
 
-
 // 統合センサネットワーク・情報表示関数
 void jsn_draw() {
   gfx.setTextColor(TFT_BLACK);
@@ -498,7 +574,7 @@ void jsn_upload(){
   ambient.set(7, Battery_voltage);
   ambient.send();
   delay(2000);
- }
+}
 
 // テストパターン
 void EPD_Test() {
