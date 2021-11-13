@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS
-   CodeName:Preparation_stage_AX02
-   Build:2021/11/09
+   CodeName:Preparation_stage_AX07
+   Build:2021/11/14
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -50,6 +50,7 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 
 -----END RSA PRIVATE KEY-----)KEY";
 
+
 // MQTT設定
 #define QOS 1
 WiFiClientSecure httpsClient;
@@ -63,11 +64,11 @@ PubSubClient mqttClient(httpsClient);
 uint8_t seq;                      // RTC Memory シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
 uint32_t cpu_clock = 240;          // CPUクロック指定
-
 M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
 LGFX gfx;
 LGFX_Sprite sp(&gfx);
+int Restart_token;
 
 
 // タイマー用データ
@@ -116,6 +117,7 @@ void setup() {
   pBLEScan->setActiveScan(false);
 
 
+  
   // LovyanGFX_描画テスト
   train_rcv_joint();
   gfx.setFont(&lgfxJapanGothicP_32);
@@ -131,7 +133,8 @@ void setup() {
   jsn_draw();
   gfx.endWrite();//描画待機解除・描画実施
   
-  WiFi.disconnect(true);
+  
+  //WiFi.disconnect(true);
   ambient.begin(channelId, writeKey, &client);
 }
 
@@ -146,15 +149,15 @@ void loop() {
   if (now - getDataTimer >= 180000) {
     getDataTimer = now;
     Battery_sta();
+    // 無線接続開始
+    //Wireless_Access();
 
-
-    Wireless_Access();
-
+    // ODPT関連関数
     train_rcv_joint();
-    //refresh
+    //描画関連
+    gfx.startWrite();//描画待機モード
     gfx.fillScreen(TFT_BLACK);
     gfx.fillScreen(TFT_WHITE);
-    gfx.startWrite();//描画待機モード
     gfx.fillScreen(TFT_BLACK);
     gfx.fillScreen(TFT_WHITE);
     train_draw();
@@ -163,15 +166,23 @@ void loop() {
     jsn_upload();
     gfx.endWrite();//描画待機解除・描画実施
     Serial.printf("Now_imprinting\r\n");
-    //WiFi切断
     
-    
+
     // AWS関係
     setup_AWS_MQTT();
     connect_AWS();
-    AWS_Upload();
-    WiFi.disconnect(true);
-    Serial.printf("AWS_imprinting\r\n");
+
+    //WiFi切断
+    mqttClient.disconnect();
+    httpsClient.stop();
+    //WiFi.disconnect(true);
+    Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
+    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    Restart_token ++;
+    if (Restart_token >= 60){
+      Serial.println("ReStart(for_Refresh)..");
+      ESP.restart();
+    }
   }
 }
 
@@ -238,7 +249,7 @@ void Wireless_Access() {
     delay(10 * 1000);
     Serial.println("Connecting to WiFi..");
     if (wifi_cont >= 5){
-      Serial.println("ReStart..");
+      Serial.println("ReStart(for_Wifi)..");
       ESP.restart();
     }
   }
@@ -258,29 +269,37 @@ void connect_AWS(){
   int retryCount = 0;
   while (!mqttClient.connect(CLIENT_ID)){
     Serial.println("Failed, state=" + String(mqttClient.state()));
-    if (retryCount++ > 5)
+    if (retryCount++ > 3){
+      Serial.println("ReStart(for_AWS)..");
       ESP.restart();
-    Serial.println("Try again in 5 seconds");
-    delay(5000);
+      //return;
+    }
+    Serial.println("Try again in 20 sec");
+    delay(20 * 1000);
   }
   Serial.println("Connected.");
+  AWS_Upload();
 }
 
 // AWS-MQTTアップロード(Message生成含む)
 void AWS_Upload() {
-  StaticJsonDocument<192> AWSdata;
-  char json_string[192];
-  AWSdata["Node_id"] = 0000;
-  AWSdata["Seq_no"] = seq;
-  AWSdata["Temp"] = Node00_StatusA[0];
-  AWSdata["Humi"] = Node00_StatusA[1];
-  AWSdata["WBGT"] = Node00_StatusA[3];
-  AWSdata["CO2"] = Node00_StatusB[0];
-  AWSdata["Press"] = Node00_StatusB[1];
-  AWSdata["Node_Volt"] = Node00_StatusA[2];
-  AWSdata["Core_Volt"] = Battery_voltage;
-  serializeJson(AWSdata, json_string);
-  mqttClient.publish(PUB_TOPIC, json_string);
+  if(Node00_StatusA[2]!=0.0 && Node00_StatusA[3]!=0.0){
+    StaticJsonDocument<192> AWSdata;
+    char json_string[192];
+    AWSdata["Node_id"] = 0000;
+    AWSdata["Seq_no"] = seq;
+    AWSdata["Temp"] = Node00_StatusA[0];
+    AWSdata["Humi"] = Node00_StatusA[1];
+    AWSdata["WBGT"] = Node00_StatusA[3];
+    AWSdata["CO2"] = Node00_StatusB[0];
+    AWSdata["Press"] = Node00_StatusB[1];
+    AWSdata["Node_Volt"] = Node00_StatusA[2];
+    AWSdata["Core_Volt"] = Battery_voltage;
+    serializeJson(AWSdata, json_string);
+    mqttClient.publish(PUB_TOPIC, json_string);
+    delay(10 * 1000);
+    Serial.printf("AWS_imprinting\r\n");
+  }
 }
 
 // ODPTデータセット実行関数
@@ -565,15 +584,17 @@ void jsn_draw() {
 }
 
 void jsn_upload(){
-  ambient.set(1, Node00_StatusA[0]);
-  ambient.set(2, Node00_StatusA[1]);
-  ambient.set(3, Node00_StatusB[0]);
-  ambient.set(4, Node00_StatusB[1]);
-  ambient.set(5, Node00_StatusA[2]);
-  ambient.set(6, Node00_StatusA[3]);
-  ambient.set(7, Battery_voltage);
-  ambient.send();
-  delay(2000);
+  if(Node00_StatusA[2]!=0.0 && Node00_StatusA[3]!=0.0){
+    ambient.set(1, Node00_StatusA[0]);
+    ambient.set(2, Node00_StatusA[1]);
+    ambient.set(3, Node00_StatusB[0]);
+    ambient.set(4, Node00_StatusB[1]);
+    ambient.set(5, Node00_StatusA[2]);
+    ambient.set(6, Node00_StatusA[3]);
+    ambient.set(7, Battery_voltage);
+    ambient.send();
+    delay(2000);
+  }
 }
 
 // テストパターン
