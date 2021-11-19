@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS
-   CodeName:Preparation_stage_AX07
-   Build:2021/11/14
+   CodeName:Preparation_stage_AX09
+   Build:2021/11/19
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -68,7 +68,9 @@ M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
 LGFX gfx;
 LGFX_Sprite sp(&gfx);
-int Restart_token;
+//uint16_t Node_ID;
+int Node_IDs;
+int Restart_token = 0;
 
 
 // タイマー用データ
@@ -179,7 +181,7 @@ void loop() {
     Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
     Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
     Restart_token ++;
-    if (Restart_token >= 60){
+    if (Restart_token >= 40){
       Serial.println("ReStart(for_Refresh)..");
       ESP.restart();
     }
@@ -195,17 +197,17 @@ void BLE_RCV() {
   float new_temp, new_humid, WBGT, vbat;
   int  new_press, new_co2;
   bool found = false;
-  uint16_t Node_ID;
+  //uint16_t Node_ID;
   BLEScanResults foundDevices = pBLEScan->start(3);
   int count = foundDevices.getCount();
   for (int i = 0; i < count; i++) {
     BLEAdvertisedDevice d = foundDevices.getDevice(i);
     if (d.haveManufacturerData()) {
       std::string data = d.getManufacturerData();
-      Node_ID = (int)(data[3] << 8 | data[2]);
       int manu = data[1] << 8 | data[0];
       if (manu == MyManufacturerId && seq != data[4]) {
         found = true;
+        Node_IDs = (int)(data[3] << 8 | data[2]);
         seq = data[4];
         new_temp = (float)(data[6] << 8 | data[5]) / 100.0;
         new_humid = (float)(data[8] << 8 | data[7]) / 100.0;
@@ -230,7 +232,7 @@ void BLE_RCV() {
         Node00_StatusA[2] = vbat;
         WBGT = 0.725 * Node00_StatusA[0] + 0.0368 * Node00_StatusA[1] + 0.00364 * Node00_StatusA[0] * Node00_StatusA[1] - 3.246;
         Node00_StatusA[3] = WBGT;
-        Serial.printf("Now_Recieved >>> Node: %.1d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_ID, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
+        Serial.printf("Now_Recieved >>> Node: %.1d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
       }
     }
   }
@@ -286,7 +288,8 @@ void AWS_Upload() {
   if(Node00_StatusA[2]!=0.0 && Node00_StatusA[3]!=0.0){
     StaticJsonDocument<192> AWSdata;
     char json_string[192];
-    AWSdata["Node_id"] = 0000;
+    //AWSdata["Node_id"] = Node_ID;
+    AWSdata["Node_id"] = 1;
     AWSdata["Seq_no"] = seq;
     AWSdata["Temp"] = Node00_StatusA[0];
     AWSdata["Humi"] = Node00_StatusA[1];

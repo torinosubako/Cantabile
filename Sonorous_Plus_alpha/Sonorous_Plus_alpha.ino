@@ -2,8 +2,8 @@
 
 /*
    Project:Sonorous_Plus_alpha
-   CodeName:Preparation_stage_024EPX
-   Build:2021/10/04
+   CodeName:Preparation_stage_025EPX
+   Build:2021/11/14
    Author:torinosubako
    Status:Impractical
 */
@@ -19,7 +19,8 @@
 #include "esp_sleep.h"
 
 // デバイス関連の各種定義
-uint16_t Node_ID = 0001; // センサー固有ID
+int Node_ID = 1; // センサー固有ID
+uint16_t Node_ID_t; // センサー固有ID(伝送用)
 #define S_PERIOD 260     // 間欠動作間隔指定
 uint32_t cpu_clock = 80; // CPUクロック指定
 RTC_DATA_ATTR static uint8_t seq;     // シーケンス番号
@@ -43,8 +44,8 @@ void setAdvData(BLEAdvertising *pAdvertising) { // アドバタイジングパ�
   strServiceData += (char)0xff;                   // AD Type 0xFF: Manufacturer specific data
   strServiceData += (char)0xff;                   // Test manufacture ID low byte<0>
   strServiceData += (char)0xff;                   // Test manufacture ID high byte<1>
-  strServiceData += (char)(Node_ID & 0xff);       // センサーノード固有ID(下位)<2>
-  strServiceData += (char)((Node_ID >> 8) & 0xff);// センサーノード固有ID(上位)<3>
+  strServiceData += (char)(Node_ID_t & 0xff);       // センサーノード固有ID(下位)<2>
+  strServiceData += (char)((Node_ID_t >> 8) & 0xff);// センサーノード固有ID(上位)<3>
   strServiceData += (char)seq;                    // シーケンス番号<4>
   strServiceData += (char)(temp & 0xff);          // 温度(下位)<5>
   strServiceData += (char)((temp >> 8) & 0xff);   // 温度(上位)<6>
@@ -75,6 +76,7 @@ void setup() {
   Wire.begin();
   bool setCpuFrequencyMhz(cpu_clock);
   M5.Axp.SetLDO2(false);
+  Node_ID_t = (uint16_t)(Node_ID);
 
 
   // Sensor準備
