@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS
-   CodeName:Preparation_stage_AX09
-   Build:2021/11/19
+   CodeName:Preparation_stage_AX10
+   Build:2021/11/20
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -16,10 +16,12 @@
 #include <HTTPClient.h>
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+#include <Preferences.h>
+#include <time.h>
 WiFiClient client;
 Ambient ambient;
 
-// Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
+/// Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
 const char *ssid = //Your Network SSID//;
 const char *password = //Your Network Password//;
 
@@ -51,6 +53,7 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 -----END RSA PRIVATE KEY-----)KEY";
 
 
+
 // MQTT設定
 #define QOS 1
 WiFiClientSecure httpsClient;
@@ -68,7 +71,7 @@ M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
 LGFX gfx;
 LGFX_Sprite sp(&gfx);
-//uint16_t Node_ID;
+uint16_t Node_ID;
 int Node_IDs;
 int Restart_token = 0;
 
@@ -103,10 +106,12 @@ int JSN_y[] = {482, 508, 484};
 
 void setup() {
   M5.begin();
+  M5.RTC.begin();
   Serial.begin(115200);
   M5.BatteryADCBegin();
   bool setCpuFrequencyMhz(cpu_clock);
   Wireless_Access();
+  RTC_time_sync();
 
   // LovyanGFX_EPD
   gfx.init();
@@ -166,6 +171,7 @@ void loop() {
     alert_draw();
     jsn_draw();
     jsn_upload();
+    RTC_time_Get();
     gfx.endWrite();//描画待機解除・描画実施
     Serial.printf("Now_imprinting\r\n");
     
@@ -174,18 +180,26 @@ void loop() {
     setup_AWS_MQTT();
     connect_AWS();
 
-    //WiFi切断
+    // WiFi切断
     mqttClient.disconnect();
     httpsClient.stop();
     //WiFi.disconnect(true);
+
+    // デバッグ
     Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
     Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
     Restart_token ++;
-    if (Restart_token >= 40){
+    if (Restart_token >= 11){
       Serial.println("ReStart(for_Refresh)..");
       ESP.restart();
     }
   }
+
+  if (now - getDataTimer >= 360000) {
+    Serial.println("ReStart(for_Timeout)..");
+    ESP.restart();
+  }
+
 }
 
 
@@ -260,6 +274,7 @@ void Wireless_Access() {
 
 // AWSセットアップ
 void setup_AWS_MQTT(){
+  delay(1000);
   httpsClient.setCACert(ROOT_CA);
   httpsClient.setCertificate(CERTIFICATE);
   httpsClient.setPrivateKey(PRIVATE_KEY);
@@ -276,8 +291,8 @@ void connect_AWS(){
       ESP.restart();
       //return;
     }
-    Serial.println("Try again in 20 sec");
-    delay(20 * 1000);
+    Serial.println("Try again in 10 sec");
+    delay(10 * 1000);
   }
   Serial.println("Connected.");
   AWS_Upload();
@@ -288,8 +303,8 @@ void AWS_Upload() {
   if(Node00_StatusA[2]!=0.0 && Node00_StatusA[3]!=0.0){
     StaticJsonDocument<192> AWSdata;
     char json_string[192];
-    //AWSdata["Node_id"] = Node_ID;
-    AWSdata["Node_id"] = 1;
+    AWSdata["Node_id"] = Node_IDs;
+    //AWSdata["Node_id"] = 1;
     AWSdata["Seq_no"] = seq;
     AWSdata["Temp"] = Node00_StatusA[0];
     AWSdata["Humi"] = Node00_StatusA[1];
@@ -527,6 +542,7 @@ void train_draw() {
   gfx.drawString("都営三田線", ODPT_X[0], 410);
   gfx.drawString("：" + JY_Sta, ODPT_X[1], 410);
 
+
 }
 
 // アラート表示関数
@@ -599,6 +615,46 @@ void jsn_upload(){
     delay(2000);
   }
 }
+
+// NTP->RTC 時刻取得
+void RTC_time_sync() {
+  configTime(3600L*9, 0, "ntp.nict.jp", "ntp.jst.mfeed.ad.jp");
+
+  struct tm timeInfo;                             // tmオブジェクトをtimeinfoとして生成
+  if (getLocalTime(&timeInfo)) {                  // timeinfoに現在時刻を格納
+    Serial.print("NTP_Server : ntp.nict.jp\n");
+
+    // 時刻の取り出し
+    rtc_time_t RTCtime;                   // 時刻格納用の構造体を生成
+    RTCtime.hour = timeInfo.tm_hour;        // 時を格納
+    RTCtime.min = timeInfo.tm_min;         // 分を格納
+    RTCtime.sec = timeInfo.tm_sec;         // 秒を格納
+    M5.RTC.setTime(&RTCtime);                  // 時刻の書き込み
+
+    rtc_date_t RTCDate;                   // 日付格納用の構造体を生成
+    RTCDate.mon = timeInfo.tm_mon + 1;       // 月（0-11）を格納※1を足す
+    RTCDate.day = timeInfo.tm_mday;           // 日を格納
+    RTCDate.year = timeInfo.tm_year + 1900;    // 年を格納（1900年からの経過年を取得するので1900を足す）
+    M5.RTC.setDate(&RTCDate);                 // 日付を書き込み
+
+    Serial.printf("RTC_Set : %d/%02d/%02d %02d:%02d:%02d\n",RTCDate.year, RTCDate.mon, RTCDate.day,RTCtime.hour, RTCtime.min, RTCtime.sec);
+
+  }
+  else {
+    Serial.print("NTP Sync Error ");              // シリアルモニターに表示
+  }
+}
+
+// RTC->EPD 時刻表示
+void RTC_time_Get(){
+  rtc_date_t DateStruct;
+  rtc_time_t TimeStruct;
+  M5.RTC.getDate(&DateStruct);
+  M5.RTC.getTime(&TimeStruct);
+  Serial.printf("RTC_Time : %d/%02d/%02d %02d:%02d:%02d\n",DateStruct.year, DateStruct.mon, DateStruct.day,TimeStruct.hour, TimeStruct.min, TimeStruct.sec);
+  //gfx.drawString("更新時間:" + %d/%02d/%02d %02d:%02d:%02d\n", ODPT_X[0], 446);
+}
+
 
 // テストパターン
 void EPD_Test() {

@@ -1,0 +1,713 @@
+Now >>> Edge v: 4.2
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231667
+Free heap(Minimum) after TLS 16732
+Now_Recieved >>> Node: 1, seq: 191, t: 21.6, h: 54.4, p: 1017, c: 1500, w: 18.7, v: 5.1
+Now >>> Edge v: 4.3
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231467
+Free heap(Minimum) after TLS 16732
+Now_Recieved >>> Node: 1, seq: 192, t: 21.5, h: 55.0, p: 1017, c: 1475, w: 18.7, v: 5.2
+Now >>> Edge v: 4.3
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231675
+Free heap(Minimum) after TLS 16732
+Now >>> Edge v: 4.2
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231663
+Free heap(Minimum) after TLS 16732
+Now_Recieved >>> Node: 1, seq: 193, t: 21.7, h: 55.0, p: 1017, c: 1450, w: 18.8, v: 5.1
+Now >>> Edge v: 4.2
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231423
+Free heap(Minimum) after TLS 16732
+Now >>> Edge v: 4.3
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231659
+Free heap(Minimum) after TLS 16732
+[Done] Closed the serial port 
+
+[Starting] Opening the serial port - COM5
+Now >>> Edge v: 4.2
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231487
+Free heap(Minimum) after TLS 16732
+[Done] Closed the serial port 
+
+[Starting] Opening the serial port - COM5
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/20 20:59:56
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/20 21:01:52
+Now_Recieved >>> Node: 1, seq: 199, t: 21.9, h: 54.2, p: 1017, c: 1322, w: 19.0, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 21:04:50
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231891
+Free heap(Minimum) after TLS 17208
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:07:50
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231663
+Free heap(Minimum) after TLS 16736
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 21:10:52
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4232127
+Free heap(Minimum) after TLS 16736
+Now_Recieved >>> Node: 1, seq: 201, t: 22.0, h: 54.5, p: 1018, c: 1286, w: 19.0, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:13:53
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231683
+Free heap(Minimum) after TLS 16736
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 21:16:54
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231483
+Free heap(Minimum) after TLS 16736
+Now_Recieved >>> Node: 1, seq: 202, t: 21.9, h: 54.2, p: 1018, c: 1273, w: 19.0, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:19:55
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231155
+Free heap(Minimum) after TLS 16244
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:22:56
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231227
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:25:57
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231835
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 204, t: 21.3, h: 52.0, p: 1018, c: 941, w: 18.2, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:28:59
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231215
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:32:00
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231451
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 205, t: 21.0, h: 53.2, p: 1018, c: 976, w: 18.0, v: 5.3
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:35:01
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4230995
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:38:02
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231699
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:41:03
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231691
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 207, t: 20.5, h: 54.4, p: 1018, c: 1081, w: 17.7, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:44:04
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231451
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:47:05
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231227
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 208, t: 20.4, h: 54.9, p: 1018, c: 1107, w: 17.6, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 21:50:07
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231591
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 209, t: 20.3, h: 55.3, p: 1018, c: 1238, w: 17.6, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:53:08
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4230995
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:56:08
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231235
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 210, t: 20.2, h: 55.5, p: 1018, c: 1187, w: 17.6, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 21:59:09
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231475
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:02:10
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231819
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 211, t: 20.1, h: 55.6, p: 1018, c: 1145, w: 17.5, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:05:11
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231695
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 212, t: 20.1, h: 55.8, p: 1018, c: 1133, w: 17.4, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:08:13
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231599
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 22:11:14
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231683
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 213, t: 20.0, h: 56.0, p: 1018, c: 1129, w: 17.4, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:14:15
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4232075
+Free heap(Minimum) after TLS 15128
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:17:16
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231823
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 214, t: 19.9, h: 56.2, p: 1018, c: 1134, w: 17.3, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:20:17
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231799
+Free heap(Minimum) after TLS 15128
+Now_Recieved >>> Node: 1, seq: 215, t: 19.8, h: 56.3, p: 1018, c: 1122, w: 17.3, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:23:19
+Now_imprinting
+Setup MQTT...
+(ここでDown)
+
+
+RS/11
+
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/20 22:48:06
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:50:59
+Now_imprinting
+Setup MQTT...
+Connected.
+Free heap after TLS 4231447
+Free heap(Minimum) after TLS 16500
+Now_Recieved >>> Node: 1, seq: 221, t: 20.1, h: 55.4, p: 1018, c: 1112, w: 17.5, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:54:02
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231687
+Free heap(Minimum) after TLS 16500
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 22:57:03
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231691
+Free heap(Minimum) after TLS 16500
+Now_Recieved >>> Node: 1, seq: 222, t: 20.1, h: 55.5, p: 1018, c: 1100, w: 17.4, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:00:04
+Now_imprinting
+Setup MQTT...
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+ReStart(for_AWS)..
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/20 23:01:08
+Now_Recieved >>> Node: 1, seq: 223, t: 20.0, h: 55.6, p: 1018, c: 1108, w: 17.3, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:04:09
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231471
+Free heap(Minimum) after TLS 16448
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:07:10
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231395
+Free heap(Minimum) after TLS 16448
+Now_Recieved >>> Node: 1, seq: 224, t: 20.0, h: 55.6, p: 1018, c: 1112, w: 17.3, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:10:11
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231723
+Free heap(Minimum) after TLS 16448
+Now_Recieved >>> Node: 1, seq: 225, t: 19.9, h: 55.6, p: 1018, c: 1109, w: 17.3, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:13:12
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231511
+Free heap(Minimum) after TLS 16448
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:16:13
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231863
+Free heap(Minimum) after TLS 16448
+Now_Recieved >>> Node: 1, seq: 226, t: 19.7, h: 56.0, p: 1018, c: 1090, w: 17.1, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:19:15
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231735
+Free heap(Minimum) after TLS 16448
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:22:16
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231723
+Free heap(Minimum) after TLS 16448
+Now_Recieved >>> Node: 1, seq: 227, t: 19.6, h: 56.3, p: 1018, c: 1095, w: 17.1, v: 5.2
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:25:17
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4229179
+Free heap(Minimum) after TLS 16356
+Now_Recieved >>> Node: 1, seq: 228, t: 19.4, h: 56.6, p: 1018, c: 1146, w: 16.9, v: 5.0
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:28:18
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4230839
+Free heap(Minimum) after TLS 16140
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:31:19
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231531
+Free heap(Minimum) after TLS 16140
+Now_Recieved >>> Node: 1, seq: 229, t: 19.2, h: 56.8, p: 1018, c: 1108, w: 16.7, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:34:21
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231319
+Free heap(Minimum) after TLS 16140
+ReStart(for_Refresh)..
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/20 23:34:53
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:37:52
+Now_imprinting
+Setup MQTT...
+Connected.
+Free heap after TLS 4231683
+Free heap(Minimum) after TLS 16724
+Now_Recieved >>> Node: 1, seq: 230, t: 19.1, h: 57.0, p: 1018, c: 1061, w: 16.6, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:40:52
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231911
+Free heap(Minimum) after TLS 16724
+Now_Recieved >>> Node: 1, seq: 231, t: 19.0, h: 57.2, p: 1018, c: 1026, w: 16.5, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:43:53
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231455
+Free heap(Minimum) after TLS 16508
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:46:54
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231507
+Free heap(Minimum) after TLS 16508
+Now_Recieved >>> Node: 1, seq: 232, t: 18.9, h: 57.2, p: 1017, c: 988, w: 16.5, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/20 23:49:55
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231499
+Free heap(Minimum) after TLS 16508
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:52:57
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231715
+Free heap(Minimum) after TLS 16508
+Now_Recieved >>> Node: 1, seq: 233, t: 18.8, h: 57.3, p: 1018, c: 995, w: 16.4, v: 5.1
+Now >>> Edge v: 4.3
+Error on HTTP request
+Error on HTTP request
+Error on HTTP request
+RTC_Time : 2021/11/20 23:55:54
+Now_imprinting
+Setup MQTT...
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+ReStart(for_AWS)..
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/20 23:56:53
+Now_Recieved >>> Node: 1, seq: 234, t: 18.7, h: 57.5, p: 1018, c: 976, w: 16.3, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/20 23:59:52
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231587
+Free heap(Minimum) after TLS 15744
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:02:54
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4232319
+Free heap(Minimum) after TLS 15744
+Now_Recieved >>> Node: 1, seq: 235, t: 18.6, h: 57.6, p: 1018, c: 966, w: 16.3, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:05:55
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4232087
+Free heap(Minimum) after TLS 15744
+Now_Recieved >>> Node: 1, seq: 236, t: 18.5, h: 57.8, p: 1017, c: 944, w: 16.2, v: 5.2
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:08:56
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231535
+Free heap(Minimum) after TLS 15744
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:11:58
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231311
+Free heap(Minimum) after TLS 15744
+Now_Recieved >>> Node: 1, seq: 237, t: 18.5, h: 57.8, p: 1017, c: 941, w: 16.2, v: 5.1
+Now >>> Edge v: 4.3
+Error on HTTP request
+RTC_Time : 2021/11/21 00:14:58
+Now_imprinting
+Setup MQTT...
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+ReStart(for_AWS)..
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/21 00:15:49
+Now_Recieved >>> Node: 1, seq: 238, t: 18.4, h: 58.0, p: 1017, c: 938, w: 16.1, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:18:47
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4232075
+Free heap(Minimum) after TLS 17164
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/21 00:21:48
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4232087
+Free heap(Minimum) after TLS 17164
+Now_Recieved >>> Node: 1, seq: 239, t: 18.3, h: 58.2, p: 1017, c: 918, w: 16.0, v: 5.2
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/21 00:24:50
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231979
+Free heap(Minimum) after TLS 17036
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/21 00:27:51
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231767
+Free heap(Minimum) after TLS 16824
+Now_Recieved >>> Node: 1, seq: 240, t: 18.2, h: 58.2, p: 1018, c: 915, w: 15.9, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/21 00:30:52
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231995
+Free heap(Minimum) after TLS 16824
+Now_Recieved >>> Node: 1, seq: 241, t: 18.1, h: 58.3, p: 1018, c: 916, w: 15.9, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:33:53
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231547
+Free heap(Minimum) after TLS 16472
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:36:56
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231779
+Free heap(Minimum) after TLS 16472
+Now_Recieved >>> Node: 1, seq: 242, t: 18.1, h: 58.5, p: 1017, c: 903, w: 15.8, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:39:57
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231539
+Free heap(Minimum) after TLS 16472
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:42:58
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4230943
+Free heap(Minimum) after TLS 16472
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:46:00
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231195
+Free heap(Minimum) after TLS 16472
+Now_Recieved >>> Node: 1, seq: 244, t: 18.0, h: 58.6, p: 1018, c: 881, w: 15.8, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:49:02
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231419
+Free heap(Minimum) after TLS 16472
+ReStart(for_Refresh)..
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/21 00:49:37
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/21 00:52:33
+Now_imprinting
+Setup MQTT...
+Connected.
+Free heap after TLS 4231487
+Free heap(Minimum) after TLS 16852
+Now_Recieved >>> Node: 1, seq: 245, t: 18.0, h: 58.7, p: 1018, c: 899, w: 15.9, v: 5.1
+Now >>> Edge v: 4.3
+RTC_Time : 2021/11/21 00:55:36
+Now_imprinting
+Setup MQTT...
+Connected.
+AWS_imprinting
+Free heap after TLS 4231255
+Free heap(Minimum) after TLS 16368
+Now_Recieved >>> Node: 1, seq: 246, t: 18.1, h: 58.8, p: 1018, c: 920, w: 15.9, v: 5.1
+Now >>> Edge v: 4.2
+RTC_Time : 2021/11/21 00:58:37
+Now_imprinting
+Setup MQTT...
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+Try again in 10 sec
+Failed, state=-2
+ReStart(for_AWS)..
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/11/21 00:59:37
