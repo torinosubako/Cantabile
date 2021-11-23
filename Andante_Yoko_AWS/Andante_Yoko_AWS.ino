@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS
-   CodeName:Preparation_stage_AX10
-   Build:2021/11/20
+   CodeName:Preparation_stage_AX14
+   Build:2021/11/24
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -21,7 +21,7 @@
 WiFiClient client;
 Ambient ambient;
 
-/// Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
+// Wi-Fi設定用基盤情報(2.4GHz帯域のみ)
 const char *ssid = //Your Network SSID//;
 const char *password = //Your Network Password//;
 
@@ -123,8 +123,6 @@ void setup() {
   pBLEScan = BLEDevice::getScan();
   pBLEScan->setActiveScan(false);
 
-
-  
   // LovyanGFX_描画テスト
   train_rcv_joint();
   gfx.setFont(&lgfxJapanGothicP_32);
@@ -140,7 +138,6 @@ void setup() {
   jsn_draw();
   gfx.endWrite();//描画待機解除・描画実施
   
-  
   //WiFi.disconnect(true);
   ambient.begin(channelId, writeKey, &client);
 }
@@ -150,10 +147,10 @@ void loop() {
   //BLEデータ受信
   BLE_RCV();
   M5.update();
-  //180秒毎に定期実行
+  //300秒毎に定期実行
   auto now = millis();
   //M5.update();
-  if (now - getDataTimer >= 180000) {
+  if (now - getDataTimer >= 300000) {
     getDataTimer = now;
     Battery_sta();
     // 無線接続開始
@@ -173,7 +170,7 @@ void loop() {
     jsn_upload();
     RTC_time_Get();
     gfx.endWrite();//描画待機解除・描画実施
-    Serial.printf("Now_imprinting\r\n");
+    // Serial.printf("Now_imprinting\r\n");
     
 
     // AWS関係
@@ -186,19 +183,23 @@ void loop() {
     //WiFi.disconnect(true);
 
     // デバッグ
-    Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
-    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    //Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
+    //Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    
+    // リフレッシャ
     Restart_token ++;
-    if (Restart_token >= 11){
+    if (Restart_token >= 6){
       Serial.println("ReStart(for_Refresh)..");
       ESP.restart();
     }
   }
 
+  /*
   if (now - getDataTimer >= 360000) {
     Serial.println("ReStart(for_Timeout)..");
     ESP.restart();
   }
+  */
 
 }
 
@@ -211,7 +212,6 @@ void BLE_RCV() {
   float new_temp, new_humid, WBGT, vbat;
   int  new_press, new_co2;
   bool found = false;
-  //uint16_t Node_ID;
   BLEScanResults foundDevices = pBLEScan->start(3);
   int count = foundDevices.getCount();
   for (int i = 0; i < count; i++) {
@@ -246,7 +246,8 @@ void BLE_RCV() {
         Node00_StatusA[2] = vbat;
         WBGT = 0.725 * Node00_StatusA[0] + 0.0368 * Node00_StatusA[1] + 0.00364 * Node00_StatusA[0] * Node00_StatusA[1] - 3.246;
         Node00_StatusA[3] = WBGT;
-        Serial.printf("Now_Recieved >>> Node: %.1d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
+        // デバッグ用
+        // Serial.printf("Now_Recieved >>> Node: %d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
       }
     }
   }
@@ -269,7 +270,8 @@ void Wireless_Access() {
       ESP.restart();
     }
   }
-  Serial.println(WiFi.localIP());
+  // デバッグ用
+  // Serial.println(WiFi.localIP());
 }
 
 // AWSセットアップ
@@ -279,22 +281,24 @@ void setup_AWS_MQTT(){
   httpsClient.setCertificate(CERTIFICATE);
   httpsClient.setPrivateKey(PRIVATE_KEY);
   mqttClient.setServer(AWS_ENDPOINT, AWS_PORT);
-  Serial.println("Setup MQTT...");
+  // デバッグ用
+  // Serial.println("Setup MQTT...");
 }
 
+// AWS接続制御
 void connect_AWS(){
   int retryCount = 0;
   while (!mqttClient.connect(CLIENT_ID)){
     Serial.println("Failed, state=" + String(mqttClient.state()));
-    if (retryCount++ > 3){
+    if (retryCount++ > 2){
       Serial.println("ReStart(for_AWS)..");
       ESP.restart();
-      //return;
     }
     Serial.println("Try again in 10 sec");
     delay(10 * 1000);
   }
-  Serial.println("Connected.");
+  // デバッグ用
+  // Serial.println("Connected...");
   AWS_Upload();
 }
 
@@ -316,7 +320,8 @@ void AWS_Upload() {
     serializeJson(AWSdata, json_string);
     mqttClient.publish(PUB_TOPIC, json_string);
     delay(10 * 1000);
-    Serial.printf("AWS_imprinting\r\n");
+    // デバッグ用
+    // Serial.printf("AWS_imprinting\r\n");
   }
 }
 
@@ -578,7 +583,8 @@ void alert_draw() {
 // バッテリー電圧取得
 void Battery_sta() {
    Battery_voltage = ((float)M5.getBatteryVoltage()) / 1000.0;
-   Serial.printf("Now >>> Edge v: %.1f\r\n", Battery_voltage);
+   // デバッグ用
+   // Serial.printf("Now >>> Edge v: %.1f\r\n", Battery_voltage);
 }
 
 // 統合センサネットワーク・情報表示関数
