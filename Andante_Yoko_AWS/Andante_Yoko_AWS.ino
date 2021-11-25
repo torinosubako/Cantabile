@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS
-   CodeName:Preparation_stage_AX14
-   Build:2021/11/24
+   CodeName:Preparation_stage_AX15
+   Build:2021/11/25
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -193,7 +193,6 @@ void loop() {
       ESP.restart();
     }
   }
-
   /*
   if (now - getDataTimer >= 360000) {
     Serial.println("ReStart(for_Timeout)..");
@@ -247,7 +246,7 @@ void BLE_RCV() {
         WBGT = 0.725 * Node00_StatusA[0] + 0.0368 * Node00_StatusA[1] + 0.00364 * Node00_StatusA[0] * Node00_StatusA[1] - 3.246;
         Node00_StatusA[3] = WBGT;
         // デバッグ用
-        // Serial.printf("Now_Recieved >>> Node: %d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
+        Serial.printf("Now_Recieved >>> Node: %d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
       }
     }
   }
@@ -264,7 +263,7 @@ void Wireless_Access() {
   while (WiFi.status() != WL_CONNECTED) {
     wifi_cont ++;
     delay(10 * 1000);
-    Serial.println("Connecting to WiFi..");
+    // Serial.println("Connecting to WiFi..");
     if (wifi_cont >= 5){
       Serial.println("ReStart(for_Wifi)..");
       ESP.restart();
@@ -318,7 +317,7 @@ void AWS_Upload() {
     AWSdata["Node_Volt"] = Node00_StatusA[2];
     AWSdata["Core_Volt"] = Battery_voltage;
     serializeJson(AWSdata, json_string);
-    mqttClient.publish(PUB_TOPIC, json_string);
+    mqttClient.publish(PUB_TOPIC, json_string, true);
     delay(10 * 1000);
     // デバッグ用
     // Serial.printf("AWS_imprinting\r\n");
@@ -647,7 +646,7 @@ void RTC_time_sync() {
 
   }
   else {
-    Serial.print("NTP Sync Error ");              // シリアルモニターに表示
+    Serial.print("NTP Sync Error\n");              // シリアルモニターに表示
   }
 }
 
@@ -658,7 +657,7 @@ void RTC_time_Get(){
   M5.RTC.getDate(&DateStruct);
   M5.RTC.getTime(&TimeStruct);
   Serial.printf("RTC_Time : %d/%02d/%02d %02d:%02d:%02d\n",DateStruct.year, DateStruct.mon, DateStruct.day,TimeStruct.hour, TimeStruct.min, TimeStruct.sec);
-  //gfx.drawString("更新時間:" + %d/%02d/%02d %02d:%02d:%02d\n", ODPT_X[0], 446);
+  // gfx.drawString("更新時間:" + %d/%02d/%02d %02d:%02d:%02d\n", ODPT_X[0], 446);
 }
 
 
