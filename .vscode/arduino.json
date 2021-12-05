@@ -2,5 +2,5 @@
     "configuration": "PSRAM=enabled,PartitionScheme=default,CPUFreq=240,UploadSpeed=921600,DebugLevel=none",
     "board": "m5stack:esp32:m5stack-paper",
     "port": "COM5",
-    "sketch": "Andante_Yoko_AWS\\Andante_Yoko_AWS.ino"
+    "sketch": "Andante_Yoko_AWS_Kai\\Andante_Yoko_AWS_Kai.ino"
 }

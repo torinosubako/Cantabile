@@ -1,7 +1,7 @@
 
 /*
-   Project:Andante_Yoko_AWS
-   CodeName:Preparation_stage_AX16
+   Project:Andante_Yoko_AWS_Kai
+   CodeName:Preparation_stage_AX16_s
    Build:2021/12/05
    Author:torinosubako
    Status:Unverified
@@ -53,7 +53,6 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 -----END RSA PRIVATE KEY-----)KEY";
 
 
-
 // MQTT設定
 #define QOS 1
 WiFiClientSecure httpsClient;
@@ -64,7 +63,7 @@ PubSubClient mqttClient(httpsClient);
 #include <LovyanGFX.hpp>
 
 // デバイス制御
-uint8_t seq;                      // RTC Memory シーケンス番号
+uint8_t seq;                      // シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
 uint32_t cpu_clock = 240;          // CPUクロック指定
 M5EPD_Canvas canvas(&M5.EPD);
@@ -113,12 +112,18 @@ void setup() {
   Wireless_Access();
   RTC_time_sync();
 
+  setup_AWS_MQTT();
+  connect_AWS();
+  AWS_Download();
+  mqttClient.loop();
+  mqttClient.disconnect();
+
   // LovyanGFX_EPD
   gfx.init();
   gfx.setRotation(1);
   gfx.setEpdMode(epd_mode_t::epd_text);
 
-  // Wi-Fi・BLEセットアップ
+  // BLEセットアップ
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan();
   pBLEScan->setActiveScan(false);
@@ -150,61 +155,33 @@ void loop() {
   //300秒毎に定期実行
   auto now = millis();
   //M5.update();
-  if (now - getDataTimer >= 300000) {
-    getDataTimer = now;
+  if (now >= 300000) {
     Battery_sta();
-    // 無線接続開始
+    // 無線接続関係
     Wireless_Access_Check();
     pBLEScan->clearResults();
     pBLEScan->stop();
 
-    // ODPT関連関数
-    train_rcv_joint();
-    //描画関連
-    gfx.startWrite();//描画待機モード
-    gfx.fillScreen(TFT_BLACK);
-    gfx.fillScreen(TFT_WHITE);
-    gfx.fillScreen(TFT_BLACK);
-    gfx.fillScreen(TFT_WHITE);
-    train_draw();
-    alert_draw();
-    jsn_draw();
+    // 通信制御関数
     jsn_upload();
     RTC_time_Get();
-    gfx.endWrite();//描画待機解除・描画実施
-    // Serial.printf("Now_imprinting\r\n");
     
-
     // AWS関係
-    setup_AWS_MQTT();
+    //setup_AWS_MQTT();
     connect_AWS();
+    AWS_Upload();
 
     // WiFi切断
     mqttClient.disconnect();
-    httpsClient.stop();
-    //WiFi.disconnect(true);
 
     // デバッグ
-    //Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
-    //Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
+    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
     
     // リフレッシャ
-    Restart_token ++;
-    if (Restart_token >= 6){
-      Serial.println("ReStart(for_Refresh)..");
-      ESP.restart();
-    }
-
-    // BLE再起動
-    pBLEScan->setActiveScan(false);
-  }
-  /*
-  if (now - getDataTimer >= 360000) {
-    Serial.println("ReStart(for_Timeout)..");
+    Serial.println("ReStart(for_Refresh)..");
     ESP.restart();
   }
-  */
-
 }
 
 
@@ -300,6 +277,7 @@ void setup_AWS_MQTT(){
   httpsClient.setCertificate(CERTIFICATE);
   httpsClient.setPrivateKey(PRIVATE_KEY);
   mqttClient.setServer(AWS_ENDPOINT, AWS_PORT);
+  mqttClient.setCallback(callback);
   // デバッグ用
   // Serial.println("Setup MQTT...");
 }
@@ -313,12 +291,11 @@ void connect_AWS(){
       Serial.println("ReStart(for_AWS)..");
       ESP.restart();
     }
-    Serial.println("Try again in 10 sec");
-    delay(10 * 1000);
+    Serial.println("Try again in 5 sec");
+    delay(5 * 1000);
   }
   // デバッグ用
-  // Serial.println("Connected...");
-  AWS_Upload();
+  Serial.println("Connected...");
 }
 
 // AWS-MQTTアップロード(Message生成含む)
@@ -343,6 +320,26 @@ void AWS_Upload() {
     // Serial.printf("AWS_imprinting\r\n");
   }
 }
+
+void AWS_Download() {
+  if(mmqttClient.subscribe(SUB_TOPIC, QOS)){
+    Serial.println("Subscribed.");
+    Serial.println("Success!!");
+  }
+}
+
+void callback (char* topic, byte* payload, unsigned int length) {
+  Serial.println("Received. topic=");
+  Serial.println(topic);
+  Serial.printf("callbackd.");
+  char subMessage[length];
+  for (int i = 0; i < length; i++) {
+    subMessage[i] = (char)payload[i];
+  }
+  Serial.println(subMessage);
+  //JSONVar obj = JSON.parse(subMessage);
+}
+
 
 // ODPTデータセット実行関数
 void train_rcv_joint() {
