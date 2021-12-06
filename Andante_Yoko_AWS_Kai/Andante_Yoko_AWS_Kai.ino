@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s
-   Build:2021/12/05
+   CodeName:Preparation_stage_AX16_s1
+   Build:2021/12/06
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -18,6 +18,8 @@
 #include <ArduinoJson.h>
 #include <Preferences.h>
 #include <time.h>
+#include <Preferences.h>
+Preferences preferences;
 WiFiClient client;
 Ambient ambient;
 
@@ -52,9 +54,8 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 
 -----END RSA PRIVATE KEY-----)KEY";
 
-
 // MQTT設定
-#define QOS 1
+#define QOS 0
 WiFiClientSecure httpsClient;
 PubSubClient mqttClient(httpsClient);
 
@@ -62,25 +63,28 @@ PubSubClient mqttClient(httpsClient);
 #define LGFX_M5PAPER
 #include <LovyanGFX.hpp>
 
+// 内部処理用データ
+uint8_t seq;                      // NVS連接無
+float common_temp;
+float common_humid;
+float common_WBGT;
+float common_vbat = 0;            // NVS連接無
+int common_press;
+int common_co2;
+uint16_t Node_ID;                 // NVS連接無
+int Node_IDs;                     // NVS連接無
+
 // デバイス制御
-uint8_t seq;                      // シーケンス番号
 #define MyManufacturerId 0xffff   // test manufacturer ID
 uint32_t cpu_clock = 240;          // CPUクロック指定
 M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
 LGFX gfx;
 LGFX_Sprite sp(&gfx);
-uint16_t Node_ID;
-int Node_IDs;
-int Restart_token = 0;
-
 
 // タイマー用データ
 unsigned long getDataTimer = 0;
 float Battery_voltage;
-
-float Node00_StatusA[4];  // 気温・湿度・電圧・WBGT
-int Node00_StatusB[2];    // 二酸化炭素濃度・気圧
 
 String JY_Sta = "テストデータ";
 // ODPT連接-JR
@@ -107,16 +111,18 @@ void setup() {
   M5.begin();
   M5.RTC.begin();
   Serial.begin(115200);
+  preferences.begin("hold_data", false);
   M5.BatteryADCBegin();
   bool setCpuFrequencyMhz(cpu_clock);
   Wireless_Access();
   RTC_time_sync();
 
-  setup_AWS_MQTT();
-  connect_AWS();
-  AWS_Download();
-  mqttClient.loop();
-  mqttClient.disconnect();
+  // NVS内のデータからcommonデータ群へキャスト
+  common_temp = preferences.getFloat("hold_temp", 0);
+  common_humid = preferences.getFloat("hold_humid", 0);
+  common_WBGT = preferences.getFloat("hold_WBGT", 0);
+  common_press = preferences.getShort("hold_press", 0);
+  common_co2 = preferences.getShort("hold_co2", 0);
 
   // LovyanGFX_EPD
   gfx.init();
@@ -133,11 +139,8 @@ void setup() {
   gfx.setFont(&lgfxJapanGothicP_32);
   gfx.fillScreen(TFT_BLACK);
   gfx.fillScreen(TFT_WHITE);
-  gfx.fillScreen(TFT_BLACK);
-  gfx.fillScreen(TFT_WHITE);
   gfx.setTextColor(TFT_BLACK, TFT_WHITE);
   gfx.startWrite();//描画待機モード
-  EPD_Test();
   train_draw();
   alert_draw();
   jsn_draw();
@@ -152,10 +155,11 @@ void loop() {
   //BLEデータ受信
   BLE_RCV();
   M5.update();
-  //300秒毎に定期実行
+  //280秒毎に定期実行
   auto now = millis();
   //M5.update();
-  if (now >= 300000) {
+  if (now >= 280000) {
+    Serial.println(now);
     Battery_sta();
     // 無線接続関係
     Wireless_Access_Check();
@@ -167,7 +171,7 @@ void loop() {
     RTC_time_Get();
     
     // AWS関係
-    //setup_AWS_MQTT();
+    setup_AWS_MQTT();
     connect_AWS();
     AWS_Upload();
 
@@ -175,8 +179,8 @@ void loop() {
     mqttClient.disconnect();
 
     // デバッグ
-    Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
-    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    //Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
+    //Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
     
     // リフレッシャ
     Serial.println("ReStart(for_Refresh)..");
@@ -212,21 +216,21 @@ void BLE_RCV() {
 
         // データチェック領域
         // SCD41とDPS310に最適化。それ以外のセンサーでは調整する事。
-        if (Node00_StatusA[0] != new_temp && new_temp >= -40 && new_temp <= 120) {
-          Node00_StatusA[0] = new_temp;
+        if (common_temp != new_temp && new_temp >= -40 && new_temp <= 120) {
+          common_temp = new_temp;
         }
-        if (Node00_StatusA[1] != new_humid && new_humid >= 0 && new_humid <= 100) {
-          Node00_StatusA[1] = new_humid;
+        if (common_humid != new_humid && new_humid >= 0 && new_humid <= 100) {
+          common_humid = new_humid;
         }
-        if (Node00_StatusB[0] != new_co2 && new_co2 > 300 && new_co2 <= 4500) {
-          Node00_StatusB[0] = new_co2;
+        if (common_co2 != new_co2 && new_co2 > 300 && new_co2 <= 4500) {
+          common_co2 = new_co2;
         }
-        if (Node00_StatusB[1] != new_press && new_press >= 300 && new_press <= 1100) {
-          Node00_StatusB[1] = new_press;
+        if (common_press != new_press && new_press >= 300 && new_press <= 1100) {
+          common_press = new_press;
         }
-        Node00_StatusA[2] = vbat;
-        WBGT = 0.725 * Node00_StatusA[0] + 0.0368 * Node00_StatusA[1] + 0.00364 * Node00_StatusA[0] * Node00_StatusA[1] - 3.246;
-        Node00_StatusA[3] = WBGT;
+        common_vbat = vbat;
+        WBGT = 0.725 * common_temp + 0.0368 * common_humid + 0.00364 * common_temp * common_humid - 3.246;
+        common_WBGT = WBGT;
         // デバッグ用
         Serial.printf("Now_Recieved >>> Node: %d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
       }
@@ -245,14 +249,14 @@ void Wireless_Access() {
   while (WiFi.status() != WL_CONNECTED) {
     wifi_cont ++;
     delay(10 * 1000);
-    // Serial.println("Connecting to WiFi..");
+    Serial.println("Connecting to WiFi..");
     if (wifi_cont >= 5){
       Serial.println("ReStart(for_Wifi)..");
       ESP.restart();
     }
   }
   // デバッグ用
-  // Serial.println(WiFi.localIP());
+  Serial.println(WiFi.localIP());
 }
 
 // 接続確認関数
@@ -262,7 +266,7 @@ void Wireless_Access_Check() {
     wifi_cont ++;
     WiFi.begin(ssid, password);
     delay(10 * 1000);
-    // Serial.println("Connecting to WiFi..");
+    Serial.println("Connecting to WiFi(AC)..");
     if (wifi_cont >= 5){
       Serial.println("ReStart(for_Wifi(AC))..");
       ESP.restart();
@@ -277,9 +281,9 @@ void setup_AWS_MQTT(){
   httpsClient.setCertificate(CERTIFICATE);
   httpsClient.setPrivateKey(PRIVATE_KEY);
   mqttClient.setServer(AWS_ENDPOINT, AWS_PORT);
-  mqttClient.setCallback(callback);
+  //mqttClient.setCallback(callback);
   // デバッグ用
-  // Serial.println("Setup MQTT...");
+  Serial.println("Setup MQTT...");
 }
 
 // AWS接続制御
@@ -300,27 +304,28 @@ void connect_AWS(){
 
 // AWS-MQTTアップロード(Message生成含む)
 void AWS_Upload() {
-  if(Node00_StatusA[2]!=0.0 && Node00_StatusA[3]!=0.0){
+  if(common_vbat!=0.0 && common_WBGT!=0.0){
     StaticJsonDocument<192> AWSdata;
     char json_string[192];
     AWSdata["Node_id"] = Node_IDs;
     //AWSdata["Node_id"] = 1;
     AWSdata["Seq_no"] = seq;
-    AWSdata["Temp"] = Node00_StatusA[0];
-    AWSdata["Humi"] = Node00_StatusA[1];
-    AWSdata["WBGT"] = Node00_StatusA[3];
-    AWSdata["CO2"] = Node00_StatusB[0];
-    AWSdata["Press"] = Node00_StatusB[1];
-    AWSdata["Node_Volt"] = Node00_StatusA[2];
+    AWSdata["Temp"] = common_temp;
+    AWSdata["Humi"] = common_humid;
+    AWSdata["WBGT"] = common_WBGT;
+    AWSdata["CO2"] = common_co2;
+    AWSdata["Press"] = common_press;
+    AWSdata["Node_Volt"] = common_vbat;
     AWSdata["Core_Volt"] = Battery_voltage;
     serializeJson(AWSdata, json_string);
     mqttClient.publish(PUB_TOPIC, json_string);
     delay(10 * 1000);
     // デバッグ用
-    // Serial.printf("AWS_imprinting\r\n");
+    Serial.printf("AWS_imprinting\r\n");
   }
 }
 
+/*
 void AWS_Download() {
   if(mmqttClient.subscribe(SUB_TOPIC, QOS)){
     Serial.println("Subscribed.");
@@ -339,7 +344,7 @@ void callback (char* topic, byte* payload, unsigned int length) {
   Serial.println(subMessage);
   //JSONVar obj = JSON.parse(subMessage);
 }
-
+*/
 
 // ODPTデータセット実行関数
 void train_rcv_joint() {
@@ -569,26 +574,26 @@ void train_draw() {
 // アラート表示関数
 void alert_draw() {
   gfx.setFont(&lgfxJapanGothicP_32);
-  if (Node00_StatusB[0] >= 1050) {
+  if (common_co2 >= 1050) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(490, 390, 225, 80, 10, gfx.color888(201, 17, 23));
     gfx.drawString("CO2濃度:警報", 500, 410);
-  } else if (Node00_StatusB[0] >= 850) {
+  } else if (common_co2 >= 850) {
     gfx.setTextColor(TFT_BLACK);
     gfx.fillRoundRect(490, 390, 225, 80, 10, gfx.color888(250, 249, 200));
     gfx.drawRoundRect(490, 390, 225, 80, 10, gfx.color888(105, 105, 105));
     gfx.drawString("CO2濃度:注意", 500, 410);
   }
 
-  if (Node00_StatusA[3] >= 28.0) {
+  if (common_WBGT >= 28.0) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(201, 17, 23));
     gfx.drawString("熱中症:危険", 755, 410);
-  } else if (Node00_StatusA[3] >= 25.0) {
+  } else if (common_WBGT >= 25.0) {
     gfx.setTextColor(TFT_WHITE);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(255, 150, 0));
     gfx.drawString("熱中症:警戒", 755, 410);
-  } else if (Node00_StatusA[3] >= 21.0) {
+  } else if (common_WBGT >= 21.0) {
     gfx.setTextColor(TFT_BLACK);
     gfx.fillRoundRect(725, 390, 225, 80, 10, gfx.color888(250, 249, 200));
     gfx.drawRoundRect(725, 390, 225, 80, 10, gfx.color888(105, 105, 105));
@@ -609,32 +614,38 @@ void jsn_draw() {
   // 気温
   gfx.drawString("Temp", 10, JSN_y[0], 4);
   gfx.drawString("[deg C]", 10, JSN_y[1], 4);
-  gfx.drawString(String(Node00_StatusA[0]), 100, JSN_y[2], 7);
+  gfx.drawString(String(common_temp), 100, JSN_y[2], 7);
   // 湿度
   gfx.drawString("Hum", 255, JSN_y[0], 4);
   gfx.drawString("[%]", 255, JSN_y[1], 4);
-  gfx.drawString(String(Node00_StatusA[1]), 315, JSN_y[2], 7);
+  gfx.drawString(String(common_humid), 315, JSN_y[2], 7);
   // CO2
   gfx.drawString("CO2", 495, JSN_y[0], 4);
   gfx.drawString("[ppm]", 495, JSN_y[1], 4);
-  gfx.drawString(String(Node00_StatusB[0]), 575, JSN_y[2], 7);
+  gfx.drawString(String(common_co2), 575, JSN_y[2], 7);
   // 気圧
   gfx.drawString("Prs", 730, JSN_y[0], 4);
   gfx.drawString("[hPa]", 730, JSN_y[1], 4);
-  gfx.drawString(String(Node00_StatusB[1]), 805, JSN_y[2], 7);
+  gfx.drawString(String(common_press), 805, JSN_y[2], 7);
 }
 
 void jsn_upload(){
-  if(Node00_StatusA[2]!=0.0 && Node00_StatusA[3]!=0.0){
-    ambient.set(1, Node00_StatusA[0]);
-    ambient.set(2, Node00_StatusA[1]);
-    ambient.set(3, Node00_StatusB[0]);
-    ambient.set(4, Node00_StatusB[1]);
-    ambient.set(5, Node00_StatusA[2]);
-    ambient.set(6, Node00_StatusA[3]);
+  if(common_vbat!=0.0 && common_WBGT!=0.0){
+    ambient.set(1, common_temp);
+    ambient.set(2, common_humid);
+    ambient.set(3, common_co2);
+    ambient.set(4, common_press);
+    ambient.set(5, common_vbat);
+    ambient.set(6, common_WBGT);
     ambient.set(7, Battery_voltage);
     ambient.send();
     delay(2000);
+    preferences.putFloat("hold_temp", common_temp);
+    preferences.putFloat("hold_humid", common_humid);
+    preferences.putShort("hold_co2", common_co2);
+    preferences.putShort("hold_press", common_press);
+    preferences.putFloat("hold_WBGT", common_WBGT);
+    preferences.end();
   }
 }
 
@@ -676,7 +687,6 @@ void RTC_time_Get(){
   Serial.printf("RTC_Time : %d/%02d/%02d %02d:%02d:%02d\n",DateStruct.year, DateStruct.mon, DateStruct.day,TimeStruct.hour, TimeStruct.min, TimeStruct.sec);
   // gfx.drawString("更新時間:" + %d/%02d/%02d %02d:%02d:%02d\n", ODPT_X[0], 446);
 }
-
 
 // テストパターン
 void EPD_Test() {
