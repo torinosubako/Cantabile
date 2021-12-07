@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s13
-   Build:2021/12/07
+   CodeName:Preparation_stage_AX16_s15
+   Build:2021/12/08
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -156,6 +156,7 @@ void setup() {
   common_press = preferences.getShort("hold_press", 0);
   common_co2 = preferences.getShort("hold_co2", 0);
   Resend_Tag = preferences.getShort("resend_tags", 0);
+  preferences.remove("resend_tags");
   Serial.printf("NVS_Readed!\r\n"); // デバッグ用
 
   // LovyanGFX_EPDセットアップ
@@ -185,10 +186,10 @@ void setup() {
   gfx.endWrite(); // 描画待機解除・描画実施
   Serial.printf("EPD_imprinting!\r\n"); // デバッグ用
 
-  // AWSデータ再送モード
-  if(Resend_Tag == 1){
-    main_communicator();
+  // AWSデータ再送モード(開発中)
+  if(Resend_Tag == 1 && common_WBGT != 0.0){
     Serial.printf("AWS_Resend!\r\n"); // デバッグ用
+    //main_communicator();
   }
   
   // NVS領域解放
@@ -269,6 +270,7 @@ void BLE_RCV() {
         // デバッグ用
         Serial.printf("Now_Recieved >>> Node: %d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
         // 送信処理
+        Wireless_Access_Check();
         main_communicator();
       }
     }
@@ -278,8 +280,6 @@ void BLE_RCV() {
 // メインコミュニケータ
 void main_communicator() {
   Battery_sta();
-  // 無線接続関係
-  Wireless_Access_Check();
 
   // 通信制御関数
   jsn_upload();
