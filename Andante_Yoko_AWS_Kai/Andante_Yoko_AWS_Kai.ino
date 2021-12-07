@@ -1,7 +1,7 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s6
+   CodeName:Preparation_stage_AX16_s8
    Build:2021/12/07
    Author:torinosubako
    Status:Unverified
@@ -69,12 +69,13 @@ uint8_t seq;                      // NVS連接無
 float common_temp;
 float common_humid;
 float common_WBGT;
-float common_vbat = 0;            // NVS連接無
+float common_vbat = 0.0;            // NVS連接無
 int common_press;
 int common_co2;
 uint16_t Node_ID;                 // NVS連接無
 int Node_IDs;                     // NVS連接無
 float Battery_voltage;            // NVS連接無
+int receive_counter;              // NVS連接無
 
 // デバイス制御
 #define MyManufacturerId 0xffff   // test manufacturer ID
@@ -86,8 +87,9 @@ LGFX_Sprite sp(&gfx);
 
 // タイマー用データ
 unsigned long getDataTimer = 0;
-hw_timer_t * timer = NULL;
-void IRAM_ATTR onTimer() {
+hw_timer_t * timer1 = NULL;
+//hw_timer_t * timer2 = NULL;
+void IRAM_ATTR onTimer1() {
   preferences.putFloat("hold_temp", common_temp);
   preferences.putFloat("hold_humid", common_humid);
   preferences.putShort("hold_co2", common_co2);
@@ -128,10 +130,9 @@ void setup() {
   Serial.begin(115200);
 
   // タイマー関係制御
-  //timer = timerBegin(0, 80, true);
-  //timerAttachInterrupt(timer, &onTimer, true);
-  //timerAlarmWrite(timer, 295000000, true);
-  //timerAlarmWrite(timer, 60000000, true);
+  //timer1 = timerBegin(0, 80, true);
+  //timerAttachInterrupt(timer1, &onTimer1, true);
+  //timerAlarmWrite(timer1, 60000000, false);
   //timerAlarmEnable(timer);
   
   preferences.begin("hold_data", false);
@@ -146,25 +147,30 @@ void setup() {
   common_WBGT = preferences.getFloat("hold_WBGT", 0);
   common_press = preferences.getShort("hold_press", 0);
   common_co2 = preferences.getShort("hold_co2", 0);
-  preferences.clear();
+  Serial.printf("NVS_Readed!\r\n"); // デバッグ用
 
-  // LovyanGFX_EPD
+  // LovyanGFX_EPDセットアップ
   gfx.init();
   gfx.setRotation(1);
   gfx.setEpdMode(epd_mode_t::epd_text);
 
-  // LovyanGFX_描画テスト
+  // LovyanGFX_描画
   train_rcv_joint();
   gfx.setFont(&lgfxJapanGothicP_32);
   gfx.fillScreen(TFT_BLACK);
   gfx.fillScreen(TFT_WHITE);
   gfx.setTextColor(TFT_BLACK, TFT_WHITE);
-  gfx.startWrite();//描画待機モード
+  gfx.startWrite(); // 描画待機モード
   train_draw();
   alert_draw();
   jsn_draw();
-  gfx.endWrite();//描画待機解除・描画実施
+  gfx.endWrite(); // 描画待機解除・描画実施
+  Serial.printf("Now_imprinting!\r\n"); // デバッグ用
   
+  // NVS領域解放
+  preferences.clear();
+  Serial.printf("NVS_Cleared!\r\n"); // デバッグ用
+
   // BLE・Ambientセットアップ
   ambient.begin(channelId, writeKey, &client);
   BLEDevice::init("");
@@ -179,16 +185,16 @@ void loop() {
   M5.update();
   //300秒毎に定期実行
   auto now = millis();
-  //M5.update();
-  if (now - getDataTimer >= 300000) {
+  if (now - getDataTimer >= 300000 && common_vbat != 0.0) {
     getDataTimer = now;
+    RTC_time_Get();
     preferences.putFloat("hold_temp", common_temp);
     preferences.putFloat("hold_humid", common_humid);
     preferences.putShort("hold_co2", common_co2);
     preferences.putShort("hold_press", common_press);
     preferences.putFloat("hold_WBGT", common_WBGT);
     preferences.end();
-    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC)); // デバッグ用
     Serial.println("ReStart(for_Refresh(2))..");
     delay(10000);
     ESP.restart();
@@ -258,14 +264,13 @@ void main_communicator() {
   // AWS関係
   setup_AWS_MQTT();
   // AWSタイマー
-  timer = timerBegin(0, 80, true);
-  timerAttachInterrupt(timer, &onTimer, true);
-  //timerAlarmWrite(timer, 295000000, true);
-  timerAlarmWrite(timer, 60000000, true);
-  timerAlarmEnable(timer);
+  timer1 = timerBegin(0, 80, true);
+  timerAttachInterrupt(timer1, &onTimer1, true);
+  timerAlarmWrite(timer1, 30000000, false);
+  timerAlarmEnable(timer1);
   connect_AWS();
+  timerEnd(timer1);
   AWS_Upload();
-  timerEnd(timer);
 
   // WiFi切断
   mqttClient.disconnect();
