@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s1
-   Build:2021/12/06
+   CodeName:Preparation_stage_AX16_s6
+   Build:2021/12/07
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -54,6 +54,7 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 
 -----END RSA PRIVATE KEY-----)KEY";
 
+
 // MQTT設定
 #define QOS 0
 WiFiClientSecure httpsClient;
@@ -73,10 +74,11 @@ int common_press;
 int common_co2;
 uint16_t Node_ID;                 // NVS連接無
 int Node_IDs;                     // NVS連接無
+float Battery_voltage;            // NVS連接無
 
 // デバイス制御
 #define MyManufacturerId 0xffff   // test manufacturer ID
-uint32_t cpu_clock = 240;          // CPUクロック指定
+uint32_t cpu_clock = 240;         // CPUクロック指定
 M5EPD_Canvas canvas(&M5.EPD);
 BLEScan* pBLEScan;
 LGFX gfx;
@@ -84,7 +86,20 @@ LGFX_Sprite sp(&gfx);
 
 // タイマー用データ
 unsigned long getDataTimer = 0;
-float Battery_voltage;
+hw_timer_t * timer = NULL;
+void IRAM_ATTR onTimer() {
+  preferences.putFloat("hold_temp", common_temp);
+  preferences.putFloat("hold_humid", common_humid);
+  preferences.putShort("hold_co2", common_co2);
+  preferences.putShort("hold_press", common_press);
+  preferences.putFloat("hold_WBGT", common_WBGT);
+  preferences.end();
+  Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+  Serial.println("ReStart(for_Refresh(1))..");
+  timerEnd(timer);
+  delay(10000);
+  ESP.restart();
+}
 
 String JY_Sta = "テストデータ";
 // ODPT連接-JR
@@ -111,6 +126,14 @@ void setup() {
   M5.begin();
   M5.RTC.begin();
   Serial.begin(115200);
+
+  // タイマー関係制御
+  //timer = timerBegin(0, 80, true);
+  //timerAttachInterrupt(timer, &onTimer, true);
+  //timerAlarmWrite(timer, 295000000, true);
+  //timerAlarmWrite(timer, 60000000, true);
+  //timerAlarmEnable(timer);
+  
   preferences.begin("hold_data", false);
   M5.BatteryADCBegin();
   bool setCpuFrequencyMhz(cpu_clock);
@@ -123,16 +146,12 @@ void setup() {
   common_WBGT = preferences.getFloat("hold_WBGT", 0);
   common_press = preferences.getShort("hold_press", 0);
   common_co2 = preferences.getShort("hold_co2", 0);
+  preferences.clear();
 
   // LovyanGFX_EPD
   gfx.init();
   gfx.setRotation(1);
   gfx.setEpdMode(epd_mode_t::epd_text);
-
-  // BLEセットアップ
-  BLEDevice::init("");
-  pBLEScan = BLEDevice::getScan();
-  pBLEScan->setActiveScan(false);
 
   // LovyanGFX_描画テスト
   train_rcv_joint();
@@ -146,8 +165,11 @@ void setup() {
   jsn_draw();
   gfx.endWrite();//描画待機解除・描画実施
   
-  //WiFi.disconnect(true);
+  // BLE・Ambientセットアップ
   ambient.begin(channelId, writeKey, &client);
+  BLEDevice::init("");
+  pBLEScan = BLEDevice::getScan();
+  pBLEScan->setActiveScan(false);
 }
 
 // 定例実施
@@ -155,40 +177,23 @@ void loop() {
   //BLEデータ受信
   BLE_RCV();
   M5.update();
-  //280秒毎に定期実行
+  //300秒毎に定期実行
   auto now = millis();
   //M5.update();
-  if (now >= 280000) {
-    Serial.println(now);
-    Battery_sta();
-    // 無線接続関係
-    Wireless_Access_Check();
-    pBLEScan->clearResults();
-    pBLEScan->stop();
-
-    // 通信制御関数
-    jsn_upload();
-    RTC_time_Get();
-    
-    // AWS関係
-    setup_AWS_MQTT();
-    connect_AWS();
-    AWS_Upload();
-
-    // WiFi切断
-    mqttClient.disconnect();
-
-    // デバッグ
-    //Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
-    //Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
-    
-    // リフレッシャ
-    Serial.println("ReStart(for_Refresh)..");
+  if (now - getDataTimer >= 300000) {
+    getDataTimer = now;
+    preferences.putFloat("hold_temp", common_temp);
+    preferences.putFloat("hold_humid", common_humid);
+    preferences.putShort("hold_co2", common_co2);
+    preferences.putShort("hold_press", common_press);
+    preferences.putFloat("hold_WBGT", common_WBGT);
+    preferences.end();
+    Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+    Serial.println("ReStart(for_Refresh(2))..");
+    delay(10000);
     ESP.restart();
   }
 }
-
-
 
 // メイン関数ここまで
 
@@ -233,9 +238,44 @@ void BLE_RCV() {
         common_WBGT = WBGT;
         // デバッグ用
         Serial.printf("Now_Recieved >>> Node: %d, seq: %d, t: %.1f, h: %.1f, p: %.1d, c: %.1d, w: %.1f, v: %.1f\r\n", Node_IDs, seq, new_temp, new_humid, new_press, new_co2, WBGT, vbat);
+        // 送信処理
+        main_communicator();
       }
     }
   }
+}
+
+// メインコミュニケータ
+void main_communicator() {
+  Battery_sta();
+  // 無線接続関係
+  Wireless_Access_Check();
+
+  // 通信制御関数
+  jsn_upload();
+  RTC_time_Get();
+  
+  // AWS関係
+  setup_AWS_MQTT();
+  // AWSタイマー
+  timer = timerBegin(0, 80, true);
+  timerAttachInterrupt(timer, &onTimer, true);
+  //timerAlarmWrite(timer, 295000000, true);
+  timerAlarmWrite(timer, 60000000, true);
+  timerAlarmEnable(timer);
+  connect_AWS();
+  AWS_Upload();
+  timerEnd(timer);
+
+  // WiFi切断
+  mqttClient.disconnect();
+  WiFi.disconnect(true);
+
+  // BLEリセット
+  pBLEScan->clearResults();
+
+  // デバッグ
+  //Serial.printf("Free heap after TLS %u\r\n", xPortGetFreeHeapSize());
 }
 
 // 無線制御関数
@@ -292,6 +332,7 @@ void connect_AWS(){
   while (!mqttClient.connect(CLIENT_ID)){
     Serial.println("Failed, state=" + String(mqttClient.state()));
     if (retryCount++ > 2){
+      hold_data_upload();
       Serial.println("ReStart(for_AWS)..");
       ESP.restart();
     }
@@ -324,27 +365,6 @@ void AWS_Upload() {
     Serial.printf("AWS_imprinting\r\n");
   }
 }
-
-/*
-void AWS_Download() {
-  if(mmqttClient.subscribe(SUB_TOPIC, QOS)){
-    Serial.println("Subscribed.");
-    Serial.println("Success!!");
-  }
-}
-
-void callback (char* topic, byte* payload, unsigned int length) {
-  Serial.println("Received. topic=");
-  Serial.println(topic);
-  Serial.printf("callbackd.");
-  char subMessage[length];
-  for (int i = 0; i < length; i++) {
-    subMessage[i] = (char)payload[i];
-  }
-  Serial.println(subMessage);
-  //JSONVar obj = JSON.parse(subMessage);
-}
-*/
 
 // ODPTデータセット実行関数
 void train_rcv_joint() {
@@ -629,6 +649,7 @@ void jsn_draw() {
   gfx.drawString(String(common_press), 805, JSN_y[2], 7);
 }
 
+// 情報集約関数
 void jsn_upload(){
   if(common_vbat!=0.0 && common_WBGT!=0.0){
     ambient.set(1, common_temp);
@@ -639,14 +660,19 @@ void jsn_upload(){
     ambient.set(6, common_WBGT);
     ambient.set(7, Battery_voltage);
     ambient.send();
-    delay(2000);
-    preferences.putFloat("hold_temp", common_temp);
-    preferences.putFloat("hold_humid", common_humid);
-    preferences.putShort("hold_co2", common_co2);
-    preferences.putShort("hold_press", common_press);
-    preferences.putFloat("hold_WBGT", common_WBGT);
-    preferences.end();
+    delay(1000);
   }
+}
+
+// commonデータ群からNVS内のデータへキャスト
+void hold_data_upload(){
+  preferences.putFloat("hold_temp", common_temp);
+  preferences.putFloat("hold_humid", common_humid);
+  preferences.putShort("hold_co2", common_co2);
+  preferences.putShort("hold_press", common_press);
+  preferences.putFloat("hold_WBGT", common_WBGT);
+  preferences.end();
+  Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
 }
 
 // NTP->RTC 時刻取得

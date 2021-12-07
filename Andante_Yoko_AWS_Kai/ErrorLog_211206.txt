@@ -1,0 +1,248 @@
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 21:55:33
+Now_Recieved >>> Node: 1, seq: 69, t: 21.4, h: 51.5, p: 1022, c: 1283, w: 18.1, v: 5.1
+RTC_Time : 2021/12/06 21:57:05
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:00:31
+Now_Recieved >>> Node: 1, seq: 70, t: 21.9, h: 51.0, p: 1022, c: 1233, w: 18.5, v: 5.1
+RTC_Time : 2021/12/06 22:02:03
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:05:42
+Now_Recieved >>> Node: 1, seq: 71, t: 22.3, h: 50.7, p: 1022, c: 1166, w: 18.9, v: 5.2
+RTC_Time : 2021/12/06 22:07:11
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:10:44
+Now_Recieved >>> Node: 1, seq: 72, t: 22.6, h: 50.4, p: 1022, c: 1118, w: 19.2, v: 5.1
+RTC_Time : 2021/12/06 22:12:06
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:15:49
+Now_Recieved >>> Node: 1, seq: 73, t: 23.0, h: 50.1, p: 1022, c: 1086, w: 19.5, v: 5.1
+RTC_Time : 2021/12/06 22:17:09
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:20:52
+Now_Recieved >>> Node: 1, seq: 74, t: 23.4, h: 49.8, p: 1022, c: 1049, w: 19.8, v: 5.3
+RTC_Time : 2021/12/06 22:22:08
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:25:58
+Now_Recieved >>> Node: 1, seq: 75, t: 23.6, h: 49.5, p: 1022, c: 1014, w: 20.0, v: 5.1
+RTC_Time : 2021/12/06 22:27:08
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:31:02
+Now_Recieved >>> Node: 1, seq: 76, t: 23.9, h: 49.1, p: 1021, c: 975, w: 20.2, v: 5.1
+RTC_Time : 2021/12/06 22:32:10
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:36:06
+Now_Recieved >>> Node: 1, seq: 77, t: 24.2, h: 48.8, p: 1022, c: 954, w: 20.4, v: 5.1
+RTC_Time : 2021/12/06 22:37:07
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:41:12
+Now_Recieved >>> Node: 1, seq: 78, t: 24.4, h: 48.5, p: 1021, c: 944, w: 20.5, v: 5.2
+RTC_Time : 2021/12/06 22:42:10
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:46:16
+Now_Recieved >>> Node: 1, seq: 79, t: 24.7, h: 48.1, p: 1021, c: 920, w: 20.7, v: 5.2
+RTC_Time : 2021/12/06 22:47:08
+Setup MQTT...
+Connected...
+AWS_imprinting
+Guru Meditation Error: Core  1 panic'ed (Coprocessor exception).
+Core  1 register dump:
+PC      : 0x400d55f9  PS      : 0x00060031  A0      : 0x80081445  A1      : 0x3ffbf150
+A2      : 0x00000000  A3      : 0x00000001  A4      : 0x00000020  A5      : 0x00000000
+A6      : 0x3ffbf278  A7      : 0x00000001  A8      : 0x3ffc28cc  A9      : 0x3ffbd8d0
+A10     : 0x00000001  A11     : 0x3ffbd720  A12     : 0x80000000  A13     : 0x00000001
+A14     : 0x3ffc38e0  A15     : 0x00000000  SAR     : 0x0000001d  EXCCAUSE: 0x00000004
+EXCVADDR: 0x00000000  LBEG    : 0x400f6804  LEND    : 0x400f6826  LCOUNT  : 0x00000000
+Backtrace:0x400d55f6:0x3ffbf1500x40081442:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x40220687:0x3ffbda30 0x4010c135:0x3ffbda50 0x400966cb:0x3ffbda70
+ELF file SHA256: 0000000000000000
+Rebooting...
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/06 22:51:20
+Free heap(Minimum) after TLS 70660
+ReStart(for_Refresh)..
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1).
+Core  1 register dump:
+PC      : 0x400986aa  PS      : 0x00060334  A0      : 0x8009779a  A1      : 0x3ffbf100
+A2      : 0x3ffd9e68  A3      : 0x3ffd57c4  A4      : 0x00000004  A5      : 0xb33fffff
+A6      : 0x00000001  A7      : 0x00000001  A8      : 0x3ffd57c4  A9      : 0x3ffd57c4
+A10     : 0x00000018  A11     : 0x00000018  A12     : 0x3ffc472c  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x0000000b  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091a50  LEND    : 0x40091a6c  LCOUNT  : 0xffffffff
+Core  1 was running in ISR context:
+EPC1    : 0x4010d42b  EPC2    : 0x00000000  EPC3    : 0x00000000  EPC4    : 0x400986aa
+Backtrace:0x400986a7:0x3ffbf1000x40097797:0x3ffbf120 0x400962aa:0x3ffbf140 0x40116526:0x3ffbf180 0x401e46e9:0x3ffbf1a0 0x401db479:0x3ffbf1c0 0x40082a31:0x3ffbf1f0 0x400f6dff:0x3ffbf210 0x40081460:0x3ffbf230 0x400f683b:0x3ffbf250 0x40085e3d:0x3ffbf270 0x4000d072:0x3ffd5480 0x400f5117:0x3ffd54a0 0x400f1770:0x3ffd54c0 0x400f17df:0x3ffd54e0 0x400f1dd5:0x3ffd5500 0x400d8fa2:0x3ffd5540 0x4021c5e5:0x3ffd5570 0x400f1605:0x3ffd5590 0x400f0712:0x3ffd5630 0x400d4eaf:0x3ffd5670 0x400db730:0x3ffd56b0 0x400f8aa3:0x3ffd5710
+Core  0 register dump:
+PC      : 0x4009888e  PS      : 0x00060c34  A0      : 0x80097f2f  A1      : 0x3ffd9a90
+A2      : 0x3ffbf288  A3      : 0x3ffd9aac  A4      : 0x00060a23  A5      : 0xb33fffff
+A6      : 0x0000cdcd  A7      : 0x0000abab  A8      : 0x0000abab  A9      : 0x0000abab
+A10     : 0x3ffc8498  A11     : 0x3ffc4730  A12     : 0x3ffc4728  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x00000001  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091a50  LEND    : 0x40091a6c  LCOUNT  : 0xffffffff
+Backtrace:0x4009888b:0x3ffd9a900x40097f2c:0x3ffd9ad0 0x400961cc:0x3ffd9af0 0x40086060:0x3ffd9b30 0x40086161:0x3ffd9b60 0x401bce4b:0x3ffd9b80 0x40226141:0x3ffd9ba0 0x40226582:0x3ffd9bc0 0x401f4c83:0x3ffd9bf0 0x401e200d:0x3ffd9c10 0x40223bb1:0x3ffd9c30
+ELF file SHA256: 0000000000000000
+Rebooting...
+

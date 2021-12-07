@@ -1,0 +1,665 @@
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:28:33
+Now_Recieved >>> Node: 1, seq: 244, t: 16.4, h: 58.1, p: 1014, c: 1037, w: 14.2, v: 5.2
+RTC_Time : 2021/12/07 12:32:26
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16516
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:33:41
+Now_Recieved >>> Node: 1, seq: 245, t: 16.4, h: 58.0, p: 1014, c: 1038, w: 14.3, v: 5.1
+RTC_Time : 2021/12/07 12:37:28
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15296
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:38:54
+Now_Recieved >>> Node: 1, seq: 246, t: 16.5, h: 57.8, p: 1013, c: 1035, w: 14.3, v: 5.2
+RTC_Time : 2021/12/07 12:42:29
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16936
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:44:08
+Now_Recieved >>> Node: 1, seq: 247, t: 16.4, h: 57.9, p: 1013, c: 1030, w: 14.3, v: 5.3
+RTC_Time : 2021/12/07 12:47:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16280
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:49:21
+Now_Recieved >>> Node: 1, seq: 248, t: 16.4, h: 58.0, p: 1014, c: 1017, w: 14.2, v: 5.1
+RTC_Time : 2021/12/07 12:52:28
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13808
+ReStart(for_AWS)..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:53:04
+Now_Recieved >>> Node: 1, seq: 249, t: 16.3, h: 58.1, p: 1014, c: 1023, w: 14.1, v: 5.4
+RTC_Time : 2021/12/07 12:57:30
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13968
+ReStart(for_AWS)..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 12:58:08
+Now_Recieved >>> Node: 1, seq: 250, t: 16.2, h: 58.2, p: 1013, c: 1014, w: 14.1, v: 5.1
+RTC_Time : 2021/12/07 13:02:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16256
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:03:18
+Now_Recieved >>> Node: 1, seq: 251, t: 16.2, h: 58.2, p: 1013, c: 993, w: 14.1, v: 5.2
+RTC_Time : 2021/12/07 13:07:28
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16696
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:08:28
+Now_Recieved >>> Node: 1, seq: 252, t: 16.1, h: 58.3, p: 1013, c: 992, w: 14.0, v: 5.1
+RTC_Time : 2021/12/07 13:12:26
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 14912
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:13:33
+Now_Recieved >>> Node: 1, seq: 253, t: 16.2, h: 58.3, p: 1013, c: 993, w: 14.0, v: 5.1
+RTC_Time : 2021/12/07 13:17:20
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15236
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:19:00
+Now_Recieved >>> Node: 1, seq: 254, t: 16.1, h: 58.3, p: 1013, c: 988, w: 14.0, v: 5.1
+RTC_Time : 2021/12/07 13:22:35
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 14804
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:24:13
+Now_Recieved >>> Node: 1, seq: 255, t: 16.1, h: 58.2, p: 1013, c: 975, w: 14.0, v: 5.4
+RTC_Time : 2021/12/07 13:27:36
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15660
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:29:22
+Free heap(Minimum) after TLS 63572
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:34:36
+Now_Recieved >>> Node: 1, seq: 1, t: 16.1, h: 58.3, p: 1013, c: 958, w: 14.0, v: 5.1
+RTC_Time : 2021/12/07 13:37:32
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16948
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:39:49
+Now_Recieved >>> Node: 1, seq: 2, t: 16.1, h: 58.3, p: 1013, c: 939, w: 14.0, v: 5.1
+RTC_Time : 2021/12/07 13:42:32
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 14028
+ReStart(for_AWS)..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:43:01
+Now_Recieved >>> Node: 1, seq: 3, t: 16.1, h: 58.3, p: 1013, c: 924, w: 14.0, v: 5.1
+RTC_Time : 2021/12/07 13:47:27
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15948
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:48:21
+Now_Recieved >>> Node: 1, seq: 4, t: 16.0, h: 58.3, p: 1013, c: 923, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 13:52:35
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16740
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:53:23
+Now_Recieved >>> Node: 1, seq: 5, t: 16.0, h: 58.3, p: 1013, c: 915, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 13:57:26
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16100
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 13:58:46
+Now_Recieved >>> Node: 1, seq: 6, t: 16.0, h: 58.3, p: 1013, c: 899, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:02:33
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15376
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:03:57
+Now_Recieved >>> Node: 1, seq: 7, t: 16.1, h: 58.3, p: 1013, c: 901, w: 14.0, v: 5.3
+RTC_Time : 2021/12/07 14:07:32
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15600
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:09:08
+Now_Recieved >>> Node: 1, seq: 8, t: 16.0, h: 58.3, p: 1013, c: 896, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:12:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15228
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:14:23
+Now_Recieved >>> Node: 1, seq: 9, t: 16.0, h: 58.3, p: 1013, c: 876, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:17:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16124
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:19:38
+Now_Recieved >>> Node: 1, seq: 10, t: 16.1, h: 58.9, p: 1013, c: 740, w: 14.0, v: 5.0
+RTC_Time : 2021/12/07 14:22:37
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15744
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:24:41
+Now_Recieved >>> Node: 1, seq: 11, t: 15.9, h: 59.3, p: 1013, c: 632, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:27:28
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16268
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:29:56
+Now_Recieved >>> Node: 1, seq: 12, t: 15.8, h: 59.8, p: 1013, c: 586, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:32:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16720
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:35:09
+Now_Recieved >>> Node: 1, seq: 13, t: 15.7, h: 60.2, p: 1013, c: 543, w: 13.8, v: 5.1
+RTC_Time : 2021/12/07 14:37:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15616
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:40:21
+Now_Recieved >>> Node: 1, seq: 14, t: 15.8, h: 60.1, p: 1013, c: 524, w: 13.8, v: 5.1
+RTC_Time : 2021/12/07 14:42:31
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15268
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:45:35
+Now_Recieved >>> Node: 1, seq: 15, t: 15.8, h: 59.8, p: 1013, c: 581, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:47:34
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 16016
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:50:52
+Now_Recieved >>> Node: 1, seq: 16, t: 15.8, h: 59.5, p: 1013, c: 618, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:52:38
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15544
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 14:56:01
+Now_Recieved >>> Node: 1, seq: 17, t: 15.9, h: 59.5, p: 1013, c: 626, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 14:57:32
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15612
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 15:01:14
+Now_Recieved >>> Node: 1, seq: 18, t: 15.9, h: 59.3, p: 1013, c: 636, w: 13.9, v: 5.1
+RTC_Time : 2021/12/07 15:02:33
+Setup MQTT...
+Connected...
+AWS_imprinting
+Free heap(Minimum) after TLS 15164
+ReStart(for_Refresh(2))..
+ets Jul 29 2019 12:21:46
+rst:0xc (SW_CPU_RESET),boot:0x16 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:1100
+ho 0 tail 12 room 4
+load:0x40078000,len:12308
+load:0x40080400,len:3076
+entry 0x400805ec
+M5EPD initializing...OK
+192.168.1.7
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/07 15:06:25
