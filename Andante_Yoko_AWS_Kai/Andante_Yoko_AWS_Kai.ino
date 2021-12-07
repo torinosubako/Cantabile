@@ -1,7 +1,7 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s12
+   CodeName:Preparation_stage_AX16_s13
    Build:2021/12/07
    Author:torinosubako
    Status:Unverified
@@ -43,15 +43,15 @@ const char* SUB_TOPIC    = "test_core/fromCloud";
 const char* CLIENT_ID    = "myM5StickCp";
 
 const char* ROOT_CA = R"EOF(-----BEGIN CERTIFICATE-----
-
+//Your ROOT CA//
 -----END CERTIFICATE-----)EOF";
 
 const char* CERTIFICATE = R"KEY(-----BEGIN CERTIFICATE-----
-
+//Your CERTIFICATE//
 -----END CERTIFICATE-----)KEY";
 
 const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
-
+//Your PRIVATE_KEY//
 -----END RSA PRIVATE KEY-----)KEY";
 
 
@@ -91,6 +91,7 @@ LGFX_Sprite sp(&gfx);
 unsigned long getDataTimer = 0;
 hw_timer_t * timer0 = NULL;
 hw_timer_t * timer1 = NULL;
+//hw_timer_t * timer2 = NULL;
 void IRAM_ATTR onTimer0() {
   preferences.putFloat("hold_temp", common_temp);
   preferences.putFloat("hold_humid", common_humid);
@@ -114,6 +115,7 @@ void IRAM_ATTR onTimer1() {
   delay(10000);
   ESP.restart();
 }
+
 
 String JY_Sta = "テストデータ";
 // ODPT連接-JR
@@ -154,13 +156,13 @@ void setup() {
   common_press = preferences.getShort("hold_press", 0);
   common_co2 = preferences.getShort("hold_co2", 0);
   Resend_Tag = preferences.getShort("resend_tags", 0);
-
   Serial.printf("NVS_Readed!\r\n"); // デバッグ用
 
   // LovyanGFX_EPDセットアップ
   gfx.init();
   gfx.setRotation(1);
   gfx.setEpdMode(epd_mode_t::epd_text);
+  Serial.printf("LovyanGFX_EPD_Set!\r\n"); // デバッグ用
 
   // ODPTデータセット取得
   timer1 = timerBegin(1, 80, true);
@@ -169,6 +171,7 @@ void setup() {
   timerAlarmEnable(timer1);
   train_rcv_joint();
   timerEnd(timer1);
+  Serial.printf("ODPT_Data_Got!\r\n"); // デバッグ用
 
   // LovyanGFX_描画
   gfx.setFont(&lgfxJapanGothicP_32);
@@ -180,13 +183,13 @@ void setup() {
   alert_draw();
   jsn_draw();
   gfx.endWrite(); // 描画待機解除・描画実施
-  Serial.printf("Now_imprinting!\r\n"); // デバッグ用
+  Serial.printf("EPD_imprinting!\r\n"); // デバッグ用
 
   // AWSデータ再送モード
   if(Resend_Tag == 1){
     main_communicator();
+    Serial.printf("AWS_Resend!\r\n"); // デバッグ用
   }
-  
   
   // NVS領域解放
   preferences.clear();
