@@ -1,7 +1,7 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s8
+   CodeName:Preparation_stage_AX16_s10
    Build:2021/12/07
    Author:torinosubako
    Status:Unverified
@@ -69,13 +69,15 @@ uint8_t seq;                      // NVS連接無
 float common_temp;
 float common_humid;
 float common_WBGT;
-float common_vbat = 0.0;            // NVS連接無
+float common_vbat = 0.0;          // NVS連接無
 int common_press;
 int common_co2;
+int Resend_Tag;
 uint16_t Node_ID;                 // NVS連接無
 int Node_IDs;                     // NVS連接無
 float Battery_voltage;            // NVS連接無
 int receive_counter;              // NVS連接無
+
 
 // デバイス制御
 #define MyManufacturerId 0xffff   // test manufacturer ID
@@ -87,18 +89,29 @@ LGFX_Sprite sp(&gfx);
 
 // タイマー用データ
 unsigned long getDataTimer = 0;
+hw_timer_t * timer0 = NULL;
 hw_timer_t * timer1 = NULL;
-//hw_timer_t * timer2 = NULL;
-void IRAM_ATTR onTimer1() {
+void IRAM_ATTR onTimer0() {
+  Resend_Tag == 1;
   preferences.putFloat("hold_temp", common_temp);
   preferences.putFloat("hold_humid", common_humid);
   preferences.putShort("hold_co2", common_co2);
   preferences.putShort("hold_press", common_press);
   preferences.putFloat("hold_WBGT", common_WBGT);
+  preferences.putShort("resend_tags", Resend_Tag);
   preferences.end();
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
-  Serial.println("ReStart(for_Refresh(1))..");
-  timerEnd(timer);
+  Serial.println("ReStart(for_Refresh(timer0))..");
+  timerEnd(timer0);
+  delay(10000);
+  ESP.restart();
+}
+
+void IRAM_ATTR onTimer1() {
+  preferences.end();
+  Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+  Serial.println("ReStart(for_Refresh(timer1))..");
+  timerEnd(timer1);
   delay(10000);
   ESP.restart();
 }
@@ -128,12 +141,6 @@ void setup() {
   M5.begin();
   M5.RTC.begin();
   Serial.begin(115200);
-
-  // タイマー関係制御
-  //timer1 = timerBegin(0, 80, true);
-  //timerAttachInterrupt(timer1, &onTimer1, true);
-  //timerAlarmWrite(timer1, 60000000, false);
-  //timerAlarmEnable(timer);
   
   preferences.begin("hold_data", false);
   M5.BatteryADCBegin();
@@ -147,6 +154,8 @@ void setup() {
   common_WBGT = preferences.getFloat("hold_WBGT", 0);
   common_press = preferences.getShort("hold_press", 0);
   common_co2 = preferences.getShort("hold_co2", 0);
+  Resend_Tag = preferences.getShort("resend_tags", 0);
+
   Serial.printf("NVS_Readed!\r\n"); // デバッグ用
 
   // LovyanGFX_EPDセットアップ
@@ -154,8 +163,15 @@ void setup() {
   gfx.setRotation(1);
   gfx.setEpdMode(epd_mode_t::epd_text);
 
-  // LovyanGFX_描画
+  // ODPTデータセット取得
+  timer1 = timerBegin(1, 80, true);
+  timerAttachInterrupt(timer1, &onTimer1, true);
+  timerAlarmWrite(timer1, 60000000, false);
+  timerAlarmEnable(timer1);
   train_rcv_joint();
+  timerEnd(timer1);
+
+  // LovyanGFX_描画
   gfx.setFont(&lgfxJapanGothicP_32);
   gfx.fillScreen(TFT_BLACK);
   gfx.fillScreen(TFT_WHITE);
@@ -166,6 +182,12 @@ void setup() {
   jsn_draw();
   gfx.endWrite(); // 描画待機解除・描画実施
   Serial.printf("Now_imprinting!\r\n"); // デバッグ用
+
+  // AWSデータ再送モード
+  if(Resend_Tag = 1){
+    main_communicator();
+  }
+  
   
   // NVS領域解放
   preferences.clear();
@@ -195,7 +217,7 @@ void loop() {
     preferences.putFloat("hold_WBGT", common_WBGT);
     preferences.end();
     Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC)); // デバッグ用
-    Serial.println("ReStart(for_Refresh(2))..");
+    Serial.println("ReStart(for_Refresh)..");
     delay(10000);
     ESP.restart();
   }
@@ -261,15 +283,15 @@ void main_communicator() {
   jsn_upload();
   RTC_time_Get();
   
-  // AWS関係
+  // AWS関係セットアップ
   setup_AWS_MQTT();
   // AWSタイマー
-  timer1 = timerBegin(0, 80, true);
-  timerAttachInterrupt(timer1, &onTimer1, true);
-  timerAlarmWrite(timer1, 30000000, false);
-  timerAlarmEnable(timer1);
+  timer0 = timerBegin(0, 80, true);
+  timerAttachInterrupt(timer0, &onTimer0, true);
+  timerAlarmWrite(timer0, 30000000, false);
+  timerAlarmEnable(timer0);
   connect_AWS();
-  timerEnd(timer1);
+  timerEnd(timer0);
   AWS_Upload();
 
   // WiFi切断
