@@ -1,7 +1,7 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s10
+   CodeName:Preparation_stage_AX16_s12
    Build:2021/12/07
    Author:torinosubako
    Status:Unverified
@@ -92,13 +92,12 @@ unsigned long getDataTimer = 0;
 hw_timer_t * timer0 = NULL;
 hw_timer_t * timer1 = NULL;
 void IRAM_ATTR onTimer0() {
-  Resend_Tag == 1;
   preferences.putFloat("hold_temp", common_temp);
   preferences.putFloat("hold_humid", common_humid);
   preferences.putShort("hold_co2", common_co2);
   preferences.putShort("hold_press", common_press);
   preferences.putFloat("hold_WBGT", common_WBGT);
-  preferences.putShort("resend_tags", Resend_Tag);
+  preferences.putShort("resend_tags", 1);
   preferences.end();
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
   Serial.println("ReStart(for_Refresh(timer0))..");
@@ -184,7 +183,7 @@ void setup() {
   Serial.printf("Now_imprinting!\r\n"); // デバッグ用
 
   // AWSデータ再送モード
-  if(Resend_Tag = 1){
+  if(Resend_Tag == 1){
     main_communicator();
   }
   
@@ -335,6 +334,8 @@ void Wireless_Access_Check() {
     delay(10 * 1000);
     Serial.println("Connecting to WiFi(AC)..");
     if (wifi_cont >= 5){
+      preferences.putShort("resend_tags", 1);
+      hold_data_upload();
       Serial.println("ReStart(for_Wifi(AC))..");
       ESP.restart();
     }
@@ -359,6 +360,7 @@ void connect_AWS(){
   while (!mqttClient.connect(CLIENT_ID)){
     Serial.println("Failed, state=" + String(mqttClient.state()));
     if (retryCount++ > 2){
+      preferences.putShort("resend_tags", 1);
       hold_data_upload();
       Serial.println("ReStart(for_AWS)..");
       ESP.restart();
