@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s15
-   Build:2021/12/08
+   CodeName:Preparation_stage_AX16_s17
+   Build:2021/12/09
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -55,14 +55,17 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 -----END RSA PRIVATE KEY-----)KEY";
 
 
+
 // MQTT設定
 #define QOS 0
 WiFiClientSecure httpsClient;
 PubSubClient mqttClient(httpsClient);
 
+
 // LovyanGFX設定情報基盤
 #define LGFX_M5PAPER
 #include <LovyanGFX.hpp>
+
 
 // 内部処理用データ
 uint8_t seq;                      // NVS連接無
@@ -87,11 +90,13 @@ BLEScan* pBLEScan;
 LGFX gfx;
 LGFX_Sprite sp(&gfx);
 
+
 // タイマー用データ
 unsigned long getDataTimer = 0;
 hw_timer_t * timer0 = NULL;
 hw_timer_t * timer1 = NULL;
-//hw_timer_t * timer2 = NULL;
+hw_timer_t * timer2 = NULL;
+// AWS接続制御用タイムアップ(30秒)
 void IRAM_ATTR onTimer0() {
   preferences.putFloat("hold_temp", common_temp);
   preferences.putFloat("hold_humid", common_humid);
@@ -103,20 +108,33 @@ void IRAM_ATTR onTimer0() {
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
   Serial.println("ReStart(for_Refresh(timer0))..");
   timerEnd(timer0);
+  timerEnd(timer2);
   delay(10000);
   ESP.restart();
 }
-
+// ODPTデータセット取得時タイムアップ(60秒)
 void IRAM_ATTR onTimer1() {
   preferences.end();
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
   Serial.println("ReStart(for_Refresh(timer1))..");
+  delay(10000);
   timerEnd(timer1);
+  timerEnd(timer2);
+  delay(10000);
+  ESP.restart();
+}
+// 全体処理タイムアップ(8分)
+void IRAM_ATTR onTimer2() {
+  Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
+  Serial.println("ReStart(for_Timeout)..");
+  delay(10000);
+  timerEnd(timer2);
   delay(10000);
   ESP.restart();
 }
 
 
+// ODPT関連一式
 String JY_Sta = "テストデータ";
 // ODPT連接-JR
 int JR_Line_num = 3;
@@ -138,14 +156,22 @@ int ODPT_X[] = {10, 235};
 int ODPT_y[] = {10, 50, 90, 130, 170, 210, 250, 290, 330, 370, 410};
 int JSN_y[] = {482, 508, 484};
 
+
 void setup() {
   M5.begin();
   M5.RTC.begin();
   Serial.begin(115200);
-  
+
+  // 基幹設定
   preferences.begin("hold_data", false);
   M5.BatteryADCBegin();
   bool setCpuFrequencyMhz(cpu_clock);
+  // 全体タイマー
+  timer2 = timerBegin(2, 80, true);
+  timerAttachInterrupt(timer2, &onTimer2, true);
+  timerAlarmWrite(timer2, 480000000, false);
+  timerAlarmEnable(timer2);
+  // 外部接続系統
   Wireless_Access();
   RTC_time_sync();
 
@@ -203,6 +229,7 @@ void setup() {
   pBLEScan->setActiveScan(false);
 }
 
+
 // 定例実施
 void loop() {
   //BLEデータ受信
@@ -221,13 +248,14 @@ void loop() {
     preferences.end();
     Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC)); // デバッグ用
     Serial.println("ReStart(for_Refresh)..");
+    timerEnd(timer2);
     delay(10000);
     ESP.restart();
   }
 }
 
-// メイン関数ここまで
 
+// メイン関数ここまで
 // 統合センサネットワーク・情報取得関数
 void BLE_RCV() {
   float new_temp, new_humid, WBGT, vbat;
@@ -319,9 +347,10 @@ void Wireless_Access() {
     wifi_cont ++;
     delay(10 * 1000);
     Serial.println("Connecting to WiFi..");
-    if (wifi_cont >= 5){
+    if (wifi_cont >= 3){
       Serial.println("ReStart(for_Wifi)..");
-      ESP.restart();
+      timerEnd(timer2);
+      //ESP.restart();
     }
   }
   // デバッグ用
@@ -336,10 +365,12 @@ void Wireless_Access_Check() {
     WiFi.begin(ssid, password);
     delay(10 * 1000);
     Serial.println("Connecting to WiFi(AC)..");
-    if (wifi_cont >= 5){
+    if (wifi_cont >= 3){
       preferences.putShort("resend_tags", 1);
       hold_data_upload();
+      WiFi.disconnect(true);
       Serial.println("ReStart(for_Wifi(AC))..");
+      timerEnd(timer2);
       ESP.restart();
     }
   }
@@ -366,6 +397,7 @@ void connect_AWS(){
       preferences.putShort("resend_tags", 1);
       hold_data_upload();
       Serial.println("ReStart(for_AWS)..");
+      timerEnd(timer2);
       ESP.restart();
     }
     Serial.println("Try again in 5 sec");
