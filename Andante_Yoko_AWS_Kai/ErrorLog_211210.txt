@@ -1,3 +1,4 @@
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -15,6 +16,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:08:10
 Free heap(Minimum) after TLS 15364
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -32,6 +36,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:13:23
 Free heap(Minimum) after TLS 15984
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -54,6 +61,8 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13752
 ReStart(for_AWS)..
+
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -72,6 +81,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:20:01
 Free heap(Minimum) after TLS 16316
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -89,6 +101,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:25:12
 Free heap(Minimum) after TLS 15328
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -106,6 +121,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:30:23
 Free heap(Minimum) after TLS 16644
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -123,6 +141,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:35:34
 Free heap(Minimum) after TLS 16296
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -140,6 +161,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:40:42
 Free heap(Minimum) after TLS 15528
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -157,6 +181,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:46:01
 Free heap(Minimum) after TLS 16016
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -174,6 +201,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:51:14
 Free heap(Minimum) after TLS 16292
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -191,6 +221,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 12:56:30
 Free heap(Minimum) after TLS 15184
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -208,6 +241,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:01:37
 Free heap(Minimum) after TLS 16724
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -225,6 +261,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:06:49
 Free heap(Minimum) after TLS 16384
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -246,6 +285,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 14012
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -268,6 +308,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13932
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -286,6 +327,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:20:00
 Free heap(Minimum) after TLS 16812
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -303,6 +347,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:25:11
 Free heap(Minimum) after TLS 16480
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -320,6 +367,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:30:07
 Free heap(Minimum) after TLS 16340
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -337,6 +387,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:35:31
 Free heap(Minimum) after TLS 15956
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -354,6 +407,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:40:46
 Free heap(Minimum) after TLS 15864
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -371,6 +427,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:45:59
 Free heap(Minimum) after TLS 16324
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -388,6 +447,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:51:10
 Free heap(Minimum) after TLS 16568
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -405,6 +467,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 13:56:22
 Free heap(Minimum) after TLS 16340
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -422,6 +487,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:01:38
 Free heap(Minimum) after TLS 15012
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -439,6 +507,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:06:51
 Free heap(Minimum) after TLS 15508
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -456,6 +527,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:12:00
 Free heap(Minimum) after TLS 15360
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -477,6 +551,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13924
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -495,6 +570,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:19:55
 Free heap(Minimum) after TLS 16164
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -512,6 +590,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:25:16
 Free heap(Minimum) after TLS 15684
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -529,6 +610,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:30:07
 Free heap(Minimum) after TLS 14748
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -546,6 +630,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:35:30
 Free heap(Minimum) after TLS 16140
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -563,6 +650,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:40:49
 Free heap(Minimum) after TLS 16172
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -580,6 +670,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:45:48
 Free heap(Minimum) after TLS 15196
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -597,6 +690,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:51:14
 Free heap(Minimum) after TLS 16152
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -614,6 +710,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 14:56:23
 Free heap(Minimum) after TLS 16736
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -632,6 +731,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:01:32
 Free heap(Minimum) after TLS 15952
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -649,6 +751,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:06:48
 Free heap(Minimum) after TLS 15720
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -666,6 +771,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:11:58
 Free heap(Minimum) after TLS 15208
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -683,6 +791,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:17:07
 Free heap(Minimum) after TLS 16092
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -700,6 +811,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:22:24
 Free heap(Minimum) after TLS 15768
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -717,6 +831,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:27:34
 Free heap(Minimum) after TLS 15128
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -734,6 +851,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:32:52
 Free heap(Minimum) after TLS 15336
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -755,6 +875,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13684
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -773,6 +894,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:39:56
 Free heap(Minimum) after TLS 16100
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -790,6 +914,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:45:35
 Free heap(Minimum) after TLS 16108
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -819,6 +946,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091ba4  LEND    : 0x40091bc0  LCOUNT  : 0xff
 Backtrace:0x400989e7:0x3ffd9ab00x40098080:0x3ffd9af0 0x40096320:0x3ffd9b10 0x400861b4:0x3ffd9b50 0x400862b5:0x3ffd9b80 0x401bd193:0x3ffd9ba0 0x40226489:0x3ffd9bc0 0x402268ca:0x3ffd9be0 0x401f4fcb:0x3ffd9c10 0x401e2355:0x3ffd9c30 0x40223ef9:0x3ffd9c50
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -836,6 +964,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:51:59
 Free heap(Minimum) after TLS 16644
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -853,6 +984,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 15:56:44
 Free heap(Minimum) after TLS 16272
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -870,6 +1004,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:02:06
 Free heap(Minimum) after TLS 15776
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -891,6 +1028,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 14032
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -909,6 +1047,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:09:59
 Free heap(Minimum) after TLS 16688
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -926,6 +1067,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:16:00
 Free heap(Minimum) after TLS 16488
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -943,6 +1087,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:19:49
 Free heap(Minimum) after TLS 16312
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -960,6 +1107,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:25:46
 Free heap(Minimum) after TLS 16072
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -977,6 +1127,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:30:49
 Free heap(Minimum) after TLS 16324
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -994,6 +1147,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:36:12
 Free heap(Minimum) after TLS 16204
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1011,6 +1167,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:41:04
 Free heap(Minimum) after TLS 16508
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1028,6 +1187,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:46:41
 Free heap(Minimum) after TLS 16556
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1045,6 +1207,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:51:45
 Free heap(Minimum) after TLS 15992
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1062,6 +1227,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 16:56:54
 Free heap(Minimum) after TLS 15952
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1079,6 +1247,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:01:48
 Free heap(Minimum) after TLS 15908
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1096,6 +1267,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:07:26
 Free heap(Minimum) after TLS 15340
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1113,6 +1287,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:12:30
 Free heap(Minimum) after TLS 16644
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1134,6 +1311,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13876
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1152,6 +1330,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:20:18
 Free heap(Minimum) after TLS 16672
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1169,6 +1350,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:25:50
 Free heap(Minimum) after TLS 16048
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1186,6 +1370,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:29:32
 Free heap(Minimum) after TLS 16552
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1203,6 +1390,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:36:07
 Free heap(Minimum) after TLS 16640
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1220,6 +1410,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:40:49
 Free heap(Minimum) after TLS 17024
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1237,6 +1430,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:46:12
 Free heap(Minimum) after TLS 16348
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1254,6 +1450,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:51:17
 Free heap(Minimum) after TLS 16456
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1271,6 +1470,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 17:56:57
 Free heap(Minimum) after TLS 16244
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1288,6 +1490,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:01:30
 Free heap(Minimum) after TLS 16156
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1305,6 +1510,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:07:03
 Free heap(Minimum) after TLS 17044
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1322,6 +1530,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:12:07
 Free heap(Minimum) after TLS 15288
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1339,6 +1550,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:17:02
 Free heap(Minimum) after TLS 15472
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1360,6 +1574,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13912
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1378,6 +1593,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:25:19
 Free heap(Minimum) after TLS 16480
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1395,6 +1613,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:31:06
 Free heap(Minimum) after TLS 16568
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1412,6 +1633,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:34:28
 Free heap(Minimum) after TLS 16944
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1433,6 +1657,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13664
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1451,6 +1676,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:44:54
 Free heap(Minimum) after TLS 15104
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1468,6 +1696,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:51:27
 Free heap(Minimum) after TLS 16144
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1485,6 +1716,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 18:54:25
 Free heap(Minimum) after TLS 17752
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1502,6 +1736,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:00:49
 Free heap(Minimum) after TLS 17148
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1519,6 +1756,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:05:43
 Free heap(Minimum) after TLS 17848
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1536,6 +1776,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:11:01
 Free heap(Minimum) after TLS 17028
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1553,6 +1796,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:16:31
 Free heap(Minimum) after TLS 17112
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1570,6 +1816,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:21:33
 Free heap(Minimum) after TLS 16720
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1587,6 +1836,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:26:50
 Free heap(Minimum) after TLS 17472
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1604,6 +1856,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:31:45
 Free heap(Minimum) after TLS 17124
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1621,6 +1876,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:37:11
 Free heap(Minimum) after TLS 17580
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1638,6 +1896,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:42:01
 Free heap(Minimum) after TLS 17084
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1655,6 +1916,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:47:22
 Free heap(Minimum) after TLS 15848
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1672,6 +1936,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:53:12
 Free heap(Minimum) after TLS 15988
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1689,6 +1956,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 19:58:04
 Free heap(Minimum) after TLS 15928
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1706,6 +1976,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:02:53
 Free heap(Minimum) after TLS 15832
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1723,6 +1996,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:08:24
 Free heap(Minimum) after TLS 16496
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1740,6 +2016,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:13:18
 Free heap(Minimum) after TLS 16144
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1761,6 +2040,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 14096
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1779,6 +2059,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:20:18
 Free heap(Minimum) after TLS 17384
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1796,6 +2079,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:25:38
 Free heap(Minimum) after TLS 17412
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1813,6 +2099,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:30:20
 Free heap(Minimum) after TLS 17400
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1830,6 +2119,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:35:47
 Free heap(Minimum) after TLS 17344
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1847,6 +2139,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:40:50
 Free heap(Minimum) after TLS 17688
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1864,6 +2159,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:46:16
 Free heap(Minimum) after TLS 17948
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1881,6 +2179,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:51:41
 Free heap(Minimum) after TLS 17164
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1898,6 +2199,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 20:56:38
 Free heap(Minimum) after TLS 17852
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1915,6 +2219,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:01:33
 Free heap(Minimum) after TLS 17324
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1932,6 +2239,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:07:08
 Free heap(Minimum) after TLS 15552
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1949,6 +2259,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:12:13
 Free heap(Minimum) after TLS 15516
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1966,6 +2279,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:17:17
 Free heap(Minimum) after TLS 17352
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1979,6 +2295,7 @@ Now_Recieved >>> Node: 1, seq: 157, t: 13.7, h: 62.8, p: 1024, c: 605, w: 12.1, 
 [Done] Closed the serial port 
 
 [Starting] Opening the serial port - COM5
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -1996,6 +2313,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:40:07
 Free heap(Minimum) after TLS 16932
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2013,6 +2333,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:45:20
 Free heap(Minimum) after TLS 16992
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2048,6 +2371,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a37:0x3ffe8f100x40095ddb:0x3ffe8f50 0x4013b123:0x3ffe8f90 0x401ab4ce:0x3ffe8fb0
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2066,6 +2390,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 21:55:34
 Free heap(Minimum) after TLS 17224
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2083,6 +2410,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:00:47
 Free heap(Minimum) after TLS 17464
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2100,6 +2430,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:05:57
 Free heap(Minimum) after TLS 18168
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2117,6 +2450,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:11:09
 Free heap(Minimum) after TLS 15008
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2134,6 +2470,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:16:20
 Free heap(Minimum) after TLS 17248
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2151,6 +2490,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:21:31
 Free heap(Minimum) after TLS 15760
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2168,6 +2510,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:26:45
 Free heap(Minimum) after TLS 17112
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2185,6 +2530,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:31:55
 Free heap(Minimum) after TLS 16496
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2202,6 +2550,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:37:06
 Free heap(Minimum) after TLS 17324
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2219,6 +2570,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:42:20
 Free heap(Minimum) after TLS 17544
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2236,6 +2590,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:47:31
 Free heap(Minimum) after TLS 16072
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2253,6 +2610,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:52:43
 Free heap(Minimum) after TLS 15444
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2270,6 +2630,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 22:57:53
 Free heap(Minimum) after TLS 15708
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2299,6 +2662,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a37:0x3ffd9ab00x400980d8:0x3ffd9af0 0x40096378:0x3ffd9b10 0x4008620c:0x3ffd9b50 0x4008630d:0x3ffd9b80 0x401bd19f:0x3ffd9ba0 0x40226491:0x3ffd9bc0 0x402268d2:0x3ffd9be0 0x401f4fd7:0x3ffd9c10 0x401e2361:0x3ffd9c30 0x40223f01:0x3ffd9c50
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2316,6 +2680,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:05:24
 Free heap(Minimum) after TLS 16680
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2337,6 +2704,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 14092
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2355,6 +2723,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:15:18
 Free heap(Minimum) after TLS 16108
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2372,6 +2743,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:20:57
 Free heap(Minimum) after TLS 16444
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2389,6 +2763,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:25:33
 Free heap(Minimum) after TLS 16676
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2418,6 +2795,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a37:0x3ffd9b100x400980d8:0x3ffd9b50 0x40096378:0x3ffd9b70 0x400964f4:0x3ffd9bb0 0x40083a0d:0x3ffd9bd0 0x401e5da9:0x3ffd9bf0 0x401e37a8:0x3ffd9c10 0x401e2368:0x3ffd9c30 0x40223f01:0x3ffd9c50
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2447,6 +2825,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a37:0x3ffd9b100x400980d8:0x3ffd9b50 0x40096378:0x3ffd9b70 0x400964f4:0x3ffd9bb0 0x40083a0d:0x3ffd9bd0 0x401e5da9:0x3ffd9bf0 0x401e37a8:0x3ffd9c10 0x401e2368:0x3ffd9c30 0x40223f01:0x3ffd9c50
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2464,6 +2843,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:33:59
 Free heap(Minimum) after TLS 14936
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2485,6 +2867,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13744
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2503,6 +2886,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:39:51
 Free heap(Minimum) after TLS 15412
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2520,6 +2906,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:45:50
 Free heap(Minimum) after TLS 17352
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2537,6 +2926,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:50:26
 Free heap(Minimum) after TLS 16224
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2554,6 +2946,9 @@ AWS_imprinting
 RTC_Time : 2021/12/09 23:55:58
 Free heap(Minimum) after TLS 16228
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2571,6 +2966,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:01:13
 Free heap(Minimum) after TLS 16508
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2600,6 +2998,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a3f:0x3ffd9ab00x400980d8:0x3ffd9af0 0x40096378:0x3ffd9b10 0x4008620c:0x3ffd9b50 0x4008630d:0x3ffd9b80 0x401bd19f:0x3ffd9ba0 0x40226491:0x3ffd9bc0 0x402268d2:0x3ffd9be0 0x401f4fd7:0x3ffd9c10 0x401e2361:0x3ffd9c30 0x40223f01:0x3ffd9c50
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2617,6 +3016,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:07:44
 Free heap(Minimum) after TLS 15476
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2634,6 +3036,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:12:40
 Free heap(Minimum) after TLS 15168
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2655,6 +3060,7 @@ Try again in 5 sec
 Failed, state=-2
 Free heap(Minimum) after TLS 13856
 ReStart(for_AWS)..
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2673,6 +3079,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:20:21
 Free heap(Minimum) after TLS 17148
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2690,6 +3099,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:26:07
 Free heap(Minimum) after TLS 15312
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2725,6 +3137,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a41:0x3ffe86f00x40095ddb:0x3ffe8730 0x4013b123:0x3ffe8770 0x401ab4ce:0x3ffe8790
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2743,6 +3156,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:35:36
 Free heap(Minimum) after TLS 15444
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2760,6 +3176,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:41:02
 Free heap(Minimum) after TLS 15592
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2777,6 +3196,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:45:37
 Free heap(Minimum) after TLS 15448
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2794,6 +3216,9 @@ AWS_imprinting
 RTC_Time : 2021/12/10 00:51:14
 Free heap(Minimum) after TLS 16616
 ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2823,6 +3248,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xff
 Backtrace:0x40098a37:0x3ffbebd00x40097056:0x3ffbec10 0x400989c7:0x3ffbec40 0x400952c9:0x3ffbec60 0x40085ff1:0x3ffbec70 0x401f4fb5:0x3ffd9c30 0x40223f01:0x3ffd9c50
 ELF file SHA256: 0000000000000000
 Rebooting...
+<---ここから1サイクル
 M5EPD initializing...OK
 192.168.1.8
 NTP_Server : ntp.nict.jp
@@ -2837,3 +3263,1890 @@ RTC_Time : 2021/12/10 00:55:04
 Setup MQTT...
 Connected...
 AWS_imprinting
+
+
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 16:27:43
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 131, t: 13.7, h: 62.3, p: 1019, c: 803, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 16:30:48
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 16:32:29
+Free heap(Minimum) after TLS 15320
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 16:32:55
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 132, t: 13.9, h: 62.0, p: 1019, c: 807, w: 12.2, v: 5.3
+RTC_Time : 2021/12/10 16:35:50
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 16:37:43
+Free heap(Minimum) after TLS 14992
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 16:38:10
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 133, t: 13.8, h: 62.2, p: 1019, c: 811, w: 12.2, v: 5.1
+RTC_Time : 2021/12/10 16:40:49
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13728
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 16:41:25
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 134, t: 13.7, h: 62.5, p: 1019, c: 863, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 16:45:50
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 16:46:12
+Free heap(Minimum) after TLS 15012
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 16:46:39
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 135, t: 13.6, h: 62.8, p: 1019, c: 935, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 16:50:51
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13580
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 136, t: 13.6, h: 63.0, p: 1019, c: 991, w: 12.0, v: 5.3
+RTC_Time : 2021/12/10 16:55:50
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 16:56:09
+Free heap(Minimum) after TLS 15476
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 16:56:38
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 137, t: 13.6, h: 63.1, p: 1019, c: 1047, w: 12.0, v: 5.0
+RTC_Time : 2021/12/10 17:00:52
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:01:24
+Free heap(Minimum) after TLS 15432
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:01:48
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 138, t: 13.6, h: 63.2, p: 1019, c: 1095, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:05:49
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:06:34
+Free heap(Minimum) after TLS 15624
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:07:02
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 139, t: 13.6, h: 63.4, p: 1019, c: 1148, w: 12.1, v: 5.0
+RTC_Time : 2021/12/10 17:10:51
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:11:48
+Free heap(Minimum) after TLS 15364
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:12:13
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 140, t: 13.6, h: 63.5, p: 1019, c: 1212, w: 12.0, v: 5.2
+RTC_Time : 2021/12/10 17:15:49
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:16:59
+Free heap(Minimum) after TLS 15344
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:17:25
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 141, t: 13.6, h: 63.5, p: 1019, c: 1263, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:20:50
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:22:12
+Free heap(Minimum) after TLS 15064
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:22:37
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 142, t: 13.6, h: 63.7, p: 1019, c: 1307, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:25:50
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13960
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:26:27
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 143, t: 13.6, h: 63.8, p: 1019, c: 1329, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:30:51
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:31:14
+Free heap(Minimum) after TLS 15408
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:31:44
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 144, t: 13.6, h: 63.8, p: 1019, c: 1348, w: 12.1, v: 5.3
+RTC_Time : 2021/12/10 17:35:55
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13852
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:36:23
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 145, t: 13.6, h: 63.8, p: 1019, c: 1357, w: 12.1, v: 5.0
+RTC_Time : 2021/12/10 17:40:46
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13872
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:41:33
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 146, t: 13.6, h: 63.9, p: 1019, c: 1354, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:45:59
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:46:18
+Free heap(Minimum) after TLS 15964
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:46:42
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 147, t: 13.5, h: 64.0, p: 1019, c: 1364, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:50:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:51:28
+Free heap(Minimum) after TLS 15300
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:51:43
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 148, t: 13.5, h: 64.1, p: 1019, c: 1350, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 17:55:44
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 17:56:29
+Free heap(Minimum) after TLS 16100
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 17:57:05
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 149, t: 13.5, h: 64.2, p: 1019, c: 1345, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 18:00:55
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13808
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:01:29
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 150, t: 13.5, h: 64.3, p: 1019, c: 1327, w: 12.1, v: 5.1
+RTC_Time : 2021/12/10 18:05:55
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:06:15
+Free heap(Minimum) after TLS 15448
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:06:47
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 151, t: 13.5, h: 64.4, p: 1019, c: 1308, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 18:11:01
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:11:33
+Free heap(Minimum) after TLS 15476
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:11:42
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 152, t: 13.5, h: 64.4, p: 1019, c: 1298, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 18:15:43
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:16:28
+Free heap(Minimum) after TLS 14088
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:17:07
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 153, t: 13.4, h: 64.4, p: 1019, c: 1268, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 18:20:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:21:53
+Free heap(Minimum) after TLS 15768
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:22:19
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 154, t: 13.4, h: 64.5, p: 1019, c: 1255, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 18:25:57
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:27:06
+Free heap(Minimum) after TLS 15940
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:27:28
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 155, t: 13.4, h: 64.4, p: 1019, c: 1247, w: 12.0, v: 5.2
+RTC_Time : 2021/12/10 18:30:50
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:32:15
+Free heap(Minimum) after TLS 15396
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:32:46
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 156, t: 13.4, h: 64.5, p: 1019, c: 1234, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 18:35:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:37:33
+Free heap(Minimum) after TLS 15420
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:37:59
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 157, t: 13.4, h: 64.5, p: 1019, c: 1225, w: 11.9, v: 5.3
+RTC_Time : 2021/12/10 18:40:57
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:42:47
+Free heap(Minimum) after TLS 15748
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:43:13
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 158, t: 13.3, h: 64.6, p: 1019, c: 1216, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 18:45:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:48:01
+Free heap(Minimum) after TLS 15936
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:48:25
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 159, t: 13.3, h: 64.6, p: 1019, c: 1211, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 18:50:55
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:53:13
+Free heap(Minimum) after TLS 15820
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:53:35
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 160, t: 13.3, h: 64.7, p: 1019, c: 1202, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 18:55:51
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 18:58:21
+Free heap(Minimum) after TLS 16664
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 18:58:47
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 161, t: 13.3, h: 64.8, p: 1019, c: 1185, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:00:51
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:03:33
+Free heap(Minimum) after TLS 15308
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:04:07
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 162, t: 13.3, h: 64.8, p: 1019, c: 1176, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:05:59
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:08:53
+Free heap(Minimum) after TLS 15336
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:09:23
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 163, t: 13.3, h: 64.9, p: 1019, c: 1175, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:11:02
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13796
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:11:27
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 164, t: 13.3, h: 64.9, p: 1019, c: 1175, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:15:52
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:16:12
+Free heap(Minimum) after TLS 16872
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:16:48
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 165, t: 13.3, h: 65.0, p: 1019, c: 1174, w: 11.9, v: 5.2
+RTC_Time : 2021/12/10 19:21:01
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:21:33
+Free heap(Minimum) after TLS 15636
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:21:42
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 166, t: 13.3, h: 65.0, p: 1019, c: 1183, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 19:25:43
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:26:28
+Free heap(Minimum) after TLS 16604
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:27:15
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 167, t: 13.3, h: 65.1, p: 1019, c: 1182, w: 12.0, v: 5.1
+RTC_Time : 2021/12/10 19:31:07
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:32:01
+Free heap(Minimum) after TLS 16996
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:32:17
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 168, t: 13.3, h: 65.1, p: 1019, c: 1175, w: 11.9, v: 5.2
+RTC_Time : 2021/12/10 19:35:57
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:37:03
+Free heap(Minimum) after TLS 16512
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:37:25
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 169, t: 13.3, h: 65.2, p: 1019, c: 1179, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:40:54
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:42:12
+Free heap(Minimum) after TLS 16508
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:42:47
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 170, t: 13.3, h: 65.2, p: 1019, c: 1176, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:46:00
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:47:34
+Free heap(Minimum) after TLS 16920
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:48:01
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 171, t: 13.3, h: 65.2, p: 1019, c: 1185, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:51:02
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:52:48
+Free heap(Minimum) after TLS 16412
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:53:05
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 172, t: 13.2, h: 65.2, p: 1019, c: 1162, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 19:55:54
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 19:57:50
+Free heap(Minimum) after TLS 16164
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 19:58:26
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 173, t: 13.2, h: 65.2, p: 1019, c: 1165, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 20:01:03
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:03:11
+Free heap(Minimum) after TLS 16332
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:03:33
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 174, t: 13.2, h: 65.3, p: 1019, c: 1157, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 20:06:00
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:08:18
+Free heap(Minimum) after TLS 16836
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:08:45
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 175, t: 13.2, h: 65.3, p: 1019, c: 1159, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 20:11:01
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:13:31
+Free heap(Minimum) after TLS 16144
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:13:49
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 176, t: 13.2, h: 65.3, p: 1019, c: 1170, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 20:15:53
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:18:35
+Free heap(Minimum) after TLS 15824
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:19:15
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 177, t: 13.2, h: 65.3, p: 1019, c: 1178, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 20:21:06
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:24:01
+Free heap(Minimum) after TLS 15288
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:24:23
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 178, t: 13.2, h: 65.3, p: 1019, c: 1182, w: 11.9, v: 5.1
+RTC_Time : 2021/12/10 20:26:05
+Setup MQTT...
+Free heap(Minimum) after TLS 15348
+ReStart(for_Refresh(timer0))..
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1).
+Core  1 register dump:
+PC      : 0x40098856  PS      : 0x00060734  A0      : 0x80097946  A1      : 0x3ffbf110
+A2      : 0x3ffcef94  A3      : 0x3ffd57dc  A4      : 0x00000004  A5      : 0xb33fffff
+A6      : 0x00000001  A7      : 0x00000001  A8      : 0x3ffd57dc  A9      : 0x3ffd57dc
+A10     : 0x00000018  A11     : 0x00000018  A12     : 0x3ffc4744  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x00000018  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xffffffff
+Core  1 was running in ISR context:
+EPC1    : 0x4010d7b7  EPC2    : 0x00000000  EPC3    : 0x00000000  EPC4    : 0x40098856
+Backtrace:0x40098853:0x3ffbf1100x40097943:0x3ffbf130 0x40096456:0x3ffbf150 0x4013b5d9:0x3ffbf190 0x4013b9ae:0x3ffbf1b0 0x4013b9d3:0x3ffbf1d0 0x40082bdd:0x3ffbf1f0 0x400f7183:0x3ffbf210 0x40081553:0x3ffbf230 0x400f6b8f:0x3ffbf250 0x40085fe9:0x3ffbf270 0x401c3b3f:0x3ffd4ec0 0x401c3c45:0x3ffd4ef0 0x401c4193:0x3ffd4f10 0x401d01d9:0x3ffd4f40 0x401d1181:0x3ffd5030 0x401d1241:0x3ffd5060 0x401ce4dd:0x3ffd5090 0x401ce2fe:0x3ffd50c0 0x40104a41:0x3ffd5100 0x401006be:0x3ffd51c0 0x401006dc:0x3ffd51e0 0x4010073e:0x3ffd5200 0x400ed6b5:0x3ffd5220 0x400ecf5c:0x3ffd54a0 0x400ed076:0x3ffd54d0 0x400ef719:0x3ffd54f0 0x400efabf:0x3ffd5530 0x400d5709:0x3ffd5560 0x400d8555:0x3ffd55b0 0x400d88ea:0x3ffd55d0 0x400d8a0f:0x3ffd5700 0x400f8e40:0x3ffd5720
+Core  0 register dump:
+PC      : 0x40098a3a  PS      : 0x00060034  A0      : 0x80097059  A1      : 0x3ffbebd0
+A2      : 0x3ffbf288  A3      : 0x3ffbebec  A4      : 0x00060023  A5      : 0xb33fffff
+A6      : 0x0000cdcd  A7      : 0x0000abab  A8      : 0x0000abab  A9      : 0x0000abab
+A10     : 0x00000000  A11     : 0x3ffc38f8  A12     : 0x00060021  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x00000015  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xffffffff
+Backtrace:0x40098a37:0x3ffbebd00x40097056:0x3ffbec10 0x400989c7:0x3ffbec40 0x400952c9:0x3ffbec60 0x40085ff1:0x3ffbec70 0x401aabed:0x3ffe8f90 0x401ab4ce:0x3ffe8fb0
+ELF file SHA256: 0000000000000000
+Rebooting...
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:26:45
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 179, t: 13.2, h: 65.4, p: 1019, c: 1164, w: 11.8, v: 5.1
+RTC_Time : 2021/12/10 20:30:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:31:31
+Free heap(Minimum) after TLS 16432
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:32:09
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 180, t: 13.2, h: 65.4, p: 1019, c: 1178, w: 11.9, v: 5.3
+RTC_Time : 2021/12/10 20:36:07
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:36:55
+Free heap(Minimum) after TLS 16572
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:37:00
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 181, t: 13.2, h: 65.4, p: 1019, c: 1176, w: 11.8, v: 5.1
+RTC_Time : 2021/12/10 20:40:46
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:41:47
+Free heap(Minimum) after TLS 16812
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:42:21
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 182, t: 13.1, h: 65.4, p: 1019, c: 1157, w: 11.8, v: 5.1
+RTC_Time : 2021/12/10 20:45:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:47:08
+Free heap(Minimum) after TLS 16564
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:47:50
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 183, t: 13.1, h: 65.4, p: 1019, c: 1168, w: 11.8, v: 5.1
+RTC_Time : 2021/12/10 20:51:13
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:52:37
+Free heap(Minimum) after TLS 16248
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:52:41
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 184, t: 13.1, h: 65.5, p: 1019, c: 1189, w: 11.8, v: 5.2
+RTC_Time : 2021/12/10 20:55:51
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 20:57:28
+Free heap(Minimum) after TLS 16496
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 20:58:16
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 185, t: 13.1, h: 65.6, p: 1019, c: 1193, w: 11.8, v: 5.1
+RTC_Time : 2021/12/10 21:01:14
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:03:03
+Free heap(Minimum) after TLS 16412
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:03:16
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 186, t: 13.1, h: 65.6, p: 1019, c: 1212, w: 11.8, v: 5.1
+RTC_Time : 2021/12/10 21:05:59
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:08:01
+Free heap(Minimum) after TLS 15696
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:08:31
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 187, t: 13.0, h: 65.7, p: 1019, c: 1210, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:11:05
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:13:16
+Free heap(Minimum) after TLS 16604
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:13:38
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 188, t: 13.0, h: 65.8, p: 1019, c: 1225, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:16:00
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:18:23
+Free heap(Minimum) after TLS 16520
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:18:59
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 189, t: 13.0, h: 65.9, p: 1019, c: 1235, w: 11.7, v: 5.3
+RTC_Time : 2021/12/10 21:21:09
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:23:44
+Free heap(Minimum) after TLS 16776
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:23:57
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 190, t: 13.0, h: 65.9, p: 1019, c: 1244, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:25:55
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13700
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:26:47
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 191, t: 13.0, h: 66.0, p: 1019, c: 1244, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:31:13
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:31:32
+Free heap(Minimum) after TLS 16288
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:31:48
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 192, t: 13.0, h: 66.1, p: 1019, c: 1248, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:36:01
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:36:34
+Free heap(Minimum) after TLS 16484
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:36:45
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 193, t: 13.0, h: 66.1, p: 1019, c: 1251, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:40:47
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:41:31
+Free heap(Minimum) after TLS 16436
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:42:33
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 194, t: 13.0, h: 66.1, p: 1019, c: 1251, w: 11.7, v: 5.2
+RTC_Time : 2021/12/10 21:46:22
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:47:19
+Free heap(Minimum) after TLS 16244
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:47:18
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 195, t: 12.9, h: 66.2, p: 1019, c: 1269, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:50:55
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:52:04
+Free heap(Minimum) after TLS 16440
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:52:36
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 196, t: 12.9, h: 66.2, p: 1019, c: 1257, w: 11.7, v: 5.1
+RTC_Time : 2021/12/10 21:56:01
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 21:57:23
+Free heap(Minimum) after TLS 16328
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 21:57:58
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 197, t: 12.9, h: 66.2, p: 1019, c: 1248, w: 11.6, v: 5.1
+RTC_Time : 2021/12/10 22:01:12
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:02:46
+Free heap(Minimum) after TLS 16624
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:03:07
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 198, t: 12.9, h: 66.2, p: 1019, c: 1245, w: 11.6, v: 5.1
+RTC_Time : 2021/12/10 22:06:05
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:07:52
+Free heap(Minimum) after TLS 16864
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:08:19
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 199, t: 12.9, h: 66.2, p: 1019, c: 1242, w: 11.6, v: 5.1
+RTC_Time : 2021/12/10 22:11:08
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:13:04
+Free heap(Minimum) after TLS 16600
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:13:29
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 200, t: 12.8, h: 66.2, p: 1019, c: 1252, w: 11.6, v: 5.1
+RTC_Time : 2021/12/10 22:16:06
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:18:14
+Free heap(Minimum) after TLS 16440
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:18:37
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 201, t: 12.8, h: 66.2, p: 1019, c: 1245, w: 11.6, v: 5.1
+RTC_Time : 2021/12/10 22:21:05
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:23:22
+Free heap(Minimum) after TLS 16616
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:23:45
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 202, t: 12.8, h: 66.3, p: 1019, c: 1241, w: 11.6, v: 5.1
+RTC_Time : 2021/12/10 22:26:01
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:28:31
+Free heap(Minimum) after TLS 16936
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:29:03
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 203, t: 12.8, h: 66.2, p: 1019, c: 1237, w: 11.5, v: 5.0
+RTC_Time : 2021/12/10 22:31:06
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:33:49
+Free heap(Minimum) after TLS 15772
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:34:28
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 204, t: 12.8, h: 66.3, p: 1019, c: 1219, w: 11.5, v: 5.0
+RTC_Time : 2021/12/10 22:36:19
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:39:14
+Free heap(Minimum) after TLS 15316
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:39:22
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 205, t: 12.8, h: 66.3, p: 1019, c: 1221, w: 11.5, v: 5.0
+RTC_Time : 2021/12/10 22:41:02
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:44:09
+Free heap(Minimum) after TLS 15464
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:44:30
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 206, t: 12.7, h: 66.3, p: 1019, c: 1222, w: 11.5, v: 5.1
+RTC_Time : 2021/12/10 22:45:57
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:49:17
+Free heap(Minimum) after TLS 15272
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:50:10
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 207, t: 12.7, h: 66.3, p: 1019, c: 1208, w: 11.5, v: 5.1
+RTC_Time : 2021/12/10 22:51:25
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:54:57
+Free heap(Minimum) after TLS 15356
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 22:54:58
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 208, t: 12.7, h: 66.4, p: 1019, c: 1206, w: 11.5, v: 5.1
+RTC_Time : 2021/12/10 22:55:59
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 22:59:43
+Free heap(Minimum) after TLS 15392
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:00:20
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 209, t: 12.7, h: 66.4, p: 1019, c: 1189, w: 11.5, v: 5.1
+RTC_Time : 2021/12/10 23:01:11
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:05:08
+Free heap(Minimum) after TLS 15732
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:05:33
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 210, t: 12.7, h: 66.5, p: 1019, c: 1191, w: 11.5, v: 5.1
+RTC_Time : 2021/12/10 23:06:09
+Setup MQTT...
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Try again in 5 sec
+Failed, state=-2
+Free heap(Minimum) after TLS 13596
+ReStart(for_AWS)..
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:06:46
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 211, t: 12.7, h: 66.4, p: 1019, c: 1185, w: 11.5, v: 5.2
+RTC_Time : 2021/12/10 23:11:12
+Setup MQTT...
+Free heap(Minimum) after TLS 16908
+ReStart(for_Refresh(timer0))..
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1).
+Core  1 register dump:
+PC      : 0x40098856  PS      : 0x00060734  A0      : 0x80097946  A1      : 0x3ffbf110
+A2      : 0x3ffcef94  A3      : 0x3ffd57dc  A4      : 0x00000004  A5      : 0xb33fffff
+A6      : 0x00000001  A7      : 0x00000001  A8      : 0x3ffd57dc  A9      : 0x3ffd57dc
+A10     : 0x00000018  A11     : 0x00000018  A12     : 0x3ffc4744  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x00000018  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xffffffff
+Core  1 was running in ISR context:
+EPC1    : 0x4010d7b7  EPC2    : 0x00000000  EPC3    : 0x00000000  EPC4    : 0x40098856
+Backtrace:0x40098853:0x3ffbf1100x40097943:0x3ffbf130 0x40096456:0x3ffbf150 0x4013b5d9:0x3ffbf190 0x4013b9ae:0x3ffbf1b0 0x4013b9d3:0x3ffbf1d0 0x40082bdd:0x3ffbf1f0 0x400f7183:0x3ffbf210 0x40081553:0x3ffbf230 0x400f6b8f:0x3ffbf250 0x40085fe9:0x3ffbf270 0x401c3b35:0x3ffd4ec0 0x401c3c45:0x3ffd4ef0 0x401c4193:0x3ffd4f10 0x401d01d9:0x3ffd4f40 0x401d1181:0x3ffd5030 0x401d1241:0x3ffd5060 0x401ce4dd:0x3ffd5090 0x401ce2fe:0x3ffd50c0 0x40104a41:0x3ffd5100 0x401006be:0x3ffd51c0 0x401006dc:0x3ffd51e0 0x4010073e:0x3ffd5200 0x400ed6b5:0x3ffd5220 0x400ecf5c:0x3ffd54a0 0x400ed076:0x3ffd54d0 0x400ef719:0x3ffd54f0 0x400efabf:0x3ffd5530 0x400d5709:0x3ffd5560 0x400d8555:0x3ffd55b0 0x400d88ea:0x3ffd55d0 0x400d8a0f:0x3ffd5700 0x400f8e40:0x3ffd5720
+Core  0 register dump:
+PC      : 0x40098a3a  PS      : 0x00060034  A0      : 0x80097059  A1      : 0x3ffbebd0
+A2      : 0x3ffbf288  A3      : 0x3ffbebec  A4      : 0x00060023  A5      : 0xb33fffff
+A6      : 0x0000cdcd  A7      : 0x0000abab  A8      : 0x0000abab  A9      : 0x0000abab
+A10     : 0x00000000  A11     : 0x3ffc38f8  A12     : 0x00060021  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x00000015  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xffffffff
+Backtrace:0x40098a37:0x3ffbebd00x40097056:0x3ffbec10 0x400989c7:0x3ffbec40 0x400952c9:0x3ffbec60 0x40085ff1:0x3ffbec70 0x401aabed:0x3ffe9010 0x401ab4ce:0x3ffe9030
+ELF file SHA256: 0000000000000000
+Rebooting...
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:11:45
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+AWS_Resend!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 212, t: 12.7, h: 66.4, p: 1019, c: 1186, w: 11.5, v: 5.1
+RTC_Time : 2021/12/10 23:15:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:16:31
+Free heap(Minimum) after TLS 16524
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:17:38
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 213, t: 12.6, h: 66.4, p: 1019, c: 1168, w: 11.4, v: 5.1
+RTC_Time : 2021/12/10 23:21:37
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:22:24
+Free heap(Minimum) after TLS 16904
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:21:30
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 214, t: 12.6, h: 66.4, p: 1018, c: 1109, w: 11.3, v: 5.1
+RTC_Time : 2021/12/10 23:25:17
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:26:17
+Free heap(Minimum) after TLS 16760
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:27:33
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 215, t: 12.5, h: 66.4, p: 1018, c: 1058, w: 11.3, v: 5.1
+RTC_Time : 2021/12/10 23:31:07
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:32:19
+Free heap(Minimum) after TLS 16656
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:32:43
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 216, t: 12.4, h: 66.4, p: 1018, c: 1012, w: 11.2, v: 5.1
+RTC_Time : 2021/12/10 23:36:06
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:37:30
+Free heap(Minimum) after TLS 16816
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:37:59
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 217, t: 12.4, h: 66.3, p: 1018, c: 974, w: 11.1, v: 5.2
+RTC_Time : 2021/12/10 23:41:09
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:42:46
+Free heap(Minimum) after TLS 16484
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:43:01
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 218, t: 12.3, h: 66.3, p: 1018, c: 918, w: 11.0, v: 5.1
+RTC_Time : 2021/12/10 23:45:56
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:47:49
+Free heap(Minimum) after TLS 17400
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:48:30
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 219, t: 12.2, h: 66.2, p: 1018, c: 910, w: 11.0, v: 5.2
+RTC_Time : 2021/12/10 23:51:13
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:53:15
+Free heap(Minimum) after TLS 15372
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:53:42
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+EPD_imprinting!
+NVS_Cleared!
+Now_Recieved >>> Node: 1, seq: 220, t: 12.2, h: 66.1, p: 1018, c: 887, w: 11.0, v: 5.1
+RTC_Time : 2021/12/10 23:56:13
+Setup MQTT...
+Connected...
+AWS_imprinting
+RTC_Time : 2021/12/10 23:58:27
+Free heap(Minimum) after TLS 17144
+ReStart(for_Refresh)..
+
+<---ここから1サイクル
+M5EPD initializing...OK
+192.168.1.5
+NTP_Server : ntp.nict.jp
+RTC_Set : 2021/12/10 23:59:03
+NVS_Readed!
+LovyanGFX_EPD_Set!
+ODPT_Data_Got!
+Free heap(Minimum) after TLS 70400
+ReStart(for_Timeout)..
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1).
+Core  1 register dump:
+PC      : 0x4009885c  PS      : 0x00060334  A0      : 0x80097946  A1      : 0x3ffbf100
+A2      : 0x3ffd9e80  A3      : 0x3ffd57dc  A4      : 0x00000004  A5      : 0xb33fffff
+A6      : 0x00000001  A7      : 0x00000001  A8      : 0x3ffd57dc  A9      : 0x3ffd57dc
+A10     : 0x00000018  A11     : 0x00000018  A12     : 0x3ffc4744  A13     : 0xb33fffff
+A14     : 0x00000001  A15     : 0x00000001  SAR     : 0x00000017  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xffffffff
+Core  1 was running in ISR context:
+EPC1    : 0x4010d7b7  EPC2    : 0x00000000  EPC3    : 0x00000000  EPC4    : 0x4009885c
+Backtrace:0x40098859:0x3ffbf1000x40097943:0x3ffbf120 0x40096456:0x3ffbf140 0x401168b2:0x3ffbf180 0x401e4a3d:0x3ffbf1a0 0x401db7cd:0x3ffbf1c0 0x40082bdd:0x3ffbf1f0 0x400f7183:0x3ffbf210 0x4008160e:0x3ffbf230 0x400f6b8f:0x3ffbf250 0x40085fe9:0x3ffbf270 0x40085aba:0x3ffd5470 0x40085af2:0x3ffd5490 0x400f545f:0x3ffd54b0 0x400f1ac4:0x3ffd54d0 0x400f1b33:0x3ffd54f0 0x400f2129:0x3ffd5510 0x400d90fe:0x3ffd5550 0x4021c935:0x3ffd5580 0x400f1959:0x3ffd55a0 0x400f0a66:0x3ffd5640 0x400d4ecb:0x3ffd5680 0x400db970:0x3ffd56c0 0x400f8e2f:0x3ffd5720
+Core  0 register dump:
+PC      : 0x40098a42  PS      : 0x00060834  A0      : 0x800980db  A1      : 0x3ffd9b10
+A2      : 0x3ffbf288  A3      : 0x3ffd9b2c  A4      : 0x00060623  A5      : 0xb33fffff
+A6      : 0x0000cdcd  A7      : 0x0000abab  A8      : 0x0000abab  A9      : 0x0000abab
+A10     : 0x3ffc9514  A11     : 0x401e378c  A12     : 0x3ffc6ec4  A13     : 0x3ffc5d5c
+A14     : 0x3ffc0cec  A15     : 0x3ffdff88  SAR     : 0x00000017  EXCCAUSE: 0x00000006
+EXCVADDR: 0x00000000  LBEG    : 0x40091bfc  LEND    : 0x40091c18  LCOUNT  : 0xffffffff
+Backtrace:0x40098a3f:0x3ffd9b100x400980d8:0x3ffd9b50 0x40096378:0x3ffd9b70 0x400964f4:0x3ffd9bb0 0x40083a0d:0x3ffd9bd0 0x401e5da9:0x3ffd9bf0 0x401e37a8:0x3ffd9c10 0x401e2368:0x3ffd9c30 0x40223f01:0x3ffd9c50
+ELF file SHA256: 0000000000000000
+Rebooting...
+<---ここでダウン

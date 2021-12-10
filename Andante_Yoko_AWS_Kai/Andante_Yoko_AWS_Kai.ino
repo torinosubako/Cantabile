@@ -1,8 +1,8 @@
 
 /*
    Project:Andante_Yoko_AWS_Kai
-   CodeName:Preparation_stage_AX16_s17
-   Build:2021/12/09
+   CodeName:Preparation_stage_AX16_s18
+   Build:2021/12/11
    Author:torinosubako
    Status:Unverified
    Duties:Edge Processing Node
@@ -56,6 +56,7 @@ const char* PRIVATE_KEY = R"KEY(-----BEGIN RSA PRIVATE KEY-----
 
 
 
+
 // MQTT設定
 #define QOS 0
 WiFiClientSecure httpsClient;
@@ -105,6 +106,10 @@ void IRAM_ATTR onTimer0() {
   preferences.putFloat("hold_WBGT", common_WBGT);
   preferences.putShort("resend_tags", 1);
   preferences.end();
+  mqttClient.disconnect();
+  WiFi.disconnect(true);
+  pBLEScan->clearResults();
+  pBLEScan->stop();
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
   Serial.println("ReStart(for_Refresh(timer0))..");
   timerEnd(timer0);
@@ -115,6 +120,7 @@ void IRAM_ATTR onTimer0() {
 // ODPTデータセット取得時タイムアップ(60秒)
 void IRAM_ATTR onTimer1() {
   preferences.end();
+  WiFi.disconnect(true);
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
   Serial.println("ReStart(for_Refresh(timer1))..");
   delay(10000);
@@ -125,9 +131,18 @@ void IRAM_ATTR onTimer1() {
 }
 // 全体処理タイムアップ(8分)
 void IRAM_ATTR onTimer2() {
+  preferences.putFloat("hold_temp", common_temp);
+  preferences.putFloat("hold_humid", common_humid);
+  preferences.putShort("hold_co2", common_co2);
+  preferences.putShort("hold_press", common_press);
+  preferences.putFloat("hold_WBGT", common_WBGT);
+  preferences.putShort("resend_tags", 1);
+  preferences.end();
+  WiFi.disconnect(true);
+  pBLEScan->clearResults();
+  pBLEScan->stop();
   Serial.printf("Free heap(Minimum) after TLS %u\r\n", heap_caps_get_minimum_free_size(MALLOC_CAP_EXEC));
   Serial.println("ReStart(for_Timeout)..");
-  delay(10000);
   timerEnd(timer2);
   delay(10000);
   ESP.restart();
@@ -371,6 +386,7 @@ void Wireless_Access_Check() {
       WiFi.disconnect(true);
       Serial.println("ReStart(for_Wifi(AC))..");
       timerEnd(timer2);
+      delay(1000);
       ESP.restart();
     }
   }
@@ -396,8 +412,9 @@ void connect_AWS(){
     if (retryCount++ > 2){
       preferences.putShort("resend_tags", 1);
       hold_data_upload();
-      Serial.println("ReStart(for_AWS)..");
       timerEnd(timer2);
+      delay(1000);
+      Serial.println("ReStart(for_AWS)..");
       ESP.restart();
     }
     Serial.println("Try again in 5 sec");
